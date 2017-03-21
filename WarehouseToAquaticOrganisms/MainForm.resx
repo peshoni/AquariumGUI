@@ -122,103 +122,31 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="makeSaleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="makeSaleToolStripMenuItem.Text" xml:space="preserve">
     <value>Make sale</value>
   </data>
-  <data name="reportsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 22</value>
+  <data name="showSalesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
   </data>
-  <data name="reportsToolStripMenuItem.Text" xml:space="preserve">
+  <data name="showSalesToolStripMenuItem.Text" xml:space="preserve">
     <value>Reports</value>
   </data>
   <data name="salesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="salesToolStripMenuItem.Text" xml:space="preserve">
     <value>sales</value>
   </data>
-  <data name="createSupplyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
-  </data>
-  <data name="createSupplyToolStripMenuItem.Text" xml:space="preserve">
-    <value>create supply</value>
-  </data>
-  <data name="reportsToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
-  </data>
-  <data name="reportsToolStripMenuItem1.Text" xml:space="preserve">
-    <value>reports</value>
-  </data>
   <data name="supplyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="supplyToolStripMenuItem.Text" xml:space="preserve">
     <value>supply</value>
   </data>
-  <data name="providersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
-  </data>
-  <data name="providersToolStripMenuItem.Text" xml:space="preserve">
-    <value>providers</value>
-  </data>
-  <data name="addNewProviderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
-  </data>
-  <data name="addNewProviderToolStripMenuItem.Text" xml:space="preserve">
-    <value>add new provider</value>
-  </data>
-  <data name="pROVIDERSToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 22</value>
-  </data>
-  <data name="pROVIDERSToolStripMenuItem1.Text" xml:space="preserve">
-    <value>providers</value>
-  </data>
-  <data name="personsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
-  </data>
-  <data name="personsToolStripMenuItem.Text" xml:space="preserve">
-    <value>all persons</value>
-  </data>
-  <data name="insertNewPersonToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
-  </data>
-  <data name="insertNewPersonToolStripMenuItem.Text" xml:space="preserve">
-    <value>add new person</value>
-  </data>
-  <data name="pERSONToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
-  </data>
-  <data name="pERSONToolStripMenuItem.Text" xml:space="preserve">
-    <value>person</value>
-  </data>
-  <data name="companyesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
-  </data>
-  <data name="companyesToolStripMenuItem.Text" xml:space="preserve">
-    <value>all companies</value>
-  </data>
-  <data name="insertNewCompanyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
-  </data>
-  <data name="insertNewCompanyToolStripMenuItem.Text" xml:space="preserve">
-    <value>add new company</value>
-  </data>
-  <data name="cOMPANYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
-  </data>
-  <data name="cOMPANYToolStripMenuItem.Text" xml:space="preserve">
-    <value>company</value>
-  </data>
-  <data name="cLIENTSToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 22</value>
-  </data>
-  <data name="cLIENTSToolStripMenuItem.Text" xml:space="preserve">
-    <value>clients</value>
-  </data>
   <data name="partnersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="partnersToolStripMenuItem.Text" xml:space="preserve">
     <value>partners</value>
@@ -259,6 +187,78 @@
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="createSupplyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 22</value>
+  </data>
+  <data name="createSupplyToolStripMenuItem.Text" xml:space="preserve">
+    <value>create supply</value>
+  </data>
+  <data name="showDeliveriesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 22</value>
+  </data>
+  <data name="showDeliveriesToolStripMenuItem.Text" xml:space="preserve">
+    <value>show deliveries</value>
+  </data>
+  <data name="pROVIDERSToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 22</value>
+  </data>
+  <data name="pROVIDERSToolStripMenuItem1.Text" xml:space="preserve">
+    <value>providers</value>
+  </data>
+  <data name="providersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="providersToolStripMenuItem.Text" xml:space="preserve">
+    <value>providers</value>
+  </data>
+  <data name="addNewProviderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="addNewProviderToolStripMenuItem.Text" xml:space="preserve">
+    <value>add new provider</value>
+  </data>
+  <data name="cLIENTSToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 22</value>
+  </data>
+  <data name="cLIENTSToolStripMenuItem.Text" xml:space="preserve">
+    <value>clients</value>
+  </data>
+  <data name="pERSONToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="pERSONToolStripMenuItem.Text" xml:space="preserve">
+    <value>person</value>
+  </data>
+  <data name="personsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 22</value>
+  </data>
+  <data name="personsToolStripMenuItem.Text" xml:space="preserve">
+    <value>all persons</value>
+  </data>
+  <data name="insertNewPersonToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 22</value>
+  </data>
+  <data name="insertNewPersonToolStripMenuItem.Text" xml:space="preserve">
+    <value>add new person</value>
+  </data>
+  <data name="cOMPANYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="cOMPANYToolStripMenuItem.Text" xml:space="preserve">
+    <value>company</value>
+  </data>
+  <data name="companyesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 22</value>
+  </data>
+  <data name="companyesToolStripMenuItem.Text" xml:space="preserve">
+    <value>all companies</value>
+  </data>
+  <data name="insertNewCompanyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 22</value>
+  </data>
+  <data name="insertNewCompanyToolStripMenuItem.Text" xml:space="preserve">
+    <value>add new company</value>
   </data>
   <data name="buttonBG.Location" type="System.Drawing.Point, System.Drawing">
     <value>1129, 0</value>
@@ -305,15 +305,6 @@
   <data name="&gt;&gt;buttonEN.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="progressBar1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>432, 489</value>
-  </data>
-  <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>346, 23</value>
-  </data>
-  <data name="progressBar1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;progressBar1.Name" xml:space="preserve">
     <value>progressBar1</value>
   </data>
@@ -345,6 +336,27 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panelMain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="progressBar1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>432, 489</value>
+  </data>
+  <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>346, 23</value>
+  </data>
+  <data name="progressBar1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;progressBar1.Name" xml:space="preserve">
+    <value>progressBar1</value>
+  </data>
+  <data name="&gt;&gt;progressBar1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;progressBar1.Parent" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="&gt;&gt;progressBar1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -390,10 +402,10 @@
   <data name="&gt;&gt;makeSaleToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;reportsToolStripMenuItem.Name" xml:space="preserve">
-    <value>reportsToolStripMenuItem</value>
+  <data name="&gt;&gt;showSalesToolStripMenuItem.Name" xml:space="preserve">
+    <value>showSalesToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;reportsToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;showSalesToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;supplyToolStripMenuItem.Name" xml:space="preserve">
@@ -408,10 +420,10 @@
   <data name="&gt;&gt;createSupplyToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;reportsToolStripMenuItem1.Name" xml:space="preserve">
-    <value>reportsToolStripMenuItem1</value>
+  <data name="&gt;&gt;showDeliveriesToolStripMenuItem.Name" xml:space="preserve">
+    <value>showDeliveriesToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;reportsToolStripMenuItem1.Type" xml:space="preserve">
+  <data name="&gt;&gt;showDeliveriesToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;partnersToolStripMenuItem.Name" xml:space="preserve">

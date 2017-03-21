@@ -25,20 +25,11 @@ namespace WarehouseToAquaticOrganisms.DBClasses
             ConnectionString = DBManager.GetConnectionString();
             this.AddRange(SelectAllCompanies());
         }
-
-        public List<Company> List
-        {
-            get
-            {
-                return this;
-            }
-        }
  
-
         public new void Add( Company company )
         {
             base.Add(company);
-            InsertCompanyIntoDBtablePerson(company);
+            company.ID = InsertCompanyIntoDBtablePerson(company);
         }
 
         public new void Remove( Company company )
@@ -46,6 +37,24 @@ namespace WarehouseToAquaticOrganisms.DBClasses
             base.Remove(company); 
             deleteCompanyFromDB(company);
         }
+
+        public void Update( Company company ) {
+            Company forProcess = this.FirstOrDefault<Company>(element=>  
+                element.ID == company.ID 
+             );
+            if (forProcess!=null)
+            {
+                forProcess.Name = company.Name;
+                forProcess.Bulstat = company.Bulstat;
+                forProcess.AcountablePerson = company.AcountablePerson;
+                forProcess.Address = company.Address;
+                forProcess.PhoneNumber = company.PhoneNumber;
+                // Update into DB.
+                updateObjectPropertiesIntoDB(forProcess);
+            } 
+        }
+        #region Private methods
+        
         //}
         /// <summary>
         /// Insert <see cref="Company"/> into table Person.
@@ -130,9 +139,8 @@ namespace WarehouseToAquaticOrganisms.DBClasses
         /// Update <Company> object in DB
         /// </summary>
         /// <param name="person"></param>
-        public void updateObjectPropertiesIntoDB( Company company )
-        {
-            // (_list.Find(element => element.ID == person.ID)).;
+        private void updateObjectPropertiesIntoDB( Company company )
+        { 
             if (company != null)
             {
                 using (SqlConnection con = new SqlConnection(ConnectionString))
@@ -177,10 +185,6 @@ namespace WarehouseToAquaticOrganisms.DBClasses
                 }
             }
         }
-        internal void updateList()
-        {
-            this.Clear();
-            this.AddRange(SelectAllCompanies()); 
-        } 
+        #endregion
     }
 }

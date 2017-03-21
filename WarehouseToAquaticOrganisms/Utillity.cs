@@ -12,13 +12,13 @@ namespace WarehouseToAquaticOrganisms
         private Utillity() { }
 
 
-        public static DataGridViewButtonColumn createDatagridViewButtonColumn( string aHeader, string aText, string aButtonName )
+        public static DataGridViewButtonColumn createDatagridViewButtonColumn( string buttonHeader, string buttonText, string buttonName )
         {
             DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
             buttonColumn.Width = 60;
-            buttonColumn.HeaderText = aHeader;
-            buttonColumn.Text = aText;
-            buttonColumn.Name = aButtonName;
+            buttonColumn.HeaderText = buttonHeader;
+            buttonColumn.Text = buttonText;
+            buttonColumn.Name = buttonName;
             buttonColumn.UseColumnTextForButtonValue = true;
             return buttonColumn;
         }
@@ -34,20 +34,21 @@ namespace WarehouseToAquaticOrganisms
         /// <summary>
         /// Create column with textBoxes..
         /// </summary>
-        /// <param name = "aHeader" ></ param >
-        /// < param name= "aText" ></ param >
-        /// < param name= "aDataPropertyName" ></ param >
+        /// <param name = "Header" ></ param >
+        /// < param name= "ColumnName" ></ param >
+        /// < param name= "DataPropertyName" ></ param >
         /// < param name= "dividerWidth" ></ param >
         /// < returns ></ returns >
-        public static DataGridViewTextBoxColumn createDatagridViewTextBoxColumn( string aHeader, string aText, string aDataPropertyName, int width, bool aReadOnly )
+        public static DataGridViewTextBoxColumn createDatagridViewTextBoxColumn( string Header, string Name, string DataPropertyName, bool ReadOnly )
         {
             DataGridViewTextBoxColumn textBoxColumn = new DataGridViewTextBoxColumn();
-          //  textBoxColumn.Width = dividerWidth;
-            textBoxColumn.Width = width;
-            textBoxColumn.HeaderText = aHeader;
-            textBoxColumn.Name = aText;
-            textBoxColumn.DataPropertyName = aDataPropertyName;
-            textBoxColumn.ReadOnly = aReadOnly;
+            //  textBoxColumn.Width = dividerWidth;
+            //  textBoxColumn.Width = Width;
+            textBoxColumn.Name = Name;
+            textBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            textBoxColumn.HeaderText = Header; 
+            textBoxColumn.DataPropertyName = DataPropertyName;
+            textBoxColumn.ReadOnly = ReadOnly;
             return textBoxColumn;
         }
     }

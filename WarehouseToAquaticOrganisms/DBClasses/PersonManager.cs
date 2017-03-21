@@ -9,32 +9,38 @@ using WarehouseToAquaticOrganisms.Classes;
 namespace WarehouseToAquaticOrganisms.DBClasses
 {
     public class PersonManager : List<Person>
-    {
-       // private readonly List<Person> _list = new List<Person>();
+    { 
         private string ConnectionString;
-        public PersonManager() {
-           // this._list = new List<Person>();
+        public PersonManager() { 
             ConnectionString = DBManager.GetConnectionString();
             this.AddRange(SelectAllPersons());
         }
-
-        public List<Person> List
-        {
-            get
-            {
-                return this;
-            }
-        }
-
+ 
         public new void Add(Person person )
         {
             base.Add(person);
-            InsertPersonIntoDBtablePerson(person);
+            person.ID = InsertPersonIntoDBtablePerson(person); 
         }
 
         public new void Remove( Person person ) {
             base.Remove(person);
             deletePersonFromDB(person);
+            
+        }
+
+        public void Update(Person person) {
+            Person forProcess = this.FirstOrDefault<Person>(element =>
+             element.ID == person.ID
+          );
+            if (forProcess != null)
+            {
+                forProcess.Name = person.Name;
+                forProcess.Egn = person.Egn;
+                forProcess.Address = person.Address;
+                forProcess.PhoneNumber = person.PhoneNumber; 
+                // Update into DB.
+                updateObjectPropertiesIntoDB(forProcess);
+            }
         }
         //}
         /// <summary>
@@ -113,9 +119,8 @@ namespace WarehouseToAquaticOrganisms.DBClasses
         /// Update <Person> object in DB
         /// </summary>
         /// <param name="person"></param>
-        public void updateObjectPropertiesIntoDB( Person person )
-        {
-           // (_list.Find(element => element.ID == person.ID)).;
+        private void updateObjectPropertiesIntoDB( Person person )
+        { 
             if (person != null)
             {
                 using (SqlConnection con = new SqlConnection(ConnectionString))

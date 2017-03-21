@@ -69,11 +69,12 @@
     <Compile Include="Contragents\Company.cs" />
     <Compile Include="Observer\Available.cs" />
     <Compile Include="Observer\Delivery.cs" />
+    <Compile Include="Observer\DeliveryRow.cs" />
     <Compile Include="Observer\Observer.cs" />
     <Compile Include="Observer\Product.cs" />
     <Compile Include="Observer\Sale.cs" />
     <Compile Include="Observer\SalesList.cs" />
-    <Compile Include="Observer\SuplyList.cs" />
+    <Compile Include="Observer\DeliveryManager.cs" />
     <Compile Include="Observer\Warehouse.cs" />
     <Compile Include="Sales\Row.cs" />
     <Compile Include="Sales\SaleTest.cs" />
@@ -87,6 +88,12 @@
     </Compile>
     <Compile Include="ShowCompanyesControl.Designer.cs">
       <DependentUpon>ShowCompanyesControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowDeliveryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ShowDeliveryControl.Designer.cs">
+      <DependentUpon>ShowDeliveryControl.cs</DependentUpon>
     </Compile>
     <Compile Include="ShowPersonsControl.cs">
       <SubType>UserControl</SubType>
@@ -127,16 +134,19 @@
     <Compile Include="ShowProvidersControl.Designer.cs">
       <DependentUpon>ShowProvidersControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="SupplyControl.cs">
+    <Compile Include="MakeDeliveryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SupplyControl.Designer.cs">
-      <DependentUpon>SupplyControl.cs</DependentUpon>
+    <Compile Include="MakeDeliveryControl.Designer.cs">
+      <DependentUpon>MakeDeliveryControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Utillity.cs" />
     <Compile Include="Validator.cs" />
     <EmbeddedResource Include="ShowCompanyesControl.resx">
       <DependentUpon>ShowCompanyesControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowDeliveryControl.resx">
+      <DependentUpon>ShowDeliveryControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowPersonsControl.resx">
       <DependentUpon>ShowPersonsControl.cs</DependentUpon>
@@ -172,8 +182,8 @@
     <EmbeddedResource Include="ShowProvidersControl.resx">
       <DependentUpon>ShowProvidersControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SupplyControl.resx">
-      <DependentUpon>SupplyControl.cs</DependentUpon>
+    <EmbeddedResource Include="MakeDeliveryControl.resx">
+      <DependentUpon>MakeDeliveryControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="AquariumDatabaseDataSet.xsc">
       <DependentUpon>AquariumDatabaseDataSet.xsd</DependentUpon>

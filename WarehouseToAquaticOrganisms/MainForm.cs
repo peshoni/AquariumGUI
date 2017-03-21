@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Observer;
 using WarehouseToAquaticOrganisms.Classes;
 using WarehouseToAquaticOrganisms.DBClasses;
 
@@ -19,18 +20,20 @@ namespace WarehouseToAquaticOrganisms
     public partial class MainForm : Form
 
     {
-        private SupplyControl _supplyControl;
+        private MakeDeliveryControl _supplyControl;
         private SalesControl _salesControl;
 
         private ShowCompaniesControl _companyesControl;
         private ShowPersonsControl _persondControl;
         private ShowProvidersControl _providersControl;
+        private ShowDeliveryControl _deliveryControl;
 
         private PersonManager _personManager ;
         private CompanyManager _clientCompanyManager;
         private CompanyManager _proviederCompanyManager;
-       
+        private DeliveryManager _deliveryList;
 
+        private Warehouse _warehouse;
 
 
 
@@ -41,6 +44,10 @@ namespace WarehouseToAquaticOrganisms
             _personManager = new PersonManager();
             _clientCompanyManager = new CompanyManager(false);
             _proviederCompanyManager = new CompanyManager(true);
+
+            _warehouse = new Warehouse();
+            _deliveryList = new DeliveryManager(_warehouse);
+
             CreateControls(); 
         }
 
@@ -72,14 +79,17 @@ namespace WarehouseToAquaticOrganisms
 
         private void CreateControls()
         {
-            _supplyControl = new SupplyControl(_proviederCompanyManager);
+            _supplyControl = new MakeDeliveryControl(_proviederCompanyManager,_warehouse);
+            _deliveryControl = new ShowDeliveryControl(_deliveryList);
+
+
             _salesControl = new SalesControl(_personManager, _clientCompanyManager);
 
             _persondControl = new ShowPersonsControl(_personManager);
             _companyesControl = new ShowCompaniesControl(_clientCompanyManager);
             _providersControl = new ShowProvidersControl(_proviederCompanyManager);
 
-            Control [] controls = { _supplyControl, _salesControl, _persondControl, _companyesControl, _providersControl };
+            Control [] controls = { _supplyControl, _deliveryControl, _salesControl, _persondControl, _companyesControl, _providersControl };
             foreach (var item in controls)
             {
                 item.Dock = DockStyle.Fill;
@@ -90,6 +100,7 @@ namespace WarehouseToAquaticOrganisms
 
         private void menuClick( object sender, EventArgs e ) {
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
+           
             switch (item.Name)
             {       // menu Companies: shows all companies in grid.
                 case "companyesToolStripMenuItem":
@@ -110,6 +121,16 @@ namespace WarehouseToAquaticOrganisms
                 case "createSupplyToolStripMenuItem":
                     disposeAllExceptThisControl(_supplyControl);
                     break;
+                case "showDeliveriesToolStripMenuItem":
+                    disposeAllExceptThisControl(_deliveryControl);
+                    // MessageBox.Show(item.Name);
+                    break;
+                case "showSalesToolStripMenuItem":
+                    
+                      MessageBox.Show(":-(");
+                    break;
+
+                    
                 case "insertNewPersonToolStripMenuItem":
                     FormPerson form = new FormPerson(_personManager, _persondControl);
                     form.ShowDialog(this);
@@ -121,7 +142,9 @@ namespace WarehouseToAquaticOrganisms
                 case "addNewProviderToolStripMenuItem":
                     FormCompany formForProviders = new FormCompany(_proviederCompanyManager, _providersControl);
                     formForProviders.ShowDialog(this);
-                    break; 
+                    break;
+                
+               
                 default:
                     break;
             } 
@@ -164,6 +187,11 @@ namespace WarehouseToAquaticOrganisms
         private void backgroundWorker1_DoWork( object sender, DoWorkEventArgs e )
         {
             MessageBox.Show("Hi.");
-        } 
+        }
+
+        //private void showDeliveriesToolStripMenuItem_Click( object sender, EventArgs e )
+        //{
+        //    disposeAllExceptThisControl(_deliveryControl);
+        //}
     }
 }

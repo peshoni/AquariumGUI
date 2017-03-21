@@ -117,27 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="idDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Id</value>
-  </data>
-  <data name="nameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="eGNDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>EGN</value>
-  </data>
-  <data name="phoneDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Phone</value>
-  </data>
-  <data name="addressDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Address</value>
-  </data>
-  <metadata name="personBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>214, 17</value>
-  </metadata>
-  <metadata name="aquariumDatabaseDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="dataGridView1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -165,9 +144,6 @@
   <data name="&gt;&gt;dataGridView1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="personTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>382, 17</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -176,54 +152,6 @@
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>699, 523</value>
-  </data>
-  <data name="&gt;&gt;idDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>idDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;idDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>nameDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;eGNDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>eGNDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;eGNDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;phoneDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>phoneDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;phoneDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addressDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>addressDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;addressDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;personBindingSource.Name" xml:space="preserve">
-    <value>personBindingSource</value>
-  </data>
-  <data name="&gt;&gt;personBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;aquariumDatabaseDataSet.Name" xml:space="preserve">
-    <value>aquariumDatabaseDataSet</value>
-  </data>
-  <data name="&gt;&gt;aquariumDatabaseDataSet.Type" xml:space="preserve">
-    <value>WarehouseToAquaticOrganisms.AquariumDatabaseDataSet, AquariumDatabaseDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;personTableAdapter.Name" xml:space="preserve">
-    <value>personTableAdapter</value>
-  </data>
-  <data name="&gt;&gt;personTableAdapter.Type" xml:space="preserve">
-    <value>WarehouseToAquaticOrganisms.AquariumDatabaseDataSetTableAdapters.PersonTableAdapter, AquariumDatabaseDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ShowPersonsControl</value>

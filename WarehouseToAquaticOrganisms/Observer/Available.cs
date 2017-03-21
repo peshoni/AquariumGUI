@@ -56,14 +56,14 @@ namespace Observer
        /// Adds products in warehouse.
        /// </summary>
        /// <param name="delivery"></param>
-        private void addProduct( Delivery delivery )
+        private void addProduct( DeliveryRow delivery )
         {  
-            string key = delivery.ProductName;
-            if (!Table.ContainsKey(key)){
-                 Table.Add(delivery.ProductName, new Product(delivery.ProductName, delivery.Quantity));
-            }else {
-                 ((Product)Table [key]).Quantity += delivery.Quantity;
-            }
+            //string key = delivery.ProductName;
+            //if (!Table.ContainsKey(key)){
+            //     Table.Add(delivery.ProductName, new Product(delivery.ProductName, delivery.Quantity));
+            //}else {
+            //     ((Product)Table [key]).Quantity += delivery.Quantity;
+            //}
         }  
     }
 }

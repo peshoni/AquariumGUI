@@ -78,10 +78,8 @@ namespace WarehouseToAquaticOrganisms
                     _company.Bulstat = textBoxBulstat.Text;
                     _company.AcountablePerson = textBoxAccPerson.Text;
                     _company.Address = textBoxAddress.Text;
-                    _company.PhoneNumber = textBoxPhone.Text;
-
-                    _manager.updateObjectPropertiesIntoDB(_company);
-                    _manager.updateList();
+                    _company.PhoneNumber = textBoxPhone.Text; 
+                    _manager.Update(_company); 
                     this.Dispose(); 
                     break;
                 default:

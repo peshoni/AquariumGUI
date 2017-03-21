@@ -36,10 +36,10 @@ namespace WarehouseToAquaticOrganisms
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeSaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showSalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.supplyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createSupplyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.showDeliveriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.partnersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pROVIDERSToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.providersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,9 +82,11 @@ namespace WarehouseToAquaticOrganisms
             // 
             this.salesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.makeSaleToolStripMenuItem,
-            this.reportsToolStripMenuItem});
+            this.showSalesToolStripMenuItem});
             this.salesToolStripMenuItem.Name = "salesToolStripMenuItem";
             resources.ApplyResources(this.salesToolStripMenuItem, "salesToolStripMenuItem");
+            this.showSalesToolStripMenuItem.Click += new System.EventHandler(this.menuClick);
+
             // 
             // makeSaleToolStripMenuItem
             // 
@@ -92,16 +94,16 @@ namespace WarehouseToAquaticOrganisms
             resources.ApplyResources(this.makeSaleToolStripMenuItem, "makeSaleToolStripMenuItem");
             this.makeSaleToolStripMenuItem.Click += new System.EventHandler(this.menuClick);
             // 
-            // reportsToolStripMenuItem
+            // showSalesToolStripMenuItem
             // 
-            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            resources.ApplyResources(this.reportsToolStripMenuItem, "reportsToolStripMenuItem");
+            this.showSalesToolStripMenuItem.Name = "showSalesToolStripMenuItem";
+            resources.ApplyResources(this.showSalesToolStripMenuItem, "showSalesToolStripMenuItem");
             // 
             // supplyToolStripMenuItem
             // 
             this.supplyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createSupplyToolStripMenuItem,
-            this.reportsToolStripMenuItem1});
+            this.showDeliveriesToolStripMenuItem});
             this.supplyToolStripMenuItem.Name = "supplyToolStripMenuItem";
             resources.ApplyResources(this.supplyToolStripMenuItem, "supplyToolStripMenuItem");
             // 
@@ -111,10 +113,11 @@ namespace WarehouseToAquaticOrganisms
             resources.ApplyResources(this.createSupplyToolStripMenuItem, "createSupplyToolStripMenuItem");
             this.createSupplyToolStripMenuItem.Click += new System.EventHandler(this.menuClick);
             // 
-            // reportsToolStripMenuItem1
+            // showDeliveriesToolStripMenuItem
             // 
-            this.reportsToolStripMenuItem1.Name = "reportsToolStripMenuItem1";
-            resources.ApplyResources(this.reportsToolStripMenuItem1, "reportsToolStripMenuItem1");
+            this.showDeliveriesToolStripMenuItem.Name = "showDeliveriesToolStripMenuItem";
+            resources.ApplyResources(this.showDeliveriesToolStripMenuItem, "showDeliveriesToolStripMenuItem");
+            this.showDeliveriesToolStripMenuItem.Click += new System.EventHandler(this.menuClick);
             // 
             // partnersToolStripMenuItem
             // 
@@ -275,9 +278,9 @@ namespace WarehouseToAquaticOrganisms
         private System.Windows.Forms.ToolStripMenuItem insertNewPersonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem insertNewCompanyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem makeSaleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem showSalesToolStripMenuItem;
         private ToolStripLabel pageStatus;
+        private ToolStripMenuItem showDeliveriesToolStripMenuItem;
     }
 }
 

@@ -18,20 +18,37 @@ namespace WarehouseToAquaticOrganisms
     {
         private DataGridViewButtonColumn buttonColumnUpdate;
         private DataGridViewButtonColumn buttonColumnDelete;
+
+        private DataGridViewTextBoxColumn nameColumn;
+        private DataGridViewTextBoxColumn egnColumn;
+        private DataGridViewTextBoxColumn addressColumn;
+        private DataGridViewTextBoxColumn phoneColumn;
+        private DataGridViewTextBoxColumn idColumn;
+
         private PersonManager _personManager;
         
         public ShowPersonsControl(PersonManager manager)
         {
             InitializeComponent();
             this._personManager = manager;
+            dataGridView1.DataSource = _personManager;
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.Columns.Clear();
+            nameColumn = Utillity.createDatagridViewTextBoxColumn("Name","columnName","Name",false);
+            egnColumn = Utillity.createDatagridViewTextBoxColumn("Egn","columnEGN", "EGN", false);
+            addressColumn = Utillity.createDatagridViewTextBoxColumn("Address","columnAddress", "Address", false);
+            phoneColumn = Utillity.createDatagridViewTextBoxColumn("Phone", "columnPhone","Phone", false);
+            idColumn = Utillity.createDatagridViewTextBoxColumn("ID","ColumnID", "ID", false);
+
             buttonColumnUpdate = Utillity.createDatagridViewButtonColumn("Update", "update", "buttonUpdate");
             buttonColumnDelete = Utillity.createDatagridViewButtonColumn("Delete", "delete", "buttonDelete");
-            dataGridView1.Columns.AddRange(buttonColumnUpdate, buttonColumnDelete);
+            dataGridView1.Columns.AddRange(idColumn,nameColumn, egnColumn, addressColumn, phoneColumn, buttonColumnUpdate, buttonColumnDelete);
+            //dataGridView1.DataBindings;
         }
         private void DataGridForm_Load( object sender, EventArgs e )
-        { 
-            personBindingSource.ResetBindings(false);
-            this.personTableAdapter.Fill(this.aquariumDatabaseDataSet.Person); 
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = _personManager; 
         }
        
         private void clickOnRow( object sender, DataGridViewCellEventArgs e )
@@ -39,7 +56,7 @@ namespace WarehouseToAquaticOrganisms
             int row = e.RowIndex;
             if (row >= 0)
             {
-                int ID = (int)dataGridView1.Rows [row].Cells ["iDDataGridViewTextBoxColumn"].Value; ;
+                int ID = (int)dataGridView1.Rows [row].Cells ["ColumnID"].Value; ;
                 Person handle = _personManager.Find(element => element.ID == ID);
                 if (e.ColumnIndex == buttonColumnUpdate.Index)
                 {                   
@@ -62,14 +79,15 @@ namespace WarehouseToAquaticOrganisms
                         default:
                             break;
                     } 
-                }
-                refreshBindingList();
+                } 
+               refreshList();
             }
         }
 
-        public void refreshBindingList()
-        { 
-            this.personTableAdapter.Fill(this.aquariumDatabaseDataSet.Person);
+        public void refreshList()
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = _personManager; 
         }
     }
 }

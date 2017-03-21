@@ -9,13 +9,13 @@ namespace Observer
     public class Warehouse
     {    
         private List<Observer> _observers = new List<Observer>(); 
-        private Delivery _delivery;  
+        private DeliveryRow _delivery;  
         private Sale _sale;
         private bool _isDelivery;
         private bool _isSold;
 
         #region Getters and Setters 
-        public Delivery Delivery
+        public DeliveryRow Delivery
         {
             get
             {
@@ -87,7 +87,7 @@ namespace Observer
         }
 
 
-        public void MakeDelivery( Delivery delivеry ) {
+        public void MakeDelivery( DeliveryRow delivеry ) {
                  this.Delivery = delivеry;
                  _isDelivery = true;                      
                  notifyAll(); 

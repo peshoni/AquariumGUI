@@ -38,7 +38,7 @@ namespace WarehouseToAquaticOrganisms
         /// <param name="person"><Person> for processing.</param>
         /// <param name="manager">Manager which will process object <Person></param>
         public FormPerson(Person person, PersonManager manager, ShowPersonsControl personControl ) {
-            InitializeComponent();
+            InitializeComponent(); 
             _manager = manager;
             _person = person;
             _personControl = personControl;
@@ -51,8 +51,8 @@ namespace WarehouseToAquaticOrganisms
         /// </summary>
         /// <param name="_person"></param>
         private void getFieldFromPersonObject( Person _person )
-        { 
-            textBoxName.Text = _person.Name;
+        {
+            textBoxName.Text = _person.Name ;
             textBoxEGN.Text = _person.Egn.ToString(); 
             textBoxAddress.Text = _person.Address;
             textBoxPhoneNumber.Text=_person.PhoneNumber;
@@ -128,10 +128,8 @@ namespace WarehouseToAquaticOrganisms
                     int.TryParse(textBoxEGN.Text, out res);
                     _person.Egn = res;
                     _person.Address = textBoxAddress.Text;
-                    _person.PhoneNumber = textBoxPhoneNumber.Text; 
-
-                    _manager.Add(_person);
-                 //   _manager.updateList();
+                    _person.PhoneNumber = textBoxPhoneNumber.Text;  
+                    _manager.Add(_person); 
 
                     break;
                 case false:
@@ -140,17 +138,14 @@ namespace WarehouseToAquaticOrganisms
                     int.TryParse(textBoxEGN.Text, out result);
                     _person.Egn = result;
                     _person.Address = textBoxAddress.Text;
-                    _person.PhoneNumber = textBoxPhoneNumber.Text;
-
-                    _manager.updateObjectPropertiesIntoDB(_person);
-                  //  _manager.updateList();
-                  //  this.Dispose();
+                    _person.PhoneNumber = textBoxPhoneNumber.Text; 
+                    _manager.Update(_person); 
 
                     break;
                 default:
                     break;
             }
-            _personControl.refreshBindingList();
+            _personControl.refreshList();
             Dispose();
 
         }
