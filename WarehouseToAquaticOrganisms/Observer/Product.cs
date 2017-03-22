@@ -6,16 +6,31 @@ using System.Threading.Tasks;
 
 namespace Observer
 {
-    class Product
+    public class Product
     {
+        private int _id;
         private string _name;
-        private int _quantity;
-        public Product(string name, int quantity)
+       
+
+        public Product()
         {
-            this._name = name;
-            this._quantity = quantity;
         }
+
+
         #region Getters and setters
+
+        public int Id
+        {
+            get
+            {
+                return _id;
+            }
+
+            set
+            {
+                _id = value;
+            }
+        }
         public string Name
         {
             get
@@ -27,20 +42,7 @@ namespace Observer
             {
                 _name = value;
             }
-        }
-
-        public int Quantity
-        {
-            get
-            {
-                return _quantity;
-            }
-
-            set
-            {
-                _quantity = value;
-            }
-        }
+        } 
         #endregion
     }
 }

@@ -69,7 +69,6 @@
     <Compile Include="Contragents\Company.cs" />
     <Compile Include="Observer\Available.cs" />
     <Compile Include="Observer\Delivery.cs" />
-    <Compile Include="Observer\DeliveryRow.cs" />
     <Compile Include="Observer\Observer.cs" />
     <Compile Include="Observer\Product.cs" />
     <Compile Include="Observer\Sale.cs" />

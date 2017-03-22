@@ -46,7 +46,7 @@ namespace WarehouseToAquaticOrganisms
             _proviederCompanyManager = new CompanyManager(true);
 
             _warehouse = new Warehouse();
-            _deliveryList = new DeliveryManager(_warehouse);
+            _deliveryList = new DeliveryManager(_warehouse,_proviederCompanyManager);
 
             CreateControls(); 
         }
@@ -79,7 +79,7 @@ namespace WarehouseToAquaticOrganisms
 
         private void CreateControls()
         {
-            _supplyControl = new MakeDeliveryControl(_proviederCompanyManager,_warehouse);
+            _supplyControl = new MakeDeliveryControl(_proviederCompanyManager,_warehouse,_deliveryList);
             _deliveryControl = new ShowDeliveryControl(_deliveryList);
 
 
@@ -112,7 +112,7 @@ namespace WarehouseToAquaticOrganisms
                     disposeAllExceptThisControl(_providersControl);
                     break;
                     //Menu Persons -  shows all persons in grid
-                case "personsToolStripMenuItem":
+                case "pERSONToolStripMenuItem":
                     disposeAllExceptThisControl(_persondControl);
                     break;
                 case "makeSaleToolStripMenuItem":

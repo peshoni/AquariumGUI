@@ -31,6 +31,7 @@ namespace WarehouseToAquaticOrganisms
         {
             InitializeComponent();
             this._personManager = manager;
+            //splitContainerShowPersons.Panel2
             dataGridView1.DataSource = _personManager;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.Columns.Clear();
@@ -88,6 +89,12 @@ namespace WarehouseToAquaticOrganisms
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = _personManager; 
+        }
+
+        private void buttonAddPerson_Click( object sender, EventArgs e )
+        {
+            FormPerson form = new FormPerson(_personManager, this);
+            form.ShowDialog(this);
         }
     }
 }

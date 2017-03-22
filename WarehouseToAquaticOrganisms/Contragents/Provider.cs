@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WarehouseToAquaticOrganisms.Classes
 {
-    class Provider:Company
+   public class Provider:Company
     {
         public Provider() {
         }

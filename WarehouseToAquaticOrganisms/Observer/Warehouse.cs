@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WarehouseToAquaticOrganisms.Observer;
 
 namespace Observer
 {
     public class Warehouse
     {    
         private List<Observer> _observers = new List<Observer>(); 
-        private DeliveryRow _delivery;  
+        private Delivery _delivery;  
         private Sale _sale;
         private bool _isDelivery;
         private bool _isSold;
 
         #region Getters and Setters 
-        public DeliveryRow Delivery
+        public Delivery Delivery
         {
             get
             {
@@ -87,7 +88,7 @@ namespace Observer
         }
 
 
-        public void MakeDelivery( DeliveryRow delivеry ) {
+        public void MakeDelivery( Delivery delivеry ) {
                  this.Delivery = delivеry;
                  _isDelivery = true;                      
                  notifyAll(); 
@@ -95,19 +96,19 @@ namespace Observer
 
         public void MakeASale( Sale sale) {
             /// Gates available quantity..
-            Observer list =   _observers.Find(element => element.GetType().Equals(typeof(Available)));
-            Available table = (Available)list;
-            int q = ((Product)table.Table[sale.ProductName]).Quantity;
-            if (q > sale.Quantity)
-            {
-                this.Sale = sale;
-                _isSold = true;
-                notifyAll();
-            }
-            else {
-                Console.WriteLine(" Your request for " + sale.Quantity + " units of '"+sale.ProductName+"' can not be executed!");
-                Console.WriteLine(" Available from stock '"+ sale.ProductName+"' are: "+ q);
-            } 
+            //Observer list =   _observers.Find(element => element.GetType().Equals(typeof(Available)));
+            //Available table = (Available)list;
+            //int q = ((Product)table.Table[sale.ProductName]).Quantity;
+            //if (q > sale.Quantity)
+            //{
+            //    this.Sale = sale;
+            //    _isSold = true;
+            //    notifyAll();
+            //}
+            //else {
+            //    Console.WriteLine(" Your request for " + sale.Quantity + " units of '"+sale.ProductName+"' can not be executed!");
+            //    Console.WriteLine(" Available from stock '"+ sale.ProductName+"' are: "+ q);
+            //} 
         }
        
 

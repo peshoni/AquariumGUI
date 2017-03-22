@@ -46,19 +46,19 @@ namespace WarehouseToAquaticOrganisms
             this.addNewProviderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cLIENTSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pERSONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.personsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.insertNewPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cOMPANYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.companyesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.insertNewCompanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pageStatus = new System.Windows.Forms.ToolStripLabel();
             this.buttonBG = new System.Windows.Forms.Button();
-            this.buttonEN = new System.Windows.Forms.Button();
             this.panelMain = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.aquariumDatabaseDataSet1 = new WarehouseToAquaticOrganisms.AquariumDatabaseDataSet();
+            this.buttonEN = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.aquariumDatabaseDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -85,8 +85,6 @@ namespace WarehouseToAquaticOrganisms
             this.showSalesToolStripMenuItem});
             this.salesToolStripMenuItem.Name = "salesToolStripMenuItem";
             resources.ApplyResources(this.salesToolStripMenuItem, "salesToolStripMenuItem");
-            this.showSalesToolStripMenuItem.Click += new System.EventHandler(this.menuClick);
-
             // 
             // makeSaleToolStripMenuItem
             // 
@@ -98,6 +96,7 @@ namespace WarehouseToAquaticOrganisms
             // 
             this.showSalesToolStripMenuItem.Name = "showSalesToolStripMenuItem";
             resources.ApplyResources(this.showSalesToolStripMenuItem, "showSalesToolStripMenuItem");
+            this.showSalesToolStripMenuItem.Click += new System.EventHandler(this.menuClick);
             // 
             // supplyToolStripMenuItem
             // 
@@ -157,23 +156,9 @@ namespace WarehouseToAquaticOrganisms
             // 
             // pERSONToolStripMenuItem
             // 
-            this.pERSONToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.personsToolStripMenuItem,
-            this.insertNewPersonToolStripMenuItem});
             this.pERSONToolStripMenuItem.Name = "pERSONToolStripMenuItem";
             resources.ApplyResources(this.pERSONToolStripMenuItem, "pERSONToolStripMenuItem");
-            // 
-            // personsToolStripMenuItem
-            // 
-            this.personsToolStripMenuItem.Name = "personsToolStripMenuItem";
-            resources.ApplyResources(this.personsToolStripMenuItem, "personsToolStripMenuItem");
-            this.personsToolStripMenuItem.Click += new System.EventHandler(this.menuClick);
-            // 
-            // insertNewPersonToolStripMenuItem
-            // 
-            this.insertNewPersonToolStripMenuItem.Name = "insertNewPersonToolStripMenuItem";
-            resources.ApplyResources(this.insertNewPersonToolStripMenuItem, "insertNewPersonToolStripMenuItem");
-            this.insertNewPersonToolStripMenuItem.Click += new System.EventHandler(this.menuClick);
+            this.pERSONToolStripMenuItem.Click += new System.EventHandler(this.menuClick);
             // 
             // cOMPANYToolStripMenuItem
             // 
@@ -202,19 +187,11 @@ namespace WarehouseToAquaticOrganisms
             // 
             // buttonBG
             // 
-            this.buttonBG.Image = global::WarehouseToAquaticOrganisms.Properties.Resources.bg;
             resources.ApplyResources(this.buttonBG, "buttonBG");
+            this.buttonBG.Image = global::WarehouseToAquaticOrganisms.Properties.Resources.bg;
             this.buttonBG.Name = "buttonBG";
             this.buttonBG.UseVisualStyleBackColor = true;
             this.buttonBG.Click += new System.EventHandler(this.changeToBG_click);
-            // 
-            // buttonEN
-            // 
-            this.buttonEN.Image = global::WarehouseToAquaticOrganisms.Properties.Resources.gb;
-            resources.ApplyResources(this.buttonEN, "buttonEN");
-            this.buttonEN.Name = "buttonEN";
-            this.buttonEN.UseVisualStyleBackColor = true;
-            this.buttonEN.Click += new System.EventHandler(this.changeToEN_click);
             // 
             // panelMain
             // 
@@ -234,6 +211,19 @@ namespace WarehouseToAquaticOrganisms
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
+            // aquariumDatabaseDataSet1
+            // 
+            this.aquariumDatabaseDataSet1.DataSetName = "AquariumDatabaseDataSet";
+            this.aquariumDatabaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // buttonEN
+            // 
+            this.buttonEN.Image = global::WarehouseToAquaticOrganisms.Properties.Resources.gb;
+            resources.ApplyResources(this.buttonEN, "buttonEN");
+            this.buttonEN.Name = "buttonEN";
+            this.buttonEN.UseVisualStyleBackColor = true;
+            this.buttonEN.Click += new System.EventHandler(this.changeToEN_click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -249,6 +239,7 @@ namespace WarehouseToAquaticOrganisms
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.aquariumDatabaseDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,7 +253,6 @@ namespace WarehouseToAquaticOrganisms
         private System.Windows.Forms.ToolStripMenuItem supplyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createSupplyToolStripMenuItem;
         private System.Windows.Forms.Button buttonBG;
-        private System.Windows.Forms.Button buttonEN;
        
         private System.Windows.Forms.Panel panelMain;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
@@ -272,15 +262,15 @@ namespace WarehouseToAquaticOrganisms
         private System.Windows.Forms.ToolStripMenuItem addNewProviderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cLIENTSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pERSONToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem personsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cOMPANYToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem companyesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem insertNewPersonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem insertNewCompanyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem makeSaleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showSalesToolStripMenuItem;
         private ToolStripLabel pageStatus;
         private ToolStripMenuItem showDeliveriesToolStripMenuItem;
+        private AquariumDatabaseDataSet aquariumDatabaseDataSet1;
+        private Button buttonEN;
     }
 }
 

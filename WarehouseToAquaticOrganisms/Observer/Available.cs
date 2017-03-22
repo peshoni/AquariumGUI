@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WarehouseToAquaticOrganisms.Observer;
 
 namespace Observer
 {
@@ -43,20 +44,20 @@ namespace Observer
         /// <param name="delivery"></param>
         private void sellProduct( Sale sale )
         {
-          string key = sale.ProductName; 
-          if (Table.ContainsKey(key)){
-                if (((Product)Table [key]).Quantity<sale.Quantity)
-                {
-                    ((Product)Table [key]).Quantity -= sale.Quantity;
-                    throw new Exception("");
-                }  
-           } 
+          //string key = sale.ProductName; 
+          //if (Table.ContainsKey(key)){
+          //      if (((Product)Table [key]).Quantity<sale.Quantity)
+          //      {
+          //          ((Product)Table [key]).Quantity -= sale.Quantity;
+          //          throw new Exception("");
+          //      }  
+          // } 
         }
        /// <summary>
        /// Adds products in warehouse.
        /// </summary>
        /// <param name="delivery"></param>
-        private void addProduct( DeliveryRow delivery )
+        private void addProduct( Delivery delivery )
         {  
             //string key = delivery.ProductName;
             //if (!Table.ContainsKey(key)){

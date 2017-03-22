@@ -40,6 +40,11 @@ namespace WarehouseToAquaticOrganisms
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.labelClientName = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.columnNumOfRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.columnPieces = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -47,11 +52,6 @@ namespace WarehouseToAquaticOrganisms
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.button1 = new System.Windows.Forms.Button();
-            this.columnNumOfRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.columnPieces = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -99,7 +99,60 @@ namespace WarehouseToAquaticOrganisms
             this.dataGridView1.Size = new System.Drawing.Size(584, 263);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_2);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
+            // 
+            // columnNumOfRow
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.columnNumOfRow.DefaultCellStyle = dataGridViewCellStyle1;
+            this.columnNumOfRow.HeaderText = "#";
+            this.columnNumOfRow.Name = "columnNumOfRow";
+            this.columnNumOfRow.Width = 40;
+            // 
+            // Column1
+            // 
+            this.Column1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.Column1.HeaderText = "Article";
+            this.Column1.Items.AddRange(new object[] {
+            "Goldfish",
+            "Crab",
+            "Spirogira"});
+            this.Column1.Name = "Column1";
+            // 
+            // columnPieces
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "##########";
+            dataGridViewCellStyle2.NullValue = "0";
+            this.columnPieces.DefaultCellStyle = dataGridViewCellStyle2;
+            this.columnPieces.HeaderText = "peices";
+            this.columnPieces.MaxInputLength = 10;
+            this.columnPieces.Name = "columnPieces";
+            // 
+            // columnPrice
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = "0,00";
+            this.columnPrice.DefaultCellStyle = dataGridViewCellStyle3;
+            this.columnPrice.HeaderText = "price";
+            this.columnPrice.Name = "columnPrice";
+            this.columnPrice.ReadOnly = true;
+            // 
+            // colTotal
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = "0,00";
+            this.colTotal.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colTotal.HeaderText = "sum";
+            this.colTotal.Name = "colTotal";
+            this.colTotal.ReadOnly = true;
             // 
             // tableLayoutPanel1
             // 
@@ -181,58 +234,6 @@ namespace WarehouseToAquaticOrganisms
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // columnNumOfRow
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            this.columnNumOfRow.DefaultCellStyle = dataGridViewCellStyle1;
-            this.columnNumOfRow.HeaderText = "#";
-            this.columnNumOfRow.Name = "columnNumOfRow";
-            this.columnNumOfRow.Width = 40;
-            // 
-            // Column1
-            // 
-            this.Column1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.Column1.HeaderText = "Article";
-            this.Column1.Items.AddRange(new object[] {
-            "Goldfish",
-            "Crab",
-            "Spirogira"});
-            this.Column1.Name = "Column1";
-            // 
-            // columnPieces
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = "0";
-            this.columnPieces.DefaultCellStyle = dataGridViewCellStyle2;
-            this.columnPieces.HeaderText = "peices";
-            this.columnPieces.MaxInputLength = 10;
-            this.columnPieces.Name = "columnPieces";
-            // 
-            // columnPrice
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = "0,00";
-            this.columnPrice.DefaultCellStyle = dataGridViewCellStyle3;
-            this.columnPrice.HeaderText = "price";
-            this.columnPrice.Name = "columnPrice";
-            this.columnPrice.ReadOnly = true;
-            // 
-            // colTotal
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = "0,00";
-            this.colTotal.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colTotal.HeaderText = "sum";
-            this.colTotal.Name = "colTotal";
-            this.colTotal.ReadOnly = true;
             // 
             // SalesControl
             // 
