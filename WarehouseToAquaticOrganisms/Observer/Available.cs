@@ -57,7 +57,7 @@ namespace Observer
        /// Adds products in warehouse.
        /// </summary>
        /// <param name="delivery"></param>
-        private void addProduct( Delivery delivery )
+        private void addProduct( List<Delivery> delivery )
         {  
             //string key = delivery.ProductName;
             //if (!Table.ContainsKey(key)){

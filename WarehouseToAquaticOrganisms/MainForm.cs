@@ -26,7 +26,7 @@ namespace WarehouseToAquaticOrganisms
         private ShowCompaniesControl _companyesControl;
         private ShowPersonsControl _persondControl;
         private ShowProvidersControl _providersControl;
-        private ShowDeliveryControl _deliveryControl;
+       // private ShowDeliveryControl _deliveryControl;
 
         private PersonManager _personManager ;
         private CompanyManager _clientCompanyManager;
@@ -80,7 +80,7 @@ namespace WarehouseToAquaticOrganisms
         private void CreateControls()
         {
             _supplyControl = new MakeDeliveryControl(_proviederCompanyManager,_warehouse,_deliveryList);
-            _deliveryControl = new ShowDeliveryControl(_deliveryList);
+        //    _deliveryControl = new ShowDeliveryControl(_deliveryList);
 
 
             _salesControl = new SalesControl(_personManager, _clientCompanyManager);
@@ -89,7 +89,7 @@ namespace WarehouseToAquaticOrganisms
             _companyesControl = new ShowCompaniesControl(_clientCompanyManager);
             _providersControl = new ShowProvidersControl(_proviederCompanyManager);
 
-            Control [] controls = { _supplyControl, _deliveryControl, _salesControl, _persondControl, _companyesControl, _providersControl };
+            Control [] controls = { _supplyControl, _salesControl, _persondControl, _companyesControl, _providersControl };
             foreach (var item in controls)
             {
                 item.Dock = DockStyle.Fill;
@@ -120,10 +120,6 @@ namespace WarehouseToAquaticOrganisms
                     break;
                 case "createSupplyToolStripMenuItem":
                     disposeAllExceptThisControl(_supplyControl);
-                    break;
-                case "showDeliveriesToolStripMenuItem":
-                    disposeAllExceptThisControl(_deliveryControl);
-                    // MessageBox.Show(item.Name);
                     break;
                 case "showSalesToolStripMenuItem":
                     

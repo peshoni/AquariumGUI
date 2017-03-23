@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,14 +9,20 @@ using WarehouseToAquaticOrganisms.Classes;
 
 namespace WarehouseToAquaticOrganisms.Observer
 {
-   public class Delivery
+   public class Delivery : IDataErrorInfo
     {
         private int id;
         private DateTime dateTime;
-        private string provider;
-        private string product;
+        private int provider;
+        private int product;
+        private string providerName;
+        private string productName;
         private int quantity;
         private decimal price;
+
+        public Delivery()
+        {
+        }
 
         #region getters
         public int Id
@@ -44,7 +51,7 @@ namespace WarehouseToAquaticOrganisms.Observer
             }
         }
 
-        public string Provider
+        public int ProviderID
         {
             get
             {
@@ -57,7 +64,7 @@ namespace WarehouseToAquaticOrganisms.Observer
             }
         }
 
-        public string Product
+        public int ProductID
         {
             get
             {
@@ -78,10 +85,11 @@ namespace WarehouseToAquaticOrganisms.Observer
             }
 
             set
-            {
-                quantity = value;
+            { 
+                    quantity = value; 
             }
         }
+ 
 
         public decimal Price
         {
@@ -95,10 +103,60 @@ namespace WarehouseToAquaticOrganisms.Observer
                 price = value;
             }
         }
-        #endregion
 
-        public Delivery(   )
-        { 
+        public string ProviderName
+        {
+            get
+            {
+                return providerName;
+            }
+
+            set
+            {
+                providerName = value;
+            }
         }
+
+        public string ProductName
+        {
+            get
+            {
+                return productName;
+            }
+
+            set
+            {
+                productName = value;
+            }
+        }
+
+        public string Error
+        {
+            get
+            {
+                return string.Empty;
+            }
+        }
+
+        public string this [string columnName]
+        {
+            get
+            {
+                if ("Quantity" == columnName && Quantity <= 0)
+                {
+                    int tmp = 0;
+                    if(!int.TryParse(Quantity.ToString(), out tmp))
+                      
+                    return ":-)))";
+                   // return "Please fill Quantity";
+                }
+                
+                else if ("Price" == columnName && Price == 0)
+                    return "Please fill Price";              
+
+                return string.Empty;
+            }
+        }
+        #endregion
     }
 }

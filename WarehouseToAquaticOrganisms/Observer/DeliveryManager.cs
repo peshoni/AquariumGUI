@@ -11,7 +11,7 @@ using WarehouseToAquaticOrganisms.Observer;
 
 namespace Observer
 {
-    public class DeliveryManager : Observer 
+    public class DeliveryManager : Observer
     { 
         private Hashtable _table;
         private int ID;
@@ -71,8 +71,8 @@ ware.isDelivery = 1 and ware.ProductID = product.ID and ware.ProviderID = provid
                         Delivery delivery = new Delivery( );
                         delivery.Id = reader.GetInt32(0);
                       
-                        delivery.Product = reader.GetString(1);
-                        delivery.Provider = reader.GetString(2);
+                        delivery.ProductName = reader.GetString(1);
+                        delivery.ProviderName = reader.GetString(2);
                         delivery.Quantity = reader.GetInt32(3);
                         delivery.Price = reader.GetDecimal(4);
 
@@ -176,49 +176,57 @@ ware.isDelivery = 1 and ware.ProductID = product.ID and ware.ProviderID = provid
             addProduct(_warehouse.Delivery);
         }
 
-        private void addProduct( Delivery delivery)
+        private void addProduct( List<Delivery> delivery)
         {
             if (delivery!=null) {
                 Table.Add(++ID, delivery);
                 InsertDeliveryIntoDBtableDelivery(delivery);
             } 
         }
-        private int InsertDeliveryIntoDBtableDelivery( Delivery delivery )
-        {
-            int primaryKey = 0;
+        private void InsertDeliveryIntoDBtableDelivery( List<Delivery> delivery )
+        {            
             if (delivery != null)
             { 
                 using (SqlConnection con = new SqlConnection(ConnectionString))
                 {
                     con.Open();
 
-                    string comm = @"
-        INSERT INTO Delivery(
-                Provider
-            ,Product
+                    using (var transaction = con.BeginTransaction("DeliveryTransaction"))
+                    {
+                        // Start a local transaction.                    
+                        //// For each...
+                        delivery.ForEach(element =>
+                        {
+                            string comm = @"
+        INSERT INTO Warehouse(
+             isDelivery
+            ,ProviderID
+            ,ProductID
             ,Quantity
             ,DeliveryPrice)
 
-         OUTPUT INSERTED.ID
-
         VALUES 
-           ( @Provider
-           ,@Product
+           ( 
+            @isDelivery
+           ,@ProviderID
+           ,@ProductID
            ,@Quantity
            ,@DeliveryPrice)";
-                    using (SqlCommand command = new SqlCommand(comm, con))
-                    {
-                       
-                        //command.Parameters.AddWithValue("@Provider", delivery.Provider);
-                        //command.Parameters.AddWithValue("@Product", delivery.Product);
-                        //command.Parameters.AddWithValue("@Quantity", delivery.Quantity);
-                        //command.Parameters.AddWithValue("@DeliveryPrice", delivery.Price);
-                        primaryKey = Convert.ToInt32(command.ExecuteScalar());
-                    }
+                            using (SqlCommand command = new SqlCommand(comm, con))
+                            {
+                                command.Transaction = transaction;
+                                command.Parameters.AddWithValue("@isDelivery", true);
+                                command.Parameters.AddWithValue("@ProviderID", element.ProviderID);
+                                command.Parameters.AddWithValue("@ProductID", element.ProductID);
+                                command.Parameters.AddWithValue("@Quantity", element.Quantity);
+                                command.Parameters.AddWithValue("@DeliveryPrice", element.Price);
+                                command.ExecuteNonQuery();
+                            }
+                        }); 
+                        transaction.Commit();
+                    } 
                 }
-            }
-           return primaryKey;
-        }
-      
+            } 
+        } 
     }
 }

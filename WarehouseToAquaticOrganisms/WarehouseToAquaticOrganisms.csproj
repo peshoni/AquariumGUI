@@ -88,12 +88,6 @@
     <Compile Include="ShowCompanyesControl.Designer.cs">
       <DependentUpon>ShowCompanyesControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShowDeliveryControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ShowDeliveryControl.Designer.cs">
-      <DependentUpon>ShowDeliveryControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="ShowPersonsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -143,9 +137,6 @@
     <Compile Include="Validator.cs" />
     <EmbeddedResource Include="ShowCompanyesControl.resx">
       <DependentUpon>ShowCompanyesControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ShowDeliveryControl.resx">
-      <DependentUpon>ShowDeliveryControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowPersonsControl.resx">
       <DependentUpon>ShowPersonsControl.cs</DependentUpon>

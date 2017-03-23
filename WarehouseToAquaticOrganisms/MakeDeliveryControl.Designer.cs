@@ -35,6 +35,7 @@ namespace WarehouseToAquaticOrganisms
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxChooseProvider = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.productNameColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.quantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,8 +77,14 @@ namespace WarehouseToAquaticOrganisms
             this.panel1.Name = "panel1";
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
+            // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -91,26 +98,26 @@ namespace WarehouseToAquaticOrganisms
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
-            // 
-            // productNameColumn
-            // 
-            this.productNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.productNameColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            resources.ApplyResources(this.productNameColumn, "productNameColumn");
-            this.productNameColumn.Name = "productNameColumn";
-            // 
-            // quantityColumn
-            // 
-            this.quantityColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            resources.ApplyResources(this.quantityColumn, "quantityColumn");
-            this.quantityColumn.MaxInputLength = 10;
-            this.quantityColumn.Name = "quantityColumn";
-            // 
-            // deliveryPriceColumn
-            // 
-            this.deliveryPriceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            resources.ApplyResources(this.deliveryPriceColumn, "deliveryPriceColumn");
-            this.deliveryPriceColumn.Name = "deliveryPriceColumn";
+            //// 
+            //// productNameColumn
+            //// 
+            //this.productNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            //this.productNameColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            //resources.ApplyResources(this.productNameColumn, "productNameColumn");
+            //this.productNameColumn.Name = "productNameColumn";
+            //// 
+            //// quantityColumn
+            //// 
+            //this.quantityColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            //resources.ApplyResources(this.quantityColumn, "quantityColumn");
+            //this.quantityColumn.MaxInputLength = 10;
+            //this.quantityColumn.Name = "quantityColumn";
+            //// 
+            //// deliveryPriceColumn
+            //// 
+            //this.deliveryPriceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            //resources.ApplyResources(this.deliveryPriceColumn, "deliveryPriceColumn");
+            //this.deliveryPriceColumn.Name = "deliveryPriceColumn";
             // 
             // button1
             // 
@@ -145,6 +152,7 @@ namespace WarehouseToAquaticOrganisms
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.textBox1);
             this.splitContainer2.Panel1.Controls.Add(this.panel1);
             this.splitContainer2.Panel1.Controls.Add(this.button1);
             this.splitContainer2.Panel1.Controls.Add(this.comboBoxChooseProvider);
@@ -160,6 +168,7 @@ namespace WarehouseToAquaticOrganisms
             this.BackColor = System.Drawing.SystemColors.Window;
             this.Controls.Add(this.splitContainer1);
             this.Name = "MakeDeliveryControl";
+            this.Load += new System.EventHandler(this.ShowDeliveryControl_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
@@ -181,6 +190,7 @@ namespace WarehouseToAquaticOrganisms
 
 
 
+
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxChooseProvider;
@@ -193,5 +203,6 @@ namespace WarehouseToAquaticOrganisms
         private System.Windows.Forms.DataGridViewComboBoxColumn productNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryPriceColumn;
+        private TextBox textBox1;
     }
 }

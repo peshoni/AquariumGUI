@@ -31,6 +31,19 @@ namespace WarehouseToAquaticOrganisms
 
             return comboColumn;
         }
+
+        public static DataGridViewComboBoxColumn createDataGridViewComboboxColumn( string header,object datasource, string dataPropertyName, string displayMember, string valueMember )
+        {
+            DataGridViewComboBoxColumn comboColumn = new DataGridViewComboBoxColumn();
+            comboColumn.HeaderText = header;
+            comboColumn.DataSource = datasource;
+            comboColumn.DataPropertyName = dataPropertyName;
+            comboColumn.DisplayMember = displayMember;
+            comboColumn.ValueMember = valueMember;
+
+
+            return comboColumn;
+        }
         /// <summary>
         /// Create column with textBoxes..
         /// </summary>
