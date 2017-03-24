@@ -9,7 +9,7 @@ using WarehouseToAquaticOrganisms.Classes;
 
 namespace WarehouseToAquaticOrganisms.Observer
 {
-   public class Delivery : IDataErrorInfo
+   public class Delivery : IDataErrorInfo 
     {
         private int id;
         private DateTime dateTime;
@@ -142,14 +142,9 @@ namespace WarehouseToAquaticOrganisms.Observer
         {
             get
             {
-                if ("Quantity" == columnName && Quantity <= 0)
-                {
-                    int tmp = 0;
-                    if(!int.TryParse(Quantity.ToString(), out tmp))
-                      
-                    return ":-)))";
-                   // return "Please fill Quantity";
-                }
+                if ("Quantity" == columnName && Quantity==0)   
+                   return "Please fill Quantity";
+            
                 
                 else if ("Price" == columnName && Price == 0)
                     return "Please fill Price";              

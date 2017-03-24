@@ -35,18 +35,23 @@ namespace WarehouseToAquaticOrganisms
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxChooseProvider = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.productNameColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.quantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deliveryPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewMaster = new System.Windows.Forms.DataGridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewDetails = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMaster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -55,6 +60,13 @@ namespace WarehouseToAquaticOrganisms
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetails)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -77,11 +89,6 @@ namespace WarehouseToAquaticOrganisms
             this.panel1.Name = "panel1";
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // textBox1
-            // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToDeleteRows = false;
@@ -96,28 +103,26 @@ namespace WarehouseToAquaticOrganisms
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
+            this.dataGridView1.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.dataGridView1_CellParsing);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
-            //// 
-            //// productNameColumn
-            //// 
-            //this.productNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            //this.productNameColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            //resources.ApplyResources(this.productNameColumn, "productNameColumn");
-            //this.productNameColumn.Name = "productNameColumn";
-            //// 
-            //// quantityColumn
-            //// 
-            //this.quantityColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            //resources.ApplyResources(this.quantityColumn, "quantityColumn");
-            //this.quantityColumn.MaxInputLength = 10;
-            //this.quantityColumn.Name = "quantityColumn";
-            //// 
-            //// deliveryPriceColumn
-            //// 
-            //this.deliveryPriceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            //resources.ApplyResources(this.deliveryPriceColumn, "deliveryPriceColumn");
-            //this.deliveryPriceColumn.Name = "deliveryPriceColumn";
+            // 
+            // productNameColumn
+            // 
+            this.productNameColumn.Name = "productNameColumn";
+            // 
+            // quantityColumn
+            // 
+            this.quantityColumn.Name = "quantityColumn";
+            // 
+            // deliveryPriceColumn
+            // 
+            this.deliveryPriceColumn.Name = "deliveryPriceColumn";
+            // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
             // 
             // button1
             // 
@@ -126,20 +131,24 @@ namespace WarehouseToAquaticOrganisms
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dataGridView2
+            // dataGridViewMaster
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resources.ApplyResources(this.dataGridView2, "dataGridView2");
-            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridViewMaster.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridViewMaster.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dataGridViewMaster, "dataGridViewMaster");
+            this.dataGridViewMaster.Name = "dataGridViewMaster";
+            this.dataGridViewMaster.SelectionChanged += new System.EventHandler(this.dataGridViewMaster_SelectionChanged);
             // 
             // splitContainer1
             // 
             resources.ApplyResources(this.splitContainer1, "splitContainer1");
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.label1);
+            resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
             // 
             // splitContainer1.Panel2
             // 
@@ -159,7 +168,41 @@ namespace WarehouseToAquaticOrganisms
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.dataGridView2);
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
+            // 
+            // splitContainer3
+            // 
+            resources.ApplyResources(this.splitContainer3, "splitContainer3");
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.groupBox2);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.groupBox1);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dataGridViewDetails);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // dataGridViewDetails
+            // 
+            this.dataGridViewDetails.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridViewDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dataGridViewDetails, "dataGridViewDetails");
+            this.dataGridViewDetails.Name = "dataGridViewDetails";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dataGridViewMaster);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
             // 
             // MakeDeliveryControl
             // 
@@ -171,7 +214,7 @@ namespace WarehouseToAquaticOrganisms
             this.Load += new System.EventHandler(this.ShowDeliveryControl_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMaster)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -182,11 +225,19 @@ namespace WarehouseToAquaticOrganisms
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetails)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
-       
+      
+
 
 
 
@@ -196,7 +247,7 @@ namespace WarehouseToAquaticOrganisms
         private System.Windows.Forms.ComboBox comboBoxChooseProvider;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridViewMaster;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -204,5 +255,10 @@ namespace WarehouseToAquaticOrganisms
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryPriceColumn;
         private TextBox textBox1;
+        private SplitContainer splitContainer3;
+        private GroupBox groupBox1;
+        private DataGridView dataGridViewDetails;
+        private GroupBox groupBox2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

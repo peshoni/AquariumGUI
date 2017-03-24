@@ -23,14 +23,18 @@ namespace WarehouseToAquaticOrganisms
         private Company company;
         private BindingList<Delivery> listWithDeliveries;
 
+
+
+
+
         private DataGridViewTextBoxColumn idColumn;
         private DataGridViewTextBoxColumn providerColumn;
         private DataGridViewTextBoxColumn productColumn;
         private DataGridViewTextBoxColumn quantityCol;
         private DataGridViewTextBoxColumn priceColumn;
         private DataGridViewTextBoxColumn timeColumn;
-         
-        ErrorProvider errorProvider1;
+
+ 
        
 
         public MakeDeliveryControl(CompanyManager manager, Warehouse warehouse, DeliveryManager deliveryManager)
@@ -42,32 +46,38 @@ namespace WarehouseToAquaticOrganisms
             comboBoxChooseProvider.DataSource = _manager ;
             comboBoxChooseProvider.DisplayMember = "Name";
             // List with products..
-           // productNameColumn.DataSource = _deliveryManager.ListWithProducts;
-          //  productNameColumn.DisplayMember = "Name";
-
-            listWithDeliveries = new BindingList<Delivery>();
+            // productNameColumn.DataSource = _deliveryManager.ListWithProducts;
+            //  productNameColumn.DisplayMember = "Name";
 
 
+
+            // new list for creating deliveries
+            listWithDeliveries = new BindingList<Delivery>(); 
             dataGridView1.Visible = false;
 
             dataGridView1.DataSource = listWithDeliveries;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.Columns.Clear();
+            
             dataGridView1.Columns.Add(Utillity.createDataGridViewComboboxColumn("Product", _deliveryManager.ListWithProducts, "Product", "Name", "Id"));
+
             dataGridView1.Columns.Add(Utillity.createDatagridViewTextBoxColumn("Quantity", "Quantity", "Quantity", false));
             dataGridView1.Columns.Add(Utillity.createDatagridViewTextBoxColumn("Price", "Price", "Price", false));
             dataGridView1.AllowUserToAddRows = true;
             panel1.BackColor = Color.Gainsboro;
 
-              errorProvider1 = new ErrorProvider();
+              
+
+
+
             
-            this.dataGridView2.DataSource = _deliveryManager.DeliveryList;
+            this.dataGridViewMaster.DataSource = _deliveryManager.DeliveryList;
 
 
 
             /////////////////////////////////////////////////////////////////////////////////
-            dataGridView2.AutoGenerateColumns = false;
-            dataGridView2.Columns.Clear();
+            dataGridViewMaster.AutoGenerateColumns = false;
+            dataGridViewMaster.Columns.Clear();
             timeColumn = Utillity.createDatagridViewTextBoxColumn("Time", "columnDateTime", "DateTime", true);
             idColumn = Utillity.createDatagridViewTextBoxColumn("ID", "columnID", "ID", true);
             providerColumn = Utillity.createDatagridViewTextBoxColumn("Provider", "columnProvider", "ProviderName", true);
@@ -75,9 +85,7 @@ namespace WarehouseToAquaticOrganisms
             quantityCol = Utillity.createDatagridViewTextBoxColumn("Quantity", "columnQuantity", "Quantity", true);
             priceColumn = Utillity.createDatagridViewTextBoxColumn("DeliveryPrice", "columnDeliveryPrice", "Price", true);
 
-            dataGridView2.Columns.AddRange(timeColumn, idColumn, providerColumn, productColumn, quantityCol, priceColumn);
-
-
+            dataGridViewMaster.Columns.AddRange(timeColumn, idColumn, providerColumn, productColumn, quantityCol, priceColumn); 
             
         }
 
@@ -99,7 +107,7 @@ namespace WarehouseToAquaticOrganisms
             comboBoxChooseProvider.DataSource = _manager ;
         }
 
-        
+
 
         private void panel1_Paint( object sender, PaintEventArgs e )
         {
@@ -280,30 +288,36 @@ namespace WarehouseToAquaticOrganisms
 
         private void dataGridView1_CellValueChanged( object sender, DataGridViewCellEventArgs e )
         {
-           // if (e.RowIndex>-1)
-           // {
+            //int row = e.RowIndex;
+            //int col = e.ColumnIndex;
+            //if (row > -1 && col != productNameColumn.Index)
+            //{
+            //    if (e.RowIndex > -1)
+            //    {
 
-           // //My combobox column is the second one so I hard coded a 1, flavor to taste
-           //DataGridViewComboBoxCell cb = (DataGridViewComboBoxCell)dataGridView1.Rows [e.RowIndex].Cells [0];
-           //     if (cb.Value == null)
-           //     {
-           //         // do stuff
+            //        //My combobox column is the second one so I hard coded a 1, flavor to taste
+            //        DataGridViewComboBoxCell cb = (DataGridViewComboBoxCell)dataGridView1.Rows [e.RowIndex].Cells [0];
+            //        if (cb.Value == null)
+            //        {
+            //            // do stuff
 
-           //         MessageBox.Show("it wasnt selected..");
-           //         this.dataGridView1.Rows [e.RowIndex].Cells [0].ErrorText = "Select Product";
-           //         // int index = 0;
+            //            MessageBox.Show("it wasnt selected..");
+            //            this.dataGridView1.Rows [e.RowIndex].Cells [0].ErrorText = "Select Product";
+            //            // int index = 0;
 
-           //         //  Product product = _deliveryManager.ListWithProducts.ElementAt(index);
+            //            //  Product product = _deliveryManager.ListWithProducts.ElementAt(index);
 
-           //         // MessageBox.Show("QQQQ");
+            //            // MessageBox.Show("QQQQ");
 
-           //         dataGridView1.Invalidate();
-           //     }
-           //     else {
-           //         this.dataGridView1.Rows [e.RowIndex].Cells [0].ErrorText = "";
-           //     }
+            //            dataGridView1.Invalidate();
+            //        }
+            //        else
+            //        {
+            //            this.dataGridView1.Rows [e.RowIndex].Cells [0].ErrorText = "";
+            //        }
 
-           // }
+            //    }
+            //}
         }
 
         private void dataGridView1_EditingControlShowing( object sender, DataGridViewEditingControlShowingEventArgs e )
@@ -341,19 +355,66 @@ namespace WarehouseToAquaticOrganisms
             //}
 
         }
-        private void ComboBox_SelectedIndexChanged( object sender, EventArgs e )
-        {
-            MessageBox.Show(((ComboBox) sender).SelectedIndex.ToString());
-        }
+     
         private void ShowDeliveryControl_Load( object sender, EventArgs e )
         {
             Refresh();
         }
         public override void Refresh()
         {
-            dataGridView2.DataSource = null;
-            dataGridView2.DataSource = _deliveryManager.DeliveryList;
+            dataGridViewMaster.DataSource = null;
+            dataGridViewMaster.DataSource = _deliveryManager.DeliveryList;
         }
- 
+
+        private void dataGridView1_CellParsing( object sender, DataGridViewCellParsingEventArgs e )
+        {
+
+
+            int row = e.RowIndex;
+            int column = e.ColumnIndex;
+           
+            if (column == quantityColumn.Index)
+            {
+                DataGridViewTextBoxCell cell = (DataGridViewTextBoxCell)dataGridView1.Rows [row].Cells [column];
+                //  DataGridViewTextBoxCell cell = (DataGridViewTextBoxCell)dataGridView1.Rows [row].Cells [deliveryPriceColumn.Index];
+                int value;
+                bool isInt = int.TryParse(cell.Value.ToString(), out value);
+                if (!isInt)
+                {
+                    this.dataGridView1.Rows [row].Cells [quantityColumn.Index].ErrorText = "Integers only";
+
+                }
+                else
+                {
+                    this.dataGridView1.Rows [row].Cells [quantityColumn.Index].ErrorText = "";
+
+                }
+            }
+            if (e.ColumnIndex == deliveryPriceColumn.Index)
+
+            {
+                DataGridViewTextBoxCell cell = (DataGridViewTextBoxCell)dataGridView1.Rows [row].Cells [column];
+                decimal value;
+                bool isDecimal = decimal.TryParse(cell.Value.ToString(), out value);
+                if (!isDecimal || cell.Value == null)
+                {
+                    this.dataGridView1.Rows [row].Cells [deliveryPriceColumn.Index].ErrorText = "Decimals only";
+
+                }
+                else
+                {
+                    this.dataGridView1.Rows [row].Cells [deliveryPriceColumn.Index].ErrorText = "";
+
+                }
+            }
+        }
+
+
+        private void dataGridViewMaster_SelectionChanged( object sender, EventArgs e )
+        {
+            //int index = ((DataGridView)sender).CurrentCell.RowIndex;
+            //DataGridViewCell cell = (DataGridViewCell)((DataGridView)sender) [docIDColumn.Index, index];
+            //int DocID = int.Parse(cell.Value.ToString());
+        }
     }
 }

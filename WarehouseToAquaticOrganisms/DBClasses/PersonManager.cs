@@ -42,6 +42,7 @@ namespace WarehouseToAquaticOrganisms.DBClasses
                 updateObjectPropertiesIntoDB(forProcess);
             }
         }
+
         //}
         /// <summary>
         /// Insert <see cref="Person"/> into table Person.

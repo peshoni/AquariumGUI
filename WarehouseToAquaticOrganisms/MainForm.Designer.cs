@@ -228,6 +228,8 @@ namespace WarehouseToAquaticOrganisms
             this.Name = "MainForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.closeOrNo);
             this.SizeChanged += new System.EventHandler(this.sizeChanged);
+            this.WindowState = FormWindowState.Normal;
+            this.WindowState = FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelMain.ResumeLayout(false);

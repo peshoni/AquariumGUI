@@ -67,6 +67,14 @@
       <DependentUpon>AquariumDatabaseDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Contragents\Company.cs" />
+    <Compile Include="DBClasses\DeliveryManager2.cs" />
+    <Compile Include="DBClasses\DeliveryTestClass.cs" />
+    <Compile Include="MasterDetailControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MasterDetailControl.Designer.cs">
+      <DependentUpon>MasterDetailControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Observer\Available.cs" />
     <Compile Include="Observer\Delivery.cs" />
     <Compile Include="Observer\Observer.cs" />
@@ -135,6 +143,9 @@
     </Compile>
     <Compile Include="Utillity.cs" />
     <Compile Include="Validator.cs" />
+    <EmbeddedResource Include="MasterDetailControl.resx">
+      <DependentUpon>MasterDetailControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ShowCompanyesControl.resx">
       <DependentUpon>ShowCompanyesControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,6 +214,10 @@
     <ProjectReference Include="..\..\Aquarium\Aquarium\Aquarium.csproj">
       <Project>{d641ff6b-e229-47a3-97aa-89977e29d5e8}</Project>
       <Name>Aquarium</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AquariumGUI\AquariumGUI.csproj">
+      <Project>{24643B19-AA6E-4EC2-8E03-EA3B35DA63FA}</Project>
+      <Name>AquariumGUI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

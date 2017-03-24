@@ -37,6 +37,7 @@ namespace WarehouseToAquaticOrganisms
             DataGridViewComboBoxColumn comboColumn = new DataGridViewComboBoxColumn();
             comboColumn.HeaderText = header;
             comboColumn.DataSource = datasource;
+
             comboColumn.DataPropertyName = dataPropertyName;
             comboColumn.DisplayMember = displayMember;
             comboColumn.ValueMember = valueMember;
@@ -54,14 +55,13 @@ namespace WarehouseToAquaticOrganisms
         /// < returns ></ returns >
         public static DataGridViewTextBoxColumn createDatagridViewTextBoxColumn( string Header, string Name, string DataPropertyName, bool ReadOnly )
         {
-            DataGridViewTextBoxColumn textBoxColumn = new DataGridViewTextBoxColumn();
-            //  textBoxColumn.Width = dividerWidth;
-            //  textBoxColumn.Width = Width;
+            DataGridViewTextBoxColumn textBoxColumn = new DataGridViewTextBoxColumn(); 
             textBoxColumn.Name = Name;
             textBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             textBoxColumn.HeaderText = Header; 
+            
             textBoxColumn.DataPropertyName = DataPropertyName;
-            textBoxColumn.ReadOnly = ReadOnly;
+            textBoxColumn.ReadOnly = ReadOnly; 
             return textBoxColumn;
         }
     }
