@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Observer
 {
-    public class SalesList : Observer
+    public class SalesList : ObserverPattern
     {
         private Hashtable _table;
         private int ID;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WarehouseToAquaticOrganisms.Contragents
+namespace WarehouseToAquaticOrganisms.DBClasses
 {
    public class TestDeliveryClass 
     {
@@ -16,6 +16,8 @@ namespace WarehouseToAquaticOrganisms.Contragents
         private string bulstat;
         private DateTime dateTime;
         private string phone;
+        private decimal deliveryPrice;
+        private int productID;
 
 
         private string productName;
@@ -138,6 +140,32 @@ namespace WarehouseToAquaticOrganisms.Contragents
             set
             {
                 phone = value;
+            }
+        }
+
+        public decimal DeliveryPrice
+        {
+            get
+            {
+                return deliveryPrice;
+            }
+
+            set
+            {
+                deliveryPrice = value;
+            }
+        }
+
+        public int ProductID
+        {
+            get
+            {
+                return productID;
+            }
+
+            set
+            {
+                productID = value;
             }
         }
     }

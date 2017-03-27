@@ -45,9 +45,7 @@ namespace WarehouseToAquaticOrganisms
             InitializeComponent(); 
             _personManager = new PersonManager();
             _clientCompanyManager = new CompanyManager(false);
-            _proviederCompanyManager = new CompanyManager(true);
-
-          
+            _proviederCompanyManager = new CompanyManager(true); 
 
             _warehouse = new Warehouse();
             _deliveryList = new DeliveryManager(_warehouse,_proviederCompanyManager);
@@ -58,26 +56,6 @@ namespace WarehouseToAquaticOrganisms
 
        
 
-        private void closeOrNo( object sender, FormClosingEventArgs e )
-        {
-            //if (e.CloseReason == CloseReason.UserClosing)
-            //{
-            //    DialogResult result = MessageBox.Show("Изход от програмата", " Изход", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //    switch (result)
-            //    {
-            //        case DialogResult.Yes:
-            //            /// Save or close resource /// or show some timer.. progressbar
-            //            Dispose();
-            //            break;
-            //        case DialogResult.No:
-            //            //  ? 
-            //            break;
-
-            //        default:
-            //            break;
-            //    }
-            //}
-        }
         private void sizeChanged( object sender, EventArgs e ) {
             this.panelMain.Size = this.Size; 
         }
@@ -85,9 +63,7 @@ namespace WarehouseToAquaticOrganisms
         private void CreateControls()
         {
             _supplyControl = new MakeDeliveryControl(_proviederCompanyManager,_warehouse,_deliveryList);
-        //    _deliveryControl = new ShowDeliveryControl(_deliveryList);
-
-
+        //    _deliveryControl = new ShowDeliveryControl(_deliveryList); 
             _salesControl = new SalesControl(_personManager, _clientCompanyManager);
 
             _persondControl = new ShowPersonsControl(_personManager);
@@ -95,7 +71,7 @@ namespace WarehouseToAquaticOrganisms
             _providersControl = new ShowProvidersControl(_proviederCompanyManager);
 
 
-            _masterDetailControl = new MasterDetailControl();
+            _masterDetailControl = new MasterDetailControl(_proviederCompanyManager,_warehouse);
 
             Control [] controls = { _supplyControl, _salesControl, _persondControl, _companyesControl, _providersControl, _masterDetailControl };
             foreach (var item in controls)
@@ -127,11 +103,11 @@ namespace WarehouseToAquaticOrganisms
                     disposeAllExceptThisControl(_salesControl);
                     break;
                 case "createSupplyToolStripMenuItem":
-                    disposeAllExceptThisControl(_supplyControl);
+                    disposeAllExceptThisControl(_masterDetailControl);
                     break;
                 case "showSalesToolStripMenuItem":
-                    disposeAllExceptThisControl(_masterDetailControl);
-                    
+                   
+                    disposeAllExceptThisControl(_supplyControl);
                     break;
 
                     
@@ -193,9 +169,25 @@ namespace WarehouseToAquaticOrganisms
             MessageBox.Show("Hi.");
         }
 
-        //private void showDeliveriesToolStripMenuItem_Click( object sender, EventArgs e )
-        //{
-        //    disposeAllExceptThisControl(_deliveryControl);
-        //}
+        private void closeOrNo( object sender, FormClosingEventArgs e )
+        {
+            //if (e.CloseReason == CloseReason.UserClosing)
+            //{
+            //    DialogResult result = MessageBox.Show("Изход от програмата", " Изход", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //    switch (result)
+            //    {
+            //        case DialogResult.Yes:
+            //            /// Save or close resource /// or show some timer.. progressbar
+            //            Dispose();
+            //            break;
+            //        case DialogResult.No:
+            //            //  ? 
+            //            break;
+
+            //        default:
+            //            break;
+            //    }
+            //}
+        }
     }
 }

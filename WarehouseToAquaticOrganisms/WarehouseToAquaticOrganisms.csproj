@@ -77,14 +77,12 @@
     </Compile>
     <Compile Include="Observer\Available.cs" />
     <Compile Include="Observer\Delivery.cs" />
-    <Compile Include="Observer\Observer.cs" />
+    <Compile Include="Observer\ObserverPattern.cs" />
     <Compile Include="Observer\Product.cs" />
     <Compile Include="Observer\Sale.cs" />
     <Compile Include="Observer\SalesList.cs" />
     <Compile Include="Observer\DeliveryManager.cs" />
     <Compile Include="Observer\Warehouse.cs" />
-    <Compile Include="Sales\Row.cs" />
-    <Compile Include="Sales\SaleTest.cs" />
     <Compile Include="DBClasses\CompanyManager.cs" />
     <Compile Include="DBClasses\DBManager.cs" />
     <Compile Include="DBClasses\PersonManager.cs" />

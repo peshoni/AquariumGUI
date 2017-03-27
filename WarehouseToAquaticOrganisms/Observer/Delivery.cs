@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Observer;
 using WarehouseToAquaticOrganisms.Classes;
 
-namespace WarehouseToAquaticOrganisms.Observer
+namespace  Observer
 {
    public class Delivery : IDataErrorInfo 
     {

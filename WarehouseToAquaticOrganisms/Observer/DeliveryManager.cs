@@ -6,12 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WarehouseToAquaticOrganisms.Classes;
-using WarehouseToAquaticOrganisms.DBClasses;
-using WarehouseToAquaticOrganisms.Observer;
+using WarehouseToAquaticOrganisms.DBClasses; 
 
 namespace Observer
 {
-    public class DeliveryManager : Observer
+    public class DeliveryManager : ObserverPattern
     { 
         private Hashtable _table;
         private int ID;
@@ -173,7 +172,7 @@ ware.isDelivery = 1 and ware.ProductID = product.ID and ware.ProviderID = provid
         /// </summary> 
         public override void update()
         {
-            addProduct(_warehouse.Delivery);
+           // addProduct(_warehouse.Delivery);
         }
 
         private void addProduct( List<Delivery> delivery)

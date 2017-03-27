@@ -10,7 +10,6 @@ namespace Observer
     {
         private int _id;
         private string _name;
-       
 
         public Product()
         {
@@ -42,7 +41,9 @@ namespace Observer
             {
                 _name = value;
             }
-        } 
+        }
+
+       
         #endregion
     }
 }

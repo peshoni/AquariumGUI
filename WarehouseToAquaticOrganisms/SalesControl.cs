@@ -8,8 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WarehouseToAquaticOrganisms.Classes;
-using WarehouseToAquaticOrganisms.DBClasses;
-using WarehouseToAquaticOrganisms.Sales;
+using WarehouseToAquaticOrganisms.DBClasses; 
 using System.Globalization;
 
 namespace WarehouseToAquaticOrganisms
@@ -50,8 +49,7 @@ namespace WarehouseToAquaticOrganisms
             loadComboBoxes();
             //////////////////////////////////////////////
 
-
-            SaleTest newSale = new SaleTest(); 
+ 
             //CreateTable();
             
             

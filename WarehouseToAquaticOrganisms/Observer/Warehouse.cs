@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WarehouseToAquaticOrganisms.Observer;
+﻿using System.Collections.Generic;
+using WarehouseToAquaticOrganisms.Classes;
+using WarehouseToAquaticOrganisms.DBClasses;
 
 namespace Observer
 {
     public class Warehouse
     {    
-        private List<Observer> _observers = new List<Observer>(); 
-        private List<Delivery> _delivery;  
+        private List<ObserverPattern> _observers = new List<ObserverPattern>(); 
+        private List<TestDeliveryClass> _delivery;
+
+        private Company _provider;
+         
         private Sale _sale;
         private bool _isDelivery;
         private bool _isSold;
 
         #region Getters and Setters 
-        public List<Delivery> Delivery
+        public List<TestDeliveryClass> Delivery
         {
             get
             {
@@ -29,7 +29,7 @@ namespace Observer
             }
         }
 
-        public List<Observer> Observers
+        public List<ObserverPattern> Observers
         {
             get
             {
@@ -76,6 +76,21 @@ namespace Observer
             }
         }
 
+        public Company Provider
+        {
+            get
+            {
+                return _provider;
+            }
+
+            set
+            {
+                _provider = value;
+            }
+        }
+
+
+
 
         #endregion
 
@@ -83,12 +98,13 @@ namespace Observer
         /// Called by observers to add to the list with observers.
         /// </summary>
         /// <param name="observer">To be added.</param>
-        public void attachObserver( Observer observer ) {
+        public void attachObserver( ObserverPattern observer ) {
                   Observers.Add(observer);
         }
 
 
-        public void MakeDelivery( List<Delivery> delivеry ) {
+        public void MakeDelivery(Company provider,  List<TestDeliveryClass> delivеry ) {
+                 this.Provider = provider;
                  this.Delivery = delivеry;
                  _isDelivery = true;                      
                  notifyAll(); 

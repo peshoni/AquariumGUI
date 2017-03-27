@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WarehouseToAquaticOrganisms.DBClasses;
 using WarehouseToAquaticOrganisms.Classes;
-using Observer;
-using WarehouseToAquaticOrganisms.Observer;
+using Observer; 
 using System.Text.RegularExpressions;
 
 namespace WarehouseToAquaticOrganisms
@@ -141,7 +140,7 @@ namespace WarehouseToAquaticOrganisms
 
             listWithDeliveries.Add(row);
             listWithDeliveries.Add(row2);
-            _warehouse.MakeDelivery(listWithDeliveries.ToList());
+         //   _warehouse.MakeDelivery(listWithDeliveries.ToList());
 
           
 

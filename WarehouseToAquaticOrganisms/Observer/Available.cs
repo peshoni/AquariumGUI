@@ -2,12 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using WarehouseToAquaticOrganisms.Observer;
+using System.Text; 
 
 namespace Observer
 {
-    public class Available : Observer
+    public class Available : ObserverPattern
     {
         private Hashtable _table; 
 
@@ -32,10 +31,10 @@ namespace Observer
         public override void update()
         {
             if (_warehouse.IsSold) {
-                sellProduct(_warehouse.Sale);
+              //  sellProduct(_warehouse.Sale);
             }
             if (_warehouse.IsDelivery) {
-                addProduct(_warehouse.Delivery);
+              //  addProduct(_warehouse.Delivery);
             }
         }
         /// <summary>

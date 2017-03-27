@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Observer;
+using Observer; 
 
 namespace Observer
 {
-    public abstract class Observer  
+    public abstract class ObserverPattern  
     {
        protected Warehouse _warehouse;
 
