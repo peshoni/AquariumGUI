@@ -25,48 +25,110 @@ namespace WarehouseToAquaticOrganisms
      //   private enum Goods { Fish, Crab, Seaweed}
         private PersonManager _personManager;
         private CompanyManager _companyManager;
+        private DeliveryManager2 _deliveryManager;
         private ComboBox personCombo;
         private ComboBox companyCombo;
+        private static decimal percentProfit;
 
-        private decimal suma;
-        private decimal total;
+      //  private decimal suma;
+       // private decimal total;
         private System.Drawing.Point hide;
 
-        //private DataGridViewTextBoxColumn textColumnNumberOfRow;
-        //private DataGridViewTextBoxColumn textColumnPieces;
-        //private DataGridViewTextBoxColumn textColumnPrice;
-        //private DataGridViewTextBoxColumn textColumnVAT;        
-        //private DataGridViewComboBoxColumn comboWithArticles;
-       
 
-        public SalesControl(PersonManager personManager, CompanyManager companyManager)
+        private BindingList<SaleTestClass> saleList;
+
+        private DataGridViewTextBoxColumn textColumnNumberOfRow;
+        private DataGridViewTextBoxColumn textColumnArticle;
+        private DataGridViewTextBoxColumn textColumnPieces; 
+        private DataGridViewTextBoxColumn textColumnPrice;
+      //  private DataGridViewTextBoxColumn textColumnVAT;
+     //   private DataGridViewComboBoxColumn comboWithArticles;
+
+
+        public SalesControl(PersonManager personManager, CompanyManager companyManager,DeliveryManager2 deliveryManager)
         {
             InitializeComponent();
          //   RefreshLists();
             _personManager = personManager;
             _companyManager = companyManager;
-
+            this._deliveryManager = deliveryManager;
             comboBox1.DataSource = Enum.GetValues(typeof(TypeOfPartner)); 
             hide = new System.Drawing.Point(-100, -100);
             loadComboBoxes();
+            percentProfit = 10.00m;
+            maskedTextBox1.Text = percentProfit.ToString();
             //////////////////////////////////////////////
 
 
             //CreateTable();
 
             createAvailableGridContent();
+
+            createSaleGrid();
+           
+        }
+
+        private void createSaleGrid()
+        {
+           // textColumnNumberOfRow= Utillity.createDatagridViewTextBoxColumn("Product", "ProductID", "ProductName", true);
+            textColumnArticle = Utillity.createDatagridViewTextBoxColumn("Product", "ProductID", "ProductName", true);
+            textColumnPieces = Utillity.createDatagridViewTextBoxColumn("Quantity", "Quantity", "Quantity", false);
+            textColumnPrice = Utillity.createDatagridViewTextBoxColumn("Sale Price", "SalePrice", "SalePrice", true);
+            this.textColumnPrice.DefaultCellStyle = getPriceStyle();
+
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.Columns.Clear();
+            dataGridView1.Columns.AddRange(new DataGridViewColumn [] { textColumnArticle, textColumnPieces  , textColumnPrice });
+
+            saleList = new BindingList<SaleTestClass>();
+            dataGridView1.DataSource = saleList;
         }
 
         private void createAvailableGridContent()
         {
-           
-
-            DataGridViewColumn [] array = {
-            Utillity.createDatagridViewTextBoxColumn("Product","ProductID", "ProductName", true),
-            Utillity.createDatagridViewTextBoxColumn("Quantity", "quantity", "Quantity", false),
-            Utillity.createDatagridViewTextBoxColumn("Delivery price", "Price", "DeliveryPrice", false) };
-             
+            _productName = Utillity.createDatagridViewTextBoxColumn("Product", "ProductID", "ProductName", true);
+            _quantity = Utillity.createDatagridViewTextBoxColumn("Quantity", "quantity", "Quantity", false);
+            _averagePrice= Utillity.createDatagridViewTextBoxColumn("Delivery price", "Price", "DeliveryPrice", false);
+          
+            this._averagePrice.DefaultCellStyle = getPriceStyle();  
+            dataGridView2.AutoGenerateColumns = false;
+            dataGridView2.Columns.Clear();
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { _productName, _quantity, _averagePrice });
+            dataGridView2.DataSource = _deliveryManager.GetAvailableProductsproperties();
+            dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick); 
         }
+        /// <summary>
+        /// Setter method for Currency style of DataGridViewTextBox column.
+        /// </summary>
+        /// <returns><see cref="DataGridViewCellStyle"/></returns>
+        private DataGridViewCellStyle getPriceStyle(){
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = "0,00";
+            return dataGridViewCellStyle1;
+        }
+        private void dataGridView2_CellDoubleClick( object sender, DataGridViewCellEventArgs e )
+        {
+            int row = e.RowIndex;
+            
+          //  MessageBox.Show(row.ToString());
+            List<TestDeliveryClass> lll =  _deliveryManager.GetAvailableProductsproperties();
+            TestDeliveryClass ob1 = lll.ElementAt(row);
+            SaleTestClass ob = new SaleTestClass();
+
+            ob.ProductName = ob1.ProductName; 
+            decimal total  = ob1.DeliveryPrice * ((percentProfit / 100) + 1);
+            ob.DeliveryPrice = ob1.DeliveryPrice;
+            ob.SalePrice = total;
+
+            refreshSaleList();
+           
+            this.propertyGrid1.SelectedObject = ob;
+            saleList.Add(ob);
+        }
+
 
         //private void CreateTable()
         //{
@@ -85,16 +147,12 @@ namespace WarehouseToAquaticOrganisms
             personCombo = new ComboBox();
             personCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             personCombo.Location = hide;
-         ////   personCombo.Items.Insert(0, "Ivan");
-         //   personCombo.Items.Insert(1, "Petko"); 
-            this.Controls.Add(personCombo);
+            this.splitContainer2.Panel2.Controls.Add(personCombo);
 
             companyCombo = new ComboBox();
             companyCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             companyCombo.Location = hide;
-         //   companyCombo.Items.Insert(0, "Company 1");
-         //   companyCombo.Items.Insert(1, "Company 2"); 
-            this.Controls.Add (companyCombo);
+            this.splitContainer2.Panel2.Controls.Add (companyCombo);
         }
 
         public  void RefreshLists()
@@ -114,12 +172,12 @@ namespace WarehouseToAquaticOrganisms
                 case TypeOfPartner.Person:
                     RefreshLists();
                     //comboBox1.ValueMember = "Name";
-                    personCombo.Location = new System.Drawing.Point(comboBox1.Location.X, comboBox1.Location.Y + 40);
+                    personCombo.Location = new System.Drawing.Point(comboBox1.Location.X, comboBox1.Location.Y + 30);
                     companyCombo.Location = hide; 
                     break;
                 case TypeOfPartner.Company:
                     RefreshLists();
-                    companyCombo.Location = new System.Drawing.Point(comboBox1.Location.X, comboBox1.Location.Y + 40);
+                    companyCombo.Location = new System.Drawing.Point(comboBox1.Location.X, comboBox1.Location.Y + 30);
                     personCombo.Location = hide; 
                     break;
                 default:
@@ -153,43 +211,73 @@ namespace WarehouseToAquaticOrganisms
         }
 
         private void dataGridView1_CellEndEdit( object sender, DataGridViewCellEventArgs e )
-        {
+        { 
             int row = e.RowIndex;
             if (row >= 0)
-            {
-               
+            { 
                 // int ID = (int)dataGridView1.Rows [row].Cells ["iDDataGridViewTextBoxColumn"].Value; ;
-                if (e.ColumnIndex == columnPieces.Index)
+                if (e.ColumnIndex == _quantity.Index)//columnPieces.Index)
                 {
-                    DataGridViewRow done = dataGridView1.Rows [row];
-
-                    done.Cells [0].Value = row + 1;
-
-                    done.Cells [3].Value = 2.58m;
-                    decimal pieces; 
-                    decimal.TryParse(done.Cells [2].Value.ToString(),out pieces);
-
-                    decimal price; 
-                    decimal.TryParse(done.Cells [3].Value.ToString(), out price);
-
-                    decimal temp = pieces * price;
-                    suma += temp;
-                    done.Cells [4].Value = temp;
-
-                    total = suma * 1.2m;
-                    Math.Round(total, 2);
-                    textBox1.Text = suma.ToString();
-                    decimal vat = Math.Round((total - suma), 2);
-                    textBox2.Text = (vat).ToString();
-                    textBox3.Text = /*String.Format(CultureInfo.CurrentCulture, "{0:C0}", Math.Round(total, 2));//*/Math.Round(total, 2).ToString();
-
-
-
-
-                    temp = 0; 
+                    //  DataGridViewRow done = dataGridView1.Rows [row];
+                    calculate();
+                   
                 } 
             }
         }
 
+       
+
+        private void refreshSaleList()
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = saleList;
+        }
+ 
+
+        private void maskedTextBox1_KeyEnterPress( object sender, KeyEventArgs e )
+        {
+            e.Handled = e.SuppressKeyPress = true;
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                // this.Parent.GetNextControl(this, true).Select();
+
+
+
+                decimal.TryParse(maskedTextBox1.Text, out percentProfit);
+                saleList.ToList().ForEach(element =>
+                {
+                    element.SalePrice = element.DeliveryPrice * ((percentProfit / 100) + 1);
+                });
+                // this.Focus();
+                refreshSaleList();
+                calculate();
+
+            }
+
+        }
+        private void calculate()
+        {
+            decimal suma = 0.0m;
+            decimal total;
+            saleList.ToList().ForEach(
+                element => {
+                    suma += (element.Quantity * element.SalePrice);
+                });
+            total = suma * 1.2m;
+            textBox1.Text = Math.Round(suma, 2).ToString();
+            textBox2.Text = Math.Round((total - suma), 2).ToString();
+            textBox3.Text = /*String.Format(CultureInfo.CurrentCulture, "{0:C0}", Math.Round(total, 2));//*/Math.Round(total, 2).ToString();
+        }
+        //private void maskedTextBox1_MouseUp( object sender, MouseEventArgs e )
+        //{
+
+        //    decimal.TryParse(maskedTextBox1.Text, out percentProfit);
+        //    saleList.ToList().ForEach(element => {
+        //        element.SalePrice = element.DeliveryPrice * ((percentProfit / 100) + 1);
+        //    });
+        //    // this.Focus();
+        //    refreshSaleList();
+        //}
     }
 }

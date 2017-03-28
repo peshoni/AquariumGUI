@@ -30,7 +30,7 @@ namespace WarehouseToAquaticOrganisms
 
 
         private BindingList<TestDeliveryClass> deliveryList;
-        private DeliveryManager2 deliveryManager;
+        private DeliveryManager2 _deliveryManager;
         private CompanyManager _proviederCompanyManager;
         List<TestDeliveryClass> list;
 
@@ -41,14 +41,14 @@ namespace WarehouseToAquaticOrganisms
 
 
 
-        public MasterDetailControl(CompanyManager companyManager , Warehouse warehouse)
+        public MasterDetailControl(CompanyManager companyManager , Warehouse warehouse, DeliveryManager2 deliveryManager)
         {
             InitializeComponent();
 
 
             this._proviederCompanyManager = companyManager;
             this._warehouse = warehouse;
-            deliveryManager = new DeliveryManager2(_warehouse);
+            this._deliveryManager = deliveryManager;
 
             createMasterColumns();
 
@@ -68,9 +68,7 @@ namespace WarehouseToAquaticOrganisms
             _dataGridViewDelivery.AutoGenerateColumns = false;
             _dataGridViewDelivery.Columns.Clear(); 
             _dataGridViewDelivery.AllowUserToAddRows = true;
-            _dataGridViewDelivery.Columns.AddRange(createDeliveryColumns());
-
-       
+            _dataGridViewDelivery.Columns.AddRange(createDeliveryColumns()); 
             
         }
 
@@ -80,7 +78,7 @@ namespace WarehouseToAquaticOrganisms
         /// <returns></returns>
         private DataGridViewColumn [] createDeliveryColumns()
         {
-            var combods = deliveryManager.getProducts();
+            var combods = _deliveryManager.getProducts();
            
             combods.Add(new TestDeliveryClass() { ProductName = "Select product" });
 
@@ -106,7 +104,7 @@ namespace WarehouseToAquaticOrganisms
             phoneColumn=Utillity.createDatagridViewTextBoxColumn("Phone number", "phoneColumn", "Phone", true);
 
 
-             list = deliveryManager.getList().OrderByDescending(e=> e.DocID).ToList();
+             list = _deliveryManager.getList().OrderByDescending(e=> e.DocID).ToList();
         //   List<TestDeliveryClass> sec = list.OrderByDescending(e => e.DocID).ToList();
 
             bindingList = new BindingList<TestDeliveryClass>(list);
@@ -135,7 +133,7 @@ namespace WarehouseToAquaticOrganisms
         }
         private void MasterDetailControl_Load( object sender, EventArgs e )
         {
-          //  rebind();
+           rebind();
         }
         public  void rebind()
         {
@@ -153,7 +151,7 @@ namespace WarehouseToAquaticOrganisms
             int index = ((DataGridView)sender).CurrentCell.RowIndex;
             DataGridViewCell cell = (DataGridViewCell)((DataGridView)sender) [docIDColumn.Index, index];
             int DocID= int.Parse(cell.Value.ToString());
-            List<TestDeliveryClass> secondList = deliveryManager.getListWithDeliveryDetails(DocID);
+            List<TestDeliveryClass> secondList = _deliveryManager.getListWithDeliveryDetails(DocID);
             secondBindingList = new BindingList<TestDeliveryClass>(secondList);
             _dataGridViewDetail.DataSource = secondBindingList; 
         }
@@ -173,7 +171,7 @@ namespace WarehouseToAquaticOrganisms
 
 
             dataGridViewMaster.DataSource = null;//.Update();
-            list = deliveryManager.getList().OrderByDescending(element => element.DocID).ToList();
+            list = _deliveryManager.getList().OrderByDescending(element => element.DocID).ToList();
             dataGridViewMaster.DataSource = list; 
             deliveryList.Clear();
             buttonSaveDelivery.Enabled = false;

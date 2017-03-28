@@ -52,7 +52,8 @@ GROUP BY pro.Name;";
                         TestDeliveryClass product = new TestDeliveryClass();
                         product.ProductName = reader.GetString(0);
                         product.Quantity  = reader.GetInt32(1);
-                        product.DeliveryPrice = reader.GetDecimal(2);
+                        var de = reader.GetDecimal(2);
+                        product.DeliveryPrice = (decimal)de; 
                         list.Add(product);
                     }
                 }

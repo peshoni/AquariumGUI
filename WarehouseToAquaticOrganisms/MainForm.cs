@@ -33,8 +33,8 @@ namespace WarehouseToAquaticOrganisms
         private PersonManager _personManager ;
         private CompanyManager _clientCompanyManager;
         private CompanyManager _proviederCompanyManager;
-        private DeliveryManager _deliveryList;
-
+      //  private DeliveryManager _deliveryList;
+      private DeliveryManager2 _deliveryManager;
         private Warehouse _warehouse;
 
 
@@ -48,7 +48,8 @@ namespace WarehouseToAquaticOrganisms
             _proviederCompanyManager = new CompanyManager(true); 
 
             _warehouse = new Warehouse();
-            _deliveryList = new DeliveryManager(_warehouse,_proviederCompanyManager);
+            _deliveryManager = new DeliveryManager2(_warehouse);
+        //    _deliveryList = new DeliveryManager(_warehouse,_proviederCompanyManager);
           
 
             CreateControls(); 
@@ -64,14 +65,14 @@ namespace WarehouseToAquaticOrganisms
         {
           //  _supplyControl = new MakeDeliveryControl(_proviederCompanyManager,_warehouse,_deliveryList);
         //    _deliveryControl = new ShowDeliveryControl(_deliveryList); 
-            _salesControl = new SalesControl(_personManager, _clientCompanyManager);
+            _salesControl = new SalesControl(_personManager, _clientCompanyManager,_deliveryManager);
 
             _persondControl = new ShowPersonsControl(_personManager);
             _companyesControl = new ShowCompaniesControl(_clientCompanyManager);
             _providersControl = new ShowProvidersControl(_proviederCompanyManager);
 
 
-            _masterDetailControl = new MasterDetailControl(_proviederCompanyManager,_warehouse);
+            _masterDetailControl = new MasterDetailControl(_proviederCompanyManager,_warehouse,_deliveryManager);
 
             Control [] controls = {/* _supplyControl,*/ _salesControl, _persondControl, _companyesControl, _providersControl, _masterDetailControl };
             foreach (var item in controls)

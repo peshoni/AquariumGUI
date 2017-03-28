@@ -32,23 +32,17 @@ namespace WarehouseToAquaticOrganisms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.labelClientName = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.columnNumOfRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.columnPieces = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.labelBase = new System.Windows.Forms.Label();
+            this.labelVat = new System.Windows.Forms.Label();
+            this.labelTotal = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.button1 = new System.Windows.Forms.Button();
@@ -56,6 +50,9 @@ namespace WarehouseToAquaticOrganisms
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -83,7 +80,7 @@ namespace WarehouseToAquaticOrganisms
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(24, 16);
+            this.comboBox1.Location = new System.Drawing.Point(14, 34);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(148, 21);
             this.comboBox1.TabIndex = 0;
@@ -102,70 +99,12 @@ namespace WarehouseToAquaticOrganisms
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnNumOfRow,
-            this.Column1,
-            this.columnPieces,
-            this.columnPrice,
-            this.colTotal});
-            this.dataGridView1.Location = new System.Drawing.Point(208, 43);
+            this.dataGridView1.Location = new System.Drawing.Point(14, 108);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(584, 263);
+            this.dataGridView1.Size = new System.Drawing.Size(380, 263);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
-            // 
-            // columnNumOfRow
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            this.columnNumOfRow.DefaultCellStyle = dataGridViewCellStyle1;
-            this.columnNumOfRow.HeaderText = "#";
-            this.columnNumOfRow.Name = "columnNumOfRow";
-            this.columnNumOfRow.Width = 40;
-            // 
-            // Column1
-            // 
-            this.Column1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.Column1.HeaderText = "Article";
-            this.Column1.Items.AddRange(new object[] {
-            "Goldfish",
-            "Crab",
-            "Spirogira"});
-            this.Column1.Name = "Column1";
-            // 
-            // columnPieces
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "##########";
-            dataGridViewCellStyle2.NullValue = "0";
-            this.columnPieces.DefaultCellStyle = dataGridViewCellStyle2;
-            this.columnPieces.HeaderText = "peices";
-            this.columnPieces.MaxInputLength = 10;
-            this.columnPieces.Name = "columnPieces";
-            // 
-            // columnPrice
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = "0,00";
-            this.columnPrice.DefaultCellStyle = dataGridViewCellStyle3;
-            this.columnPrice.HeaderText = "price";
-            this.columnPrice.Name = "columnPrice";
-            this.columnPrice.ReadOnly = true;
-            // 
-            // colTotal
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = "0,00";
-            this.colTotal.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colTotal.HeaderText = "sum";
-            this.colTotal.Name = "colTotal";
-            this.colTotal.ReadOnly = true;
             // 
             // tableLayoutPanel1
             // 
@@ -176,7 +115,10 @@ namespace WarehouseToAquaticOrganisms
             this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBox2, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBox3, 1, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(592, 309);
+            this.tableLayoutPanel1.Controls.Add(this.labelBase, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelVat, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelTotal, 0, 2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(194, 374);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
@@ -228,6 +170,33 @@ namespace WarehouseToAquaticOrganisms
             this.textBox3.TabIndex = 2;
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // labelBase
+            // 
+            this.labelBase.AutoSize = true;
+            this.labelBase.Location = new System.Drawing.Point(5, 2);
+            this.labelBase.Name = "labelBase";
+            this.labelBase.Size = new System.Drawing.Size(30, 13);
+            this.labelBase.TabIndex = 3;
+            this.labelBase.Text = "base";
+            // 
+            // labelVat
+            // 
+            this.labelVat.AutoSize = true;
+            this.labelVat.Location = new System.Drawing.Point(5, 25);
+            this.labelVat.Name = "labelVat";
+            this.labelVat.Size = new System.Drawing.Size(22, 13);
+            this.labelVat.TabIndex = 4;
+            this.labelVat.Text = "vat";
+            // 
+            // labelTotal
+            // 
+            this.labelTotal.AutoSize = true;
+            this.labelTotal.Location = new System.Drawing.Point(5, 48);
+            this.labelTotal.Name = "labelTotal";
+            this.labelTotal.Size = new System.Drawing.Size(27, 13);
+            this.labelTotal.TabIndex = 5;
+            this.labelTotal.Text = "total";
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
@@ -240,7 +209,7 @@ namespace WarehouseToAquaticOrganisms
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(66, 330);
+            this.button1.Location = new System.Drawing.Point(14, 423);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
@@ -300,6 +269,9 @@ namespace WarehouseToAquaticOrganisms
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.maskedTextBox1);
+            this.splitContainer2.Panel2.Controls.Add(this.label2);
+            this.splitContainer2.Panel2.Controls.Add(this.propertyGrid1);
             this.splitContainer2.Panel2.Controls.Add(this.comboBox1);
             this.splitContainer2.Panel2.Controls.Add(this.dataGridView1);
             this.splitContainer2.Panel2.Controls.Add(this.tableLayoutPanel1);
@@ -308,6 +280,34 @@ namespace WarehouseToAquaticOrganisms
             this.splitContainer2.Size = new System.Drawing.Size(1254, 565);
             this.splitContainer2.SplitterDistance = 294;
             this.splitContainer2.TabIndex = 8;
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.maskedTextBox1.Location = new System.Drawing.Point(336, 34);
+            this.maskedTextBox1.Mask = "00.00";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(49, 26);
+            this.maskedTextBox1.TabIndex = 9;
+           this.maskedTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.maskedTextBox1_KeyEnterPress);
+           // this.maskedTextBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.maskedTextBox1_MouseUp);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(266, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 20);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Profit %";
+            // 
+            // propertyGrid1
+            // 
+            this.propertyGrid1.Location = new System.Drawing.Point(480, 164);
+            this.propertyGrid1.Name = "propertyGrid1";
+            this.propertyGrid1.Size = new System.Drawing.Size(201, 207);
+            this.propertyGrid1.TabIndex = 6;
             // 
             // SalesControl
             // 
@@ -337,6 +337,9 @@ namespace WarehouseToAquaticOrganisms
 
         }
 
+       
+
+
         #endregion
 
         private System.Windows.Forms.Label label1;
@@ -350,14 +353,15 @@ namespace WarehouseToAquaticOrganisms
         private TextBox textBox3;
         private ContextMenuStrip contextMenuStrip2;
         private Button button1;
-        private DataGridViewTextBoxColumn columnNumOfRow;
-        private DataGridViewComboBoxColumn Column1;
-        private DataGridViewTextBoxColumn columnPieces;
-        private DataGridViewTextBoxColumn columnPrice;
-        private DataGridViewTextBoxColumn colTotal;
         private GroupBox groupBox1;
         private DataGridView dataGridView2;
         private SplitContainer splitContainer1;
         private SplitContainer splitContainer2;
+        private MaskedTextBox maskedTextBox1;
+        private Label label2;
+        private Label labelBase;
+        private Label labelVat;
+        private Label labelTotal;
+        private PropertyGrid propertyGrid1;
     }
 }

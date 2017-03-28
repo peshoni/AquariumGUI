@@ -69,6 +69,7 @@
     <Compile Include="Contragents\Company.cs" />
     <Compile Include="DBClasses\DeliveryManager2.cs" />
     <Compile Include="DBClasses\DeliveryTestClass.cs" />
+    <Compile Include="DBClasses\SaleTestClass.cs" />
     <Compile Include="MasterDetailControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
