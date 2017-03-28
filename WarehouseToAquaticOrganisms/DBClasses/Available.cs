@@ -8,21 +8,14 @@ namespace Observer
 {
     public class Available : ObserverPattern
     {
-        private Hashtable _table; 
-
-        public Hashtable Table
-        {
-            get
-            {
-                return _table;
-            }
-        }
+         
+ 
         /// <summary>
         /// Constructor with parameter Warehouse
         /// </summary>
         /// <param name="warehouse"></param>
         public Available(Warehouse warehouse) { 
-            this._table = new Hashtable ();
+            
             this._warehouse = warehouse;
             this._warehouse.attachObserver(this);      
         }

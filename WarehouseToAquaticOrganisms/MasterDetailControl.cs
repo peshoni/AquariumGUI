@@ -29,19 +29,23 @@ namespace WarehouseToAquaticOrganisms
         private BindingList<TestDeliveryClass> secondBindingList;
 
 
-                 private BindingList<TestDeliveryClass> deliveryList;
+        private BindingList<TestDeliveryClass> deliveryList;
         private DeliveryManager2 deliveryManager;
         private CompanyManager _proviederCompanyManager;
-        
+        List<TestDeliveryClass> list;
+
+
         private Company _company;
         private Warehouse _warehouse;
-
+      
 
 
 
         public MasterDetailControl(CompanyManager companyManager , Warehouse warehouse)
         {
             InitializeComponent();
+
+
             this._proviederCompanyManager = companyManager;
             this._warehouse = warehouse;
             deliveryManager = new DeliveryManager2(_warehouse);
@@ -51,8 +55,6 @@ namespace WarehouseToAquaticOrganisms
             _dataGridViewDetail.AutoGenerateColumns = false;
             _dataGridViewDetail.Columns.Clear();
             _dataGridViewDetail.Columns.AddRange(createDetailsColumns());
- 
-
 
             comboBoxChooseProvider.DataSource = _proviederCompanyManager;
             comboBoxChooseProvider.DisplayMember = "Name";
@@ -66,23 +68,24 @@ namespace WarehouseToAquaticOrganisms
             _dataGridViewDelivery.AutoGenerateColumns = false;
             _dataGridViewDelivery.Columns.Clear(); 
             _dataGridViewDelivery.AllowUserToAddRows = true;
-
-
             _dataGridViewDelivery.Columns.AddRange(createDeliveryColumns());
 
-
-
-
-
+       
+            
         }
+
         /// <summary>
         /// Creates controls for 'Delivery'.
         /// </summary>
         /// <returns></returns>
         private DataGridViewColumn [] createDeliveryColumns()
         {
+            var combods = deliveryManager.getProducts();
+           
+            combods.Add(new TestDeliveryClass() { ProductName = "Select product" });
+
             DataGridViewColumn [] array = {
-            Utillity.createDataGridViewComboboxColumn("Product", deliveryManager.getProducts(), "ProdutID", "ProductName", "ProductID"),
+            Utillity.createDataGridViewComboboxColumn("Product", combods, "ProductID", "ProductName", "ProductID"),
             Utillity.createDatagridViewTextBoxColumn("Quantity", "quantity", "Quantity", false),
             Utillity.createDatagridViewTextBoxColumn("Delivery price", "Price", "DeliveryPrice", false) };
             return array;
@@ -103,14 +106,19 @@ namespace WarehouseToAquaticOrganisms
             phoneColumn=Utillity.createDatagridViewTextBoxColumn("Phone number", "phoneColumn", "Phone", true);
 
 
-            List<TestDeliveryClass> list = deliveryManager.getList();
+             list = deliveryManager.getList().OrderByDescending(e=> e.DocID).ToList();
+        //   List<TestDeliveryClass> sec = list.OrderByDescending(e => e.DocID).ToList();
+
             bindingList = new BindingList<TestDeliveryClass>(list);
             dataGridViewMaster.DataSource = bindingList;
 
+            //bindingList.OrderBy(x=>x.DocID);
             dataGridViewMaster.AutoGenerateColumns = false;
             dataGridViewMaster.Columns.Clear();
             dataGridViewMaster.Columns.AddRange( new DataGridViewColumn[]{ docIDColumn, dateTimeColumn,
                 providerNameColumn, bulstatColumn, accountablePersonColumn, phoneColumn, isPaidColumn });
+           // this.dataGridViewMaster.Sort(dataGridViewMaster.Columns ["Document"], ListSortDirection.Descending);
+
         }
      /// <summary>
      /// Creates column for product info. 
@@ -154,21 +162,21 @@ namespace WarehouseToAquaticOrganisms
         {
             int index = comboBoxChooseProvider.SelectedIndex;
             _company =  _proviederCompanyManager.ElementAt(index);
-
             propertyGrid1.SelectedObject = _company; 
         }
 
         private void button1_Click( object sender, EventArgs e )
         {
 
-          
+        
            _warehouse.MakeDelivery(_company, deliveryList.ToList());
 
 
             dataGridViewMaster.DataSource = null;//.Update();
-           
-            dataGridViewMaster.Refresh();
+            list = deliveryManager.getList().OrderByDescending(element => element.DocID).ToList();
+            dataGridViewMaster.DataSource = list; 
             deliveryList.Clear();
+            buttonSaveDelivery.Enabled = false;
 
 
         }
@@ -180,7 +188,11 @@ namespace WarehouseToAquaticOrganisms
             //    TestDeliveryClass test = deliveryList.ElementAt(0);
             //    MessageBox.Show(test.ProductID.ToString() + " " + deliveryList.Count.ToString());
             //}
-           
+            if (e.RowIndex>0)
+            {
+                 buttonSaveDelivery.Enabled = true;
+            } 
         }
+
     }
 }

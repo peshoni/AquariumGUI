@@ -41,6 +41,7 @@ namespace WarehouseToAquaticOrganisms
             comboColumn.DataPropertyName = dataPropertyName;
             comboColumn.DisplayMember = displayMember;
             comboColumn.ValueMember = valueMember;
+            comboColumn.ValueType = typeof(int);
 
 
             return comboColumn;

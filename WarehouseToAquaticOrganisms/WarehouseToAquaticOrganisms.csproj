@@ -75,13 +75,13 @@
     <Compile Include="MasterDetailControl.Designer.cs">
       <DependentUpon>MasterDetailControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Observer\Available.cs" />
+    <Compile Include="DBClasses\Available.cs" />
     <Compile Include="Observer\Delivery.cs" />
     <Compile Include="Observer\ObserverPattern.cs" />
     <Compile Include="Observer\Product.cs" />
     <Compile Include="Observer\Sale.cs" />
     <Compile Include="Observer\SalesList.cs" />
-    <Compile Include="Observer\DeliveryManager.cs" />
+    <Compile Include="trash\DeliveryManager.cs" />
     <Compile Include="Observer\Warehouse.cs" />
     <Compile Include="DBClasses\CompanyManager.cs" />
     <Compile Include="DBClasses\DBManager.cs" />
@@ -133,10 +133,10 @@
     <Compile Include="ShowProvidersControl.Designer.cs">
       <DependentUpon>ShowProvidersControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="MakeDeliveryControl.cs">
+    <Compile Include="trash\MakeDeliveryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MakeDeliveryControl.Designer.cs">
+    <Compile Include="trash\MakeDeliveryControl.Designer.cs">
       <DependentUpon>MakeDeliveryControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Utillity.cs" />
@@ -181,7 +181,7 @@
     <EmbeddedResource Include="ShowProvidersControl.resx">
       <DependentUpon>ShowProvidersControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MakeDeliveryControl.resx">
+    <EmbeddedResource Include="trash\MakeDeliveryControl.resx">
       <DependentUpon>MakeDeliveryControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="AquariumDatabaseDataSet.xsc">

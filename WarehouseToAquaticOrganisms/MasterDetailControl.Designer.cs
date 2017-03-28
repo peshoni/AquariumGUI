@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace WarehouseToAquaticOrganisms
 {
@@ -36,7 +37,7 @@ namespace WarehouseToAquaticOrganisms
             this._dataGridViewDetail = new System.Windows.Forms.DataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonSaveDelivery = new System.Windows.Forms.Button();
             this._dataGridViewDelivery = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
@@ -101,7 +102,7 @@ namespace WarehouseToAquaticOrganisms
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Details";
             // 
-            // dataGridViewDetail
+            // _dataGridViewDetail
             // 
             this._dataGridViewDetail.AllowUserToAddRows = false;
             this._dataGridViewDetail.AllowUserToDeleteRows = false;
@@ -110,7 +111,7 @@ namespace WarehouseToAquaticOrganisms
             this._dataGridViewDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._dataGridViewDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this._dataGridViewDetail.Location = new System.Drawing.Point(3, 16);
-            this._dataGridViewDetail.Name = "dataGridViewDetail";
+            this._dataGridViewDetail.Name = "_dataGridViewDetail";
             this._dataGridViewDetail.RowTemplate.ReadOnly = true;
             this._dataGridViewDetail.Size = new System.Drawing.Size(397, 274);
             this._dataGridViewDetail.TabIndex = 0;
@@ -125,7 +126,7 @@ namespace WarehouseToAquaticOrganisms
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
+            this.splitContainer1.Panel1.Controls.Add(this.buttonSaveDelivery);
             this.splitContainer1.Panel1.Controls.Add(this._dataGridViewDelivery);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             // 
@@ -137,21 +138,24 @@ namespace WarehouseToAquaticOrganisms
             this.splitContainer1.SplitterDistance = 674;
             this.splitContainer1.TabIndex = 2;
             // 
-            // button1
+            // buttonSaveDelivery
             // 
-            this.button1.Location = new System.Drawing.Point(204, 574);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonSaveDelivery.Enabled = false;
+            this.buttonSaveDelivery.Location = new System.Drawing.Point(517, 561);
+            this.buttonSaveDelivery.Name = "buttonSaveDelivery";
+            this.buttonSaveDelivery.Size = new System.Drawing.Size(141, 31);
+            this.buttonSaveDelivery.TabIndex = 2;
+            this.buttonSaveDelivery.Text = "Save";
+            this.buttonSaveDelivery.UseVisualStyleBackColor = true;
+            this.buttonSaveDelivery.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dataGridViewDelivery
+            // _dataGridViewDelivery
             // 
+            this._dataGridViewDelivery.BackgroundColor = System.Drawing.SystemColors.Window;
             this._dataGridViewDelivery.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._dataGridViewDelivery.GridColor = System.Drawing.SystemColors.Window;
             this._dataGridViewDelivery.Location = new System.Drawing.Point(19, 290);
-            this._dataGridViewDelivery.Name = "dataGridViewDelivery";
+            this._dataGridViewDelivery.Name = "_dataGridViewDelivery";
             this._dataGridViewDelivery.Size = new System.Drawing.Size(639, 256);
             this._dataGridViewDelivery.TabIndex = 1;
             this._dataGridViewDelivery.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridViewDelivery_RowsAdded);
@@ -171,7 +175,7 @@ namespace WarehouseToAquaticOrganisms
             // propertyGrid1
             // 
             this.propertyGrid1.AllowDrop = true;
-            this.propertyGrid1.CategoryForeColor = System.Drawing.SystemColors.Window;
+            this.propertyGrid1.CategoryForeColor = System.Drawing.SystemColors.InfoText;
             this.propertyGrid1.CommandsForeColor = System.Drawing.SystemColors.Control;
             this.propertyGrid1.CommandsVisibleIfAvailable = false;
             this.propertyGrid1.DisabledItemForeColor = System.Drawing.SystemColors.Desktop;
@@ -182,7 +186,7 @@ namespace WarehouseToAquaticOrganisms
             this.propertyGrid1.HelpVisible = false;
             this.propertyGrid1.Location = new System.Drawing.Point(10, 64);
             this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.PropertySort = System.Windows.Forms.PropertySort.Categorized;
+            this.propertyGrid1.PropertySort = System.Windows.Forms.PropertySort.Alphabetical;
             this.propertyGrid1.Size = new System.Drawing.Size(614, 178);
             this.propertyGrid1.TabIndex = 2;
             this.propertyGrid1.ToolbarVisible = false;
@@ -286,6 +290,6 @@ namespace WarehouseToAquaticOrganisms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PropertyGrid propertyGrid1;
         private System.Windows.Forms.DataGridView _dataGridViewDelivery;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonSaveDelivery;
     }
 }

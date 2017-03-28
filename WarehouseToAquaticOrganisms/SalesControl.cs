@@ -16,7 +16,9 @@ namespace WarehouseToAquaticOrganisms
     public partial class SalesControl : UserControl
     {
         private enum TypeOfPartner {Type = 0, Person = 1, Company = 2 }
-
+        private DataGridViewTextBoxColumn _productName;
+        private DataGridViewTextBoxColumn _quantity;
+        private DataGridViewTextBoxColumn _averagePrice;
         /// <summary>
         /// //////////////////////////////////////////////////////////////// opravi kato napravish tablica v bazata
         /// </summary>
@@ -49,10 +51,21 @@ namespace WarehouseToAquaticOrganisms
             loadComboBoxes();
             //////////////////////////////////////////////
 
- 
+
             //CreateTable();
-            
-            
+
+            createAvailableGridContent();
+        }
+
+        private void createAvailableGridContent()
+        {
+           
+
+            DataGridViewColumn [] array = {
+            Utillity.createDatagridViewTextBoxColumn("Product","ProductID", "ProductName", true),
+            Utillity.createDatagridViewTextBoxColumn("Quantity", "quantity", "Quantity", false),
+            Utillity.createDatagridViewTextBoxColumn("Delivery price", "Price", "DeliveryPrice", false) };
+             
         }
 
         //private void CreateTable()
@@ -64,7 +77,7 @@ namespace WarehouseToAquaticOrganisms
         //    textColumnVAT = Utillity.createDatagridViewTextBoxColumn("VAT", "vatColumn", "colVAT", 30, false);
         //    comboWithArticles = Utillity.createDataGridViewComboboxColumn("TYPE", 40);
         //    dataGridView1.Columns.AddRange(textColumnNumberOfRow, comboWithArticles, textColumnPieces, textColumnPrice, textColumnVAT);
-            
+
         //}
 
         private void loadComboBoxes()
@@ -178,19 +191,5 @@ namespace WarehouseToAquaticOrganisms
             }
         }
 
-        private void dataGridView1_CellContentClick( object sender, DataGridViewCellEventArgs e )
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick_1( object sender, DataGridViewCellEventArgs e )
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick_2( object sender, DataGridViewCellEventArgs e )
-        {
-
-        }
     }
 }

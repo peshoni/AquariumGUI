@@ -20,7 +20,7 @@ namespace WarehouseToAquaticOrganisms
     public partial class MainForm : Form
 
     {
-        private MakeDeliveryControl _supplyControl;
+      //  private MakeDeliveryControl _supplyControl;
         private SalesControl _salesControl;
 
         private ShowCompaniesControl _companyesControl;
@@ -62,7 +62,7 @@ namespace WarehouseToAquaticOrganisms
 
         private void CreateControls()
         {
-            _supplyControl = new MakeDeliveryControl(_proviederCompanyManager,_warehouse,_deliveryList);
+          //  _supplyControl = new MakeDeliveryControl(_proviederCompanyManager,_warehouse,_deliveryList);
         //    _deliveryControl = new ShowDeliveryControl(_deliveryList); 
             _salesControl = new SalesControl(_personManager, _clientCompanyManager);
 
@@ -73,7 +73,7 @@ namespace WarehouseToAquaticOrganisms
 
             _masterDetailControl = new MasterDetailControl(_proviederCompanyManager,_warehouse);
 
-            Control [] controls = { _supplyControl, _salesControl, _persondControl, _companyesControl, _providersControl, _masterDetailControl };
+            Control [] controls = {/* _supplyControl,*/ _salesControl, _persondControl, _companyesControl, _providersControl, _masterDetailControl };
             foreach (var item in controls)
             {
                 item.Dock = DockStyle.Fill;
@@ -105,12 +105,6 @@ namespace WarehouseToAquaticOrganisms
                 case "createSupplyToolStripMenuItem":
                     disposeAllExceptThisControl(_masterDetailControl);
                     break;
-                case "showSalesToolStripMenuItem":
-                   
-                    disposeAllExceptThisControl(_supplyControl);
-                    break;
-
-                    
                 case "insertNewPersonToolStripMenuItem":
                     FormPerson form = new FormPerson(_personManager, _persondControl);
                     form.ShowDialog(this);

@@ -36,7 +36,6 @@ namespace WarehouseToAquaticOrganisms
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeSaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showSalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.supplyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createSupplyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.partnersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,8 +79,7 @@ namespace WarehouseToAquaticOrganisms
             // salesToolStripMenuItem
             // 
             this.salesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.makeSaleToolStripMenuItem,
-            this.showSalesToolStripMenuItem});
+            this.makeSaleToolStripMenuItem});
             this.salesToolStripMenuItem.Name = "salesToolStripMenuItem";
             resources.ApplyResources(this.salesToolStripMenuItem, "salesToolStripMenuItem");
             // 
@@ -90,12 +88,6 @@ namespace WarehouseToAquaticOrganisms
             this.makeSaleToolStripMenuItem.Name = "makeSaleToolStripMenuItem";
             resources.ApplyResources(this.makeSaleToolStripMenuItem, "makeSaleToolStripMenuItem");
             this.makeSaleToolStripMenuItem.Click += new System.EventHandler(this.menuClick);
-            // 
-            // showSalesToolStripMenuItem
-            // 
-            this.showSalesToolStripMenuItem.Name = "showSalesToolStripMenuItem";
-            resources.ApplyResources(this.showSalesToolStripMenuItem, "showSalesToolStripMenuItem");
-            this.showSalesToolStripMenuItem.Click += new System.EventHandler(this.menuClick);
             // 
             // supplyToolStripMenuItem
             // 
@@ -226,10 +218,9 @@ namespace WarehouseToAquaticOrganisms
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.closeOrNo);
             this.SizeChanged += new System.EventHandler(this.sizeChanged);
-            this.WindowState = FormWindowState.Normal;
-            this.WindowState = FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelMain.ResumeLayout(false);
@@ -260,7 +251,6 @@ namespace WarehouseToAquaticOrganisms
         private System.Windows.Forms.ToolStripMenuItem companyesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem insertNewCompanyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem makeSaleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem showSalesToolStripMenuItem;
         private ToolStripLabel pageStatus;
         private AquariumDatabaseDataSet aquariumDatabaseDataSet1;
         private Button buttonEN;

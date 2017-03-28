@@ -19,6 +19,48 @@ namespace WarehouseToAquaticOrganisms.DBClasses
             return getListWithProducts();
         }
         /// <summary>
+        /// Getts list with available articles.
+        /// </summary>
+        /// <returns><see cref="List<see cref=" TestDeliveryClass"/>>"/></returns>
+        public List <TestDeliveryClass> GetAvailableProductsproperties() {
+            return getAvailable();
+        }
+        /// <summary>
+        /// Getts list with available articles.
+        /// </summary>
+        /// <returns></returns>
+        private List<TestDeliveryClass> getAvailable()
+        {
+            List<TestDeliveryClass> list = new List<TestDeliveryClass>();
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+                string sql =
+                    @"select 
+pro. name,
+SUM(row.Quantity),
+AVG(row.SalePrice) 
+from Document doc, RowOfDocuments row, Product pro
+where 
+doc.isDelivery=1 and doc.ID = row.DocumentID and row.ProdutID = pro.ID
+GROUP BY pro.Name;";
+                using (SqlCommand command = new SqlCommand(sql, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        TestDeliveryClass product = new TestDeliveryClass();
+                        product.ProductName = reader.GetString(0);
+                        product.Quantity  = reader.GetInt32(1);
+                        product.DeliveryPrice = reader.GetDecimal(2);
+                        list.Add(product);
+                    }
+                }
+            }
+            return list;
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -109,6 +151,7 @@ SELECT
 Provider.Name, 
 Provider.Phone, 
 Provider.Account_person, 
+Provider.Bulstat,
 [Document].Date,
 [Document].isPaid
 FROM            [Document] INNER JOIN
@@ -124,8 +167,10 @@ FROM            [Document] INNER JOIN
                         test.DocID = reader.GetInt32(0);
                         test.ProviderName = reader.GetString(3); 
                         test.Phone = reader.GetString(4);
-                        test.AccountablePerson = reader.GetString(5); 
-                        test.IsPaid = reader.GetBoolean(7);
+                        test.AccountablePerson = reader.GetString(5);
+                        test.Bulstat = reader.GetString(6);
+                        test.DateTime = reader.GetDateTime(7);
+                        test.IsPaid = reader.GetBoolean(8);
                         list.Add(test);
                     }
                 }
@@ -137,15 +182,15 @@ FROM            [Document] INNER JOIN
         {
             addProduct(_warehouse.Provider, _warehouse.Delivery);
         }
+        //private void addProduct( Company provider, List<TestDeliveryClass> delivery )
+        //{
+        //    if (delivery != null)
+        //    {
+        //       // Table.Add(++ID, delivery);
+        //        InsertDeliveryIntoDBtableDelivery(provider, delivery);
+        //    }
+        //}
         private void addProduct( Company provider, List<TestDeliveryClass> delivery )
-        {
-            if (delivery != null)
-            {
-               // Table.Add(++ID, delivery);
-                InsertDeliveryIntoDBtableDelivery(provider, delivery);
-            }
-        }
-        private void InsertDeliveryIntoDBtableDelivery( Company provider, List<TestDeliveryClass> delivery )
         {
             if (delivery != null)
             {
@@ -156,6 +201,7 @@ FROM            [Document] INNER JOIN
                     using (var transaction = con.BeginTransaction("DeliveryTransaction"))
                     {
                         TestDeliveryClass del = new TestDeliveryClass();
+                        
                         //del.
                         int DocID = saveDocumentandGetID(provider,del);
 
@@ -214,6 +260,7 @@ FROM            [Document] INNER JOIN
              isDelivery
             ,ProviderID 
             ,isPaid
+            ,Date
 )
         OUTPUT INSERTED.ID
 
@@ -221,12 +268,16 @@ FROM            [Document] INNER JOIN
            (@isDelivery
            ,@ProviderID
            ,@isPaid
+           ,@Date
             )";
                     using (SqlCommand command = new SqlCommand(sql, con))
                     {
+                         
                         command.Parameters.AddWithValue("@isDelivery", true);
                         command.Parameters.AddWithValue("@ProviderID", provider.ID);
                         command.Parameters.AddWithValue("@isPaid", false);
+                        command.Parameters.AddWithValue("@Date", System.DateTime.Now);
+                        
 
                         primaryKey = Convert.ToInt32(command.ExecuteScalar());
                     }
