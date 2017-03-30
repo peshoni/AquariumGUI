@@ -33,15 +33,15 @@ namespace WarehouseToAquaticOrganisms
             dataGridViewProviders.AutoGenerateColumns = false;
             dataGridViewProviders.Columns.Clear();
 
-            buttonColumnUpdate = Utillity.createDatagridViewButtonColumn("Update", "update", "buttonUpdate");
-            buttonColumnDelete = Utillity.createDatagridViewButtonColumn("Delete", "delete", "buttonDelete");
+            buttonColumnUpdate = DataGridViewUtillity.createDatagridViewButtonColumn("Update", "update", "buttonUpdate");
+            buttonColumnDelete = DataGridViewUtillity.createDatagridViewButtonColumn("Delete", "delete", "buttonDelete");
 
-            idColumn = Utillity.createDatagridViewTextBoxColumn("ID", "columnID", "ID", true);
-            nameColumn = Utillity.createDatagridViewTextBoxColumn("Name", "columnName", "Name", true);
-            bulstatColumn = Utillity.createDatagridViewTextBoxColumn("Bulstat", "columnBulstat", "Bulstat", true);
-            accountPersonColumn = Utillity.createDatagridViewTextBoxColumn("Account person", "columnAccountPerson", "Account_person", true);
-            addressColumn = Utillity.createDatagridViewTextBoxColumn("Address", "columnAddress", "Address", true);
-            phoneColumn = Utillity.createDatagridViewTextBoxColumn("Phone", "columnPhone", "Phone", true);
+            idColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("ID", "columnID", "ID", true);
+            nameColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Name", "columnName", "Name", true);
+            bulstatColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Bulstat", "columnBulstat", "Bulstat", true);
+            accountPersonColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Account person", "columnAccountPerson", "Account_person", true);
+            addressColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Address", "columnAddress", "Address", true);
+            phoneColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Phone", "columnPhone", "Phone", true);
 
             dataGridViewProviders.Columns.AddRange(idColumn, nameColumn, bulstatColumn, accountPersonColumn, phoneColumn, buttonColumnUpdate, buttonColumnDelete);
         }

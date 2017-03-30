@@ -21,67 +21,57 @@ namespace WarehouseToAquaticOrganisms
 
     {
       //  private MakeDeliveryControl _supplyControl;
-        private SalesControl _salesControl;
-
+        private SalesMasterDetailControl _salesControl;
         private ShowCompaniesControl _companyesControl;
         private ShowPersonsControl _persondControl;
         private ShowProvidersControl _providersControl;
-
-        private MasterDetailControl _masterDetailControl;
-       // private ShowDeliveryControl _deliveryControl;
+         
 
         private PersonManager _personManager ;
         private CompanyManager _clientCompanyManager;
         private CompanyManager _proviederCompanyManager;
-      //  private DeliveryManager _deliveryList;
-      private DeliveryManager2 _deliveryManager;
-        private Warehouse _warehouse;
+        private DeliveryManager _deliveryManager;
+        private SaleManager _saleManager;
 
-
-
+        private DeliveryMasterDetailControl _masterDetailControl;
+         
         public MainForm()
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("bg");
-            InitializeComponent(); 
-            _personManager = new PersonManager();
-            _clientCompanyManager = new CompanyManager(false);
-            _proviederCompanyManager = new CompanyManager(true); 
-
-            _warehouse = new Warehouse();
-            _deliveryManager = new DeliveryManager2(_warehouse);
-        //    _deliveryList = new DeliveryManager(_warehouse,_proviederCompanyManager);
-          
-
+            InitializeComponent();
+            CreateDBManagers(); 
             CreateControls(); 
         }
 
-       
-
-        private void sizeChanged( object sender, EventArgs e ) {
-            this.panelMain.Size = this.Size; 
+        private void CreateDBManagers()
+        {
+            _personManager = new PersonManager();
+            _clientCompanyManager = new CompanyManager(false);
+            _proviederCompanyManager = new CompanyManager(true);
+            _deliveryManager = new DeliveryManager();
+            _saleManager = new SaleManager();
         }
-
         private void CreateControls()
         {
-          //  _supplyControl = new MakeDeliveryControl(_proviederCompanyManager,_warehouse,_deliveryList);
-        //    _deliveryControl = new ShowDeliveryControl(_deliveryList); 
-            _salesControl = new SalesControl(_personManager, _clientCompanyManager,_deliveryManager);
-
+            _salesControl = new SalesMasterDetailControl(_personManager, _clientCompanyManager, _deliveryManager, _saleManager);
             _persondControl = new ShowPersonsControl(_personManager);
             _companyesControl = new ShowCompaniesControl(_clientCompanyManager);
             _providersControl = new ShowProvidersControl(_proviederCompanyManager);
+            _masterDetailControl = new DeliveryMasterDetailControl(_proviederCompanyManager, _deliveryManager);
 
-
-            _masterDetailControl = new MasterDetailControl(_proviederCompanyManager,_warehouse,_deliveryManager);
-
-            Control [] controls = {/* _supplyControl,*/ _salesControl, _persondControl, _companyesControl, _providersControl, _masterDetailControl };
+            Control [] controls = { _salesControl, _persondControl, _companyesControl, _providersControl, _masterDetailControl };
             foreach (var item in controls)
             {
                 item.Dock = DockStyle.Fill;
                 item.Hide();
+                panelMain.Controls.Add(item);
             }
-            panelMain.Controls.AddRange(controls);
         }
+        private void sizeChanged( object sender, EventArgs e ) {
+            this.panelMain.Size = this.Size; 
+        }
+
+      
 
         private void menuClick( object sender, EventArgs e ) {
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
@@ -89,8 +79,7 @@ namespace WarehouseToAquaticOrganisms
             switch (item.Name)
             {       // menu Companies: shows all companies in grid.
                 case "companyesToolStripMenuItem":
-                    disposeAllExceptThisControl(_companyesControl);
-                   
+                    disposeAllExceptThisControl(_companyesControl); 
                     break; 
                     // Menu Providers: shows all providers in grid.
                 case "providersToolStripMenuItem":
@@ -117,9 +106,7 @@ namespace WarehouseToAquaticOrganisms
                 case "addNewProviderToolStripMenuItem":
                     FormCompany formForProviders = new FormCompany(_proviederCompanyManager, _providersControl);
                     formForProviders.ShowDialog(this);
-                    break;
-                
-               
+                    break; 
                 default:
                     break;
             } 
@@ -136,7 +123,7 @@ namespace WarehouseToAquaticOrganisms
             {
                 if (!item.Name.Equals(control.Name))
                 {
-                    item.Hide();//.Dispose();
+                    item.Hide(); 
                 }
             }
         }

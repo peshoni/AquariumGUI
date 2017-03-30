@@ -67,23 +67,17 @@
       <DependentUpon>AquariumDatabaseDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Contragents\Company.cs" />
-    <Compile Include="DBClasses\DeliveryManager2.cs" />
-    <Compile Include="DBClasses\DeliveryTestClass.cs" />
-    <Compile Include="DBClasses\SaleTestClass.cs" />
-    <Compile Include="MasterDetailControl.cs">
+    <Compile Include="DBClasses\DeliveryManager.cs" />
+    <Compile Include="DBClasses\Delivery.cs" />
+    <Compile Include="DBClasses\SaleManager.cs" />
+    <Compile Include="DBClasses\Sale.cs" />
+    <Compile Include="DeliveryMasterDetailControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MasterDetailControl.Designer.cs">
-      <DependentUpon>MasterDetailControl.cs</DependentUpon>
+    <Compile Include="DeliveryMasterDetailControl.Designer.cs">
+      <DependentUpon>DeliveryMasterDetailControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBClasses\Available.cs" />
-    <Compile Include="Observer\Delivery.cs" />
-    <Compile Include="Observer\ObserverPattern.cs" />
     <Compile Include="Observer\Product.cs" />
-    <Compile Include="Observer\Sale.cs" />
-    <Compile Include="Observer\SalesList.cs" />
-    <Compile Include="trash\DeliveryManager.cs" />
-    <Compile Include="Observer\Warehouse.cs" />
     <Compile Include="DBClasses\CompanyManager.cs" />
     <Compile Include="DBClasses\DBManager.cs" />
     <Compile Include="DBClasses\PersonManager.cs" />
@@ -122,11 +116,11 @@
     <Compile Include="Contragents\Partner.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SalesControl.cs">
+    <Compile Include="SalesMasterDetailControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SalesControl.Designer.cs">
-      <DependentUpon>SalesControl.cs</DependentUpon>
+    <Compile Include="SalesMasterDetailControl.Designer.cs">
+      <DependentUpon>SalesMasterDetailControl.cs</DependentUpon>
     </Compile>
     <Compile Include="ShowProvidersControl.cs">
       <SubType>UserControl</SubType>
@@ -140,10 +134,10 @@
     <Compile Include="trash\MakeDeliveryControl.Designer.cs">
       <DependentUpon>MakeDeliveryControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utillity.cs" />
+    <Compile Include="DataGridViewUtillity.cs" />
     <Compile Include="Validator.cs" />
-    <EmbeddedResource Include="MasterDetailControl.resx">
-      <DependentUpon>MasterDetailControl.cs</DependentUpon>
+    <EmbeddedResource Include="DeliveryMasterDetailControl.resx">
+      <DependentUpon>DeliveryMasterDetailControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowCompanyesControl.resx">
       <DependentUpon>ShowCompanyesControl.cs</DependentUpon>
@@ -176,8 +170,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SalesControl.resx">
-      <DependentUpon>SalesControl.cs</DependentUpon>
+    <EmbeddedResource Include="SalesMasterDetailControl.resx">
+      <DependentUpon>SalesMasterDetailControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowProvidersControl.resx">
       <DependentUpon>ShowProvidersControl.cs</DependentUpon>

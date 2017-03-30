@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace WarehouseToAquaticOrganisms.DBClasses
 {
-   public class SaleTestClass
+   public class Sale
     {
-        private int _companyId;
-        private int _personId;
+        private int docID;
         private string _place;
         private bool _isPaid;
         private int _productId;
@@ -17,37 +16,20 @@ namespace WarehouseToAquaticOrganisms.DBClasses
         private int _quantity;
         private decimal _salePrice;
         private decimal _deliveryPrice;
+        private bool _isDelivery;
+
+        private string _personName;
+
+        private string _companyName;
+        private string _companyBulstat;
+        private int _companyId;
 
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public SaleTestClass() { }
+        public Sale() { }
         #region get and set
-        public int CompanyId
-        {
-            get
-            {
-                return _companyId;
-            }
-
-            set
-            {
-                _companyId = value;
-            }
-        }
-
-        public int PersonId
-        {
-            get
-            {
-                return _personId;
-            }
-
-            set
-            {
-                _personId = value;
-            }
-        }
+       
 
         public string Place
         {
@@ -137,6 +119,79 @@ namespace WarehouseToAquaticOrganisms.DBClasses
             set
             {
                 _deliveryPrice = value;
+            }
+        }
+
+        public bool IsDelivery
+        {
+            get
+            {
+                return false;
+            } 
+        }
+
+        public int DocID
+        {
+            get
+            {
+                return docID;
+            }
+
+            set
+            {
+                docID = value;
+            }
+        }
+
+        public string PersonName
+        {
+            get
+            {
+                return _personName;
+            }
+
+            set
+            {
+                _personName = value;
+            }
+        }
+
+        public string CompanyName
+        {
+            get
+            {
+                return _companyName;
+            }
+
+            set
+            {
+                _companyName = value;
+            }
+        }
+
+        public string CompanyBulstat
+        {
+            get
+            {
+                return _companyBulstat;
+            }
+
+            set
+            {
+                _companyBulstat = value;
+            }
+        }
+
+        public int CompanyId
+        {
+            get
+            {
+                return _companyId;
+            }
+
+            set
+            {
+                _companyId = value;
             }
         }
         #endregion

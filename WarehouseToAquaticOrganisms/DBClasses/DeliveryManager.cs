@@ -7,32 +7,26 @@ using WarehouseToAquaticOrganisms.Classes;
 
 namespace WarehouseToAquaticOrganisms.DBClasses
 {
-    public class DeliveryManager2 : ObserverPattern
-    {
-        private string ConnectionString;
-        public DeliveryManager2( Warehouse warehouse ) {
-            ConnectionString = DBUtill.GetConnectionString();
-            this._warehouse = warehouse;
-            this._warehouse.attachObserver(this);
-        }
-        public List<TestDeliveryClass> getProducts() {
+    public class DeliveryManager 
+    {  
+        public List<Delivery> getProducts() {
             return getListWithProducts();
         }
         /// <summary>
         /// Getts list with available articles.
         /// </summary>
-        /// <returns><see cref="List<see cref=" TestDeliveryClass"/>>"/></returns>
-        public List <TestDeliveryClass> GetAvailableProductsproperties() {
+        /// <returns><see cref="List<see cref=" Delivery"/>>"/></returns>
+        public List <Delivery> GetAvailableProductsproperties() {
             return getAvailable();
         }
         /// <summary>
         /// Getts list with available articles.
         /// </summary>
         /// <returns></returns>
-        private List<TestDeliveryClass> getAvailable()
+        private List<Delivery> getAvailable()
         {
-            List<TestDeliveryClass> list = new List<TestDeliveryClass>();
-            using (SqlConnection con = new SqlConnection(ConnectionString))
+            List<Delivery> list = new List<Delivery>();
+            using (SqlConnection con = DBManager.GetConnection())
             {
                 con.Open();
                 string sql =
@@ -42,14 +36,14 @@ SUM(row.Quantity),
 AVG(row.SalePrice) 
 from Document doc, RowOfDocuments row, Product pro
 where 
-doc.isDelivery=1 and doc.ID = row.DocumentID and row.ProdutID = pro.ID
+ doc.ID = row.DocumentID and row.ProdutID = pro.ID
 GROUP BY pro.Name;";
                 using (SqlCommand command = new SqlCommand(sql, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        TestDeliveryClass product = new TestDeliveryClass();
+                        Delivery product = new Delivery();
                         product.ProductName = reader.GetString(0);
                         product.Quantity  = reader.GetInt32(1);
                         var de = reader.GetDecimal(2);
@@ -65,10 +59,10 @@ GROUP BY pro.Name;";
         /// 
         /// </summary>
         /// <returns></returns>
-        private List<TestDeliveryClass> getListWithProducts()
+        private List<Delivery> getListWithProducts()
         {
-            List<TestDeliveryClass> list = new List<TestDeliveryClass>();
-            using (SqlConnection con = new SqlConnection(ConnectionString))
+            List<Delivery> list = new List<Delivery>();
+            using (SqlConnection con = DBManager.GetConnection())
             {
                 con.Open();
                 string sql =
@@ -80,7 +74,7 @@ GROUP BY pro.Name;";
                 {
                     while (reader.Read())
                     {
-                        TestDeliveryClass product = new TestDeliveryClass();
+                        Delivery product = new Delivery();
                         product.ProductID = reader.GetInt32(0);
                         product.ProductName= reader.GetString(1);
                         list.Add(product);
@@ -94,10 +88,10 @@ GROUP BY pro.Name;";
         /// </summary>
         /// <param name="DocID">Id of the document.</param>
         /// <returns></returns>
-        public List<TestDeliveryClass> getListWithDeliveryDetails( int DocID )
+        public List<Delivery> getListWithDeliveryDetails( int DocID )
         {
-            List<TestDeliveryClass> list = new List<TestDeliveryClass>();
-            using (SqlConnection con = new SqlConnection(ConnectionString))
+            List<Delivery> list = new List<Delivery>();
+            using (SqlConnection con = DBManager.GetConnection())
             {
                 con.Open();
                 string sql = String.Format(@"
@@ -116,18 +110,11 @@ doc.id = row.DocumentID and row.ProdutID = prod.ID and doc.id = {0}
                 {
                     while (reader.Read())
                     { 
-                        TestDeliveryClass test = new TestDeliveryClass();
+                        Delivery test = new Delivery();
                         test.ProductName = reader.GetString(0);
                         test.DocID = reader.GetInt32(1);
                         test.Quantity = reader.GetInt32(2);
-                        test.DeliveryPrice = reader.GetDecimal(3);
-                         
-
-                        //test.ProviderName = reader.GetString(3);
-                        //test.AccountablePerson = reader.GetString(4);
-                        //test.Bulstat = reader.GetString(5);
-                        //test.Phone = reader.GetString(6);
-                        //test.IsPaid = reader.GetBoolean(7);
+                        test.DeliveryPrice = reader.GetDecimal(3); 
                         list.Add(test);
                     }
                 }
@@ -137,11 +124,11 @@ doc.id = row.DocumentID and row.ProdutID = prod.ID and doc.id = {0}
         /// <summary>
         /// Gets list with all deliveries.
         /// </summary>
-        /// <returns> List with <see cref="TestDeliveryClass"/></returns>
-        public List<TestDeliveryClass> getList()
+        /// <returns> List with <see cref="Delivery"/></returns>
+        public List<Delivery> getList()
         { 
-            List<TestDeliveryClass> list = new List<TestDeliveryClass>();
-            using (SqlConnection con = new SqlConnection(ConnectionString))
+            List<Delivery> list = new List<Delivery>();
+            using (SqlConnection con = DBManager.GetConnection())
             {
                 con.Open();
                 string sql = @"
@@ -163,7 +150,7 @@ FROM            [Document] INNER JOIN
                 {
                     while (reader.Read())
                     {
-                        TestDeliveryClass test = new TestDeliveryClass();
+                        Delivery test = new Delivery();
                         
                         test.DocID = reader.GetInt32(0);
                         test.ProviderName = reader.GetString(3); 
@@ -178,35 +165,24 @@ FROM            [Document] INNER JOIN
             }
             return list;
         }
-
-        public override void update()
-        {
-            addProduct(_warehouse.Provider, _warehouse.Delivery);
+        public void makeDelivery( Company provider, List<Delivery> delivery ) {
+            addProduct(provider, delivery);
         }
-        //private void addProduct( Company provider, List<TestDeliveryClass> delivery )
-        //{
-        //    if (delivery != null)
-        //    {
-        //       // Table.Add(++ID, delivery);
-        //        InsertDeliveryIntoDBtableDelivery(provider, delivery);
-        //    }
-        //}
-        private void addProduct( Company provider, List<TestDeliveryClass> delivery )
+      
+        private void addProduct( Company provider, List<Delivery> delivery )
         {
             if (delivery != null)
             {
-                using (SqlConnection con = new SqlConnection(ConnectionString))
+                using (SqlConnection con = DBManager.GetConnection())
                 {
                     con.Open();
 
                     using (var transaction = con.BeginTransaction("DeliveryTransaction"))
                     {
-                        TestDeliveryClass del = new TestDeliveryClass();
+                        Delivery del = new Delivery();
                         
                         //del.
-                        int DocID = saveDocumentandGetID(provider,del);
-
-
+                        int DocID = saveDocumentandGetID(provider,del); 
                         // Start a local transaction.                    
                         //// For each...
                         delivery.ForEach(element =>
@@ -226,34 +202,26 @@ FROM            [Document] INNER JOIN
             ,@ProductID)";
                             using (SqlCommand command = new SqlCommand(comm, con))
                             {
-                                command.Transaction = transaction;
-                               
+                                command.Transaction = transaction; 
                                 command.Parameters.AddWithValue("@DocumentID", DocID);
                                 command.Parameters.AddWithValue("@Quantity", element.Quantity);
                                 command.Parameters.AddWithValue("@DeliveryPrice", element.DeliveryPrice);
-                                command.Parameters.AddWithValue("@ProductID", element.ProductID);
-
-                                //command.Parameters.AddWithValue("@isDelivery", true);
-                                //command.Parameters.AddWithValue("@ProviderID", element.ProviderID);
-                                //command.Parameters.AddWithValue("@ProductID", element.ProductID);
-                                //command.Parameters.AddWithValue("@Quantity", element.Quantity);
-                                //command.Parameters.AddWithValue("@DeliveryPrice", element.Price);
+                                command.Parameters.AddWithValue("@ProductID", element.ProductID); 
                                 command.ExecuteNonQuery();
                             }
                         });
-                        transaction.Commit();
-
+                        transaction.Commit(); 
                     }
                 }
             }
         }
 
-        private int saveDocumentandGetID( Company provider, TestDeliveryClass delivery )
+        private int saveDocumentandGetID( Company provider, Delivery delivery )
         {
             int primaryKey = 0;
             if (delivery != null)
             {
-                using (SqlConnection con = new SqlConnection(ConnectionString))
+                using (SqlConnection con = DBManager.GetConnection())
                 {
                     con.Open();
                     string sql = @"
@@ -272,14 +240,11 @@ FROM            [Document] INNER JOIN
            ,@Date
             )";
                     using (SqlCommand command = new SqlCommand(sql, con))
-                    {
-                         
+                    { 
                         command.Parameters.AddWithValue("@isDelivery", true);
                         command.Parameters.AddWithValue("@ProviderID", provider.ID);
                         command.Parameters.AddWithValue("@isPaid", false);
-                        command.Parameters.AddWithValue("@Date", System.DateTime.Now);
-                        
-
+                        command.Parameters.AddWithValue("@Date", System.DateTime.Now); 
                         primaryKey = Convert.ToInt32(command.ExecuteScalar());
                     }
                 }

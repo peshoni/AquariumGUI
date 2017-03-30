@@ -66,7 +66,7 @@ namespace WarehouseToAquaticOrganisms.DBClasses
             int primaryKey = 0;
             if (company != null)
             {                
-                using (SqlConnection con = new SqlConnection(ConnectionString))
+                using (SqlConnection con = DBManager.GetConnection())
                 {
                     con.Open();
                     string sql = string.Format(@"

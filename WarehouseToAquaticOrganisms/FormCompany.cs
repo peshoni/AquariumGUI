@@ -72,9 +72,7 @@ namespace WarehouseToAquaticOrganisms
                     this.Dispose();
                     break;
                 case false:
-                    _company.Name = textBoxName.Text;
-                    //  int res;
-                    //  int.TryParse(textBoxEGN.Text, out res);
+                    _company.Name = textBoxName.Text; 
                     _company.Bulstat = textBoxBulstat.Text;
                     _company.AcountablePerson = textBoxAccPerson.Text;
                     _company.Address = textBoxAddress.Text;
@@ -85,8 +83,7 @@ namespace WarehouseToAquaticOrganisms
                 default:
                     break;
             }
-            _dataGrid.Refresh();
-           
+            _dataGrid.Refresh(); 
             Dispose();
         }
     }

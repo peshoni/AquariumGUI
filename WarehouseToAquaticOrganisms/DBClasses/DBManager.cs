@@ -24,12 +24,14 @@ namespace WarehouseToAquaticOrganisms.DBClasses
         }
 
 
-        //public static SqlConnection GetConnection() {
-        //    if (connection==null)
-        //    {
-        //        connection = new SqlConnection(GetConnectionString());
-        //    }
-        //    return connection;
-        //} 
+        public static SqlConnection GetConnection()
+        {
+            SqlConnection connection = null;
+            if (connection == null)
+            {
+                connection = new SqlConnection(GetConnectionString());
+            }
+            return connection;
+        }
     }
 }

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace WarehouseToAquaticOrganisms
 {
-    partial class MasterDetailControl
+    partial class DeliveryMasterDetailControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -147,7 +147,7 @@ namespace WarehouseToAquaticOrganisms
             this.buttonSaveDelivery.TabIndex = 2;
             this.buttonSaveDelivery.Text = "Save";
             this.buttonSaveDelivery.UseVisualStyleBackColor = true;
-            this.buttonSaveDelivery.Click += new System.EventHandler(this.button1_Click);
+            this.buttonSaveDelivery.Click += new System.EventHandler(this.buttonSaveDelivery_Click);
             // 
             // _dataGridViewDelivery
             // 
@@ -159,6 +159,7 @@ namespace WarehouseToAquaticOrganisms
             this._dataGridViewDelivery.Size = new System.Drawing.Size(639, 256);
             this._dataGridViewDelivery.TabIndex = 1;
             this._dataGridViewDelivery.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridViewDelivery_RowsAdded);
+            this._dataGridViewDelivery.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this._dataGridViewDelivery_RowsRemoved); 
             // 
             // groupBox3
             // 
@@ -198,7 +199,7 @@ namespace WarehouseToAquaticOrganisms
             this.comboBoxChooseProvider.Name = "comboBoxChooseProvider";
             this.comboBoxChooseProvider.Size = new System.Drawing.Size(251, 21);
             this.comboBoxChooseProvider.TabIndex = 1;
-            this.comboBoxChooseProvider.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBoxChooseProvider.SelectedIndexChanged += new System.EventHandler(this.comboBoxChooseProvider_SelectedIndexChanged);
             // 
             // label1
             // 

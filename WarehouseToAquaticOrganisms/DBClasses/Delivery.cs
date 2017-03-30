@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace WarehouseToAquaticOrganisms.DBClasses
 {
-   public class TestDeliveryClass 
+   public class Delivery : IDataErrorInfo
     {
         private int docID;
         private string providerName;
@@ -22,7 +23,7 @@ namespace WarehouseToAquaticOrganisms.DBClasses
 
         private string productName;
         private int quantity;
-        public TestDeliveryClass() {
+        public Delivery() {
         }
 
         public int DocID
@@ -166,6 +167,30 @@ namespace WarehouseToAquaticOrganisms.DBClasses
             set
             {
                 productID = value;
+            }
+        }
+
+        public string Error
+        {
+            get
+            {
+                return string.Empty;
+            }
+        }
+
+        public string this [string columnName]
+        {
+            get
+            {
+
+                if ("Quantity" == columnName && Quantity == 0)
+                    return "Please fill Quantity";
+
+
+                else if ("DeliveryPrice" == columnName && DeliveryPrice==0)
+                    return "Please fill Price";
+
+                return string.Empty;
             }
         }
     }

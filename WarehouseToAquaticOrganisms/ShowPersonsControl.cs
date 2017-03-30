@@ -35,14 +35,14 @@ namespace WarehouseToAquaticOrganisms
             dataGridView1.DataSource = _personManager;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.Columns.Clear();
-            nameColumn = Utillity.createDatagridViewTextBoxColumn("Name","columnName","Name",false);
-            egnColumn = Utillity.createDatagridViewTextBoxColumn("Egn","columnEGN", "EGN", false);
-            addressColumn = Utillity.createDatagridViewTextBoxColumn("Address","columnAddress", "Address", false);
-            phoneColumn = Utillity.createDatagridViewTextBoxColumn("Phone", "columnPhone","Phone", false);
-            idColumn = Utillity.createDatagridViewTextBoxColumn("ID","ColumnID", "ID", false);
+            nameColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Name","columnName","Name",false);
+            egnColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Egn","columnEGN", "EGN", false);
+            addressColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Address","columnAddress", "Address", false);
+            phoneColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Phone", "columnPhone","Phone", false);
+            idColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("ID","ColumnID", "ID", false);
 
-            buttonColumnUpdate = Utillity.createDatagridViewButtonColumn("Update", "update", "buttonUpdate");
-            buttonColumnDelete = Utillity.createDatagridViewButtonColumn("Delete", "delete", "buttonDelete");
+            buttonColumnUpdate = DataGridViewUtillity.createDatagridViewButtonColumn("Update", "update", "buttonUpdate");
+            buttonColumnDelete = DataGridViewUtillity.createDatagridViewButtonColumn("Delete", "delete", "buttonDelete");
             dataGridView1.Columns.AddRange(idColumn,nameColumn, egnColumn, addressColumn, phoneColumn, buttonColumnUpdate, buttonColumnDelete);
             //dataGridView1.DataBindings;
         }

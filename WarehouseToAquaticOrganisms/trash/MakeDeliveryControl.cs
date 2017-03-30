@@ -17,10 +17,10 @@ namespace WarehouseToAquaticOrganisms
     public partial class MakeDeliveryControl : UserControl
     {
         private CompanyManager _manager;
-        private Warehouse _warehouse;
-        private DeliveryManager _deliveryManager;
+      //  private Warehouse _warehouse;
+     //   private DeliveryManager _deliveryManager;
         private Company company;
-        private BindingList<Delivery> listWithDeliveries;
+       // private BindingList<Delivery> listWithDeliveries;
 
 
 
@@ -36,12 +36,12 @@ namespace WarehouseToAquaticOrganisms
  
        
 
-        public MakeDeliveryControl(CompanyManager manager, Warehouse warehouse, DeliveryManager deliveryManager)
+        public MakeDeliveryControl(CompanyManager manager )
         {
             InitializeComponent();
             this._manager = manager;
-            this._warehouse = warehouse;
-            this._deliveryManager = deliveryManager;
+           
+           
             comboBoxChooseProvider.DataSource = _manager ;
             comboBoxChooseProvider.DisplayMember = "Name";
             // List with products..
@@ -51,17 +51,17 @@ namespace WarehouseToAquaticOrganisms
 
 
             // new list for creating deliveries
-            listWithDeliveries = new BindingList<Delivery>(); 
+          //  listWithDeliveries = new BindingList<Delivery>(); 
             dataGridView1.Visible = false;
 
-            dataGridView1.DataSource = listWithDeliveries;
+           // dataGridView1.DataSource = listWithDeliveries;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.Columns.Clear();
             
-            dataGridView1.Columns.Add(Utillity.createDataGridViewComboboxColumn("Product", _deliveryManager.ListWithProducts, "Product", "Name", "Id"));
+           // dataGridView1.Columns.Add(DataGridViewUtillity.createDataGridViewComboboxColumn("Product", _deliveryManager.ListWithProducts, "Product", "Name", "Id"));
 
-            dataGridView1.Columns.Add(Utillity.createDatagridViewTextBoxColumn("Quantity", "Quantity", "Quantity", false));
-            dataGridView1.Columns.Add(Utillity.createDatagridViewTextBoxColumn("Price", "Price", "Price", false));
+            dataGridView1.Columns.Add(DataGridViewUtillity.createDatagridViewTextBoxColumn("Quantity", "Quantity", "Quantity", false));
+            dataGridView1.Columns.Add(DataGridViewUtillity.createDatagridViewTextBoxColumn("Price", "Price", "Price", false));
             dataGridView1.AllowUserToAddRows = true;
             panel1.BackColor = Color.Gainsboro;
 
@@ -70,19 +70,19 @@ namespace WarehouseToAquaticOrganisms
 
 
             
-            this.dataGridViewMaster.DataSource = _deliveryManager.DeliveryList;
+           // this.dataGridViewMaster.DataSource = _deliveryManager.DeliveryList;
 
 
 
             /////////////////////////////////////////////////////////////////////////////////
             dataGridViewMaster.AutoGenerateColumns = false;
             dataGridViewMaster.Columns.Clear();
-            timeColumn = Utillity.createDatagridViewTextBoxColumn("Time", "columnDateTime", "DateTime", true);
-            idColumn = Utillity.createDatagridViewTextBoxColumn("ID", "columnID", "ID", true);
-            providerColumn = Utillity.createDatagridViewTextBoxColumn("Provider", "columnProvider", "ProviderName", true);
-            productColumn = Utillity.createDatagridViewTextBoxColumn("Product", "columnProduct", "ProductName", true);
-            quantityCol = Utillity.createDatagridViewTextBoxColumn("Quantity", "columnQuantity", "Quantity", true);
-            priceColumn = Utillity.createDatagridViewTextBoxColumn("DeliveryPrice", "columnDeliveryPrice", "Price", true);
+            timeColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Time", "columnDateTime", "DateTime", true);
+            idColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("ID", "columnID", "ID", true);
+            providerColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Provider", "columnProvider", "ProviderName", true);
+            productColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Product", "columnProduct", "ProductName", true);
+            quantityCol = DataGridViewUtillity.createDatagridViewTextBoxColumn("Quantity", "columnQuantity", "Quantity", true);
+            priceColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("DeliveryPrice", "columnDeliveryPrice", "Price", true);
 
             dataGridViewMaster.Columns.AddRange(timeColumn, idColumn, providerColumn, productColumn, quantityCol, priceColumn); 
             
@@ -121,27 +121,9 @@ namespace WarehouseToAquaticOrganisms
         private void button1_Click( object sender, EventArgs e )
         {
 
-            Delivery row = new Delivery();
-            // row.Provider = company.Name;
-            row.DateTime = System.DateTime.Now;
+           
 
-            row.ProviderID = company.ID;
-            row.ProductID = 3;
-            row.Quantity = 555;
-            row.Price = 0.25m;
-            Delivery row2 = new Delivery();
-            //  row2.Provider = company.Name;
-            row2.DateTime = System.DateTime.Now;
-            row2.ProviderID = company.ID;
-            row2.ProductID = 2;
-            row2.Quantity = 666;
-            row2.Price = 0.25m;
-
-
-            listWithDeliveries.Add(row);
-            listWithDeliveries.Add(row2);
-         //   _warehouse.MakeDelivery(listWithDeliveries.ToList());
-
+ 
           
 
         }
@@ -362,7 +344,7 @@ namespace WarehouseToAquaticOrganisms
         public override void Refresh()
         {
             dataGridViewMaster.DataSource = null;
-            dataGridViewMaster.DataSource = _deliveryManager.DeliveryList;
+           
         }
 
         private void dataGridView1_CellParsing( object sender, DataGridViewCellParsingEventArgs e )

@@ -104,19 +104,7 @@ namespace WarehouseToAquaticOrganisms
 
            // tryEnableSaveButton();
         }
-
-        private void textAddresChanged( object sender, EventArgs e )
-        {
-            throw new NotImplementedException();
-        }
  
-        private void tryEnableSaveButton()
-        {
-            //if (/*indexChanged && */isEgnEntered/* && weightEntered*/)
-            //{
-            //    buttonSave.Enabled = true;
-            //}
-        }
 
         private void buttonSave_Click( object sender, EventArgs e )
         { 
@@ -129,8 +117,7 @@ namespace WarehouseToAquaticOrganisms
                     _person.Egn = res;
                     _person.Address = textBoxAddress.Text;
                     _person.PhoneNumber = textBoxPhoneNumber.Text;  
-                    _manager.Add(_person); 
-
+                    _manager.Add(_person);  
                     break;
                 case false:
                     _person.Name = textBoxName.Text;
@@ -139,15 +126,13 @@ namespace WarehouseToAquaticOrganisms
                     _person.Egn = result;
                     _person.Address = textBoxAddress.Text;
                     _person.PhoneNumber = textBoxPhoneNumber.Text; 
-                    _manager.Update(_person); 
-
+                    _manager.Update(_person);  
                     break;
                 default:
                     break;
             }
             _personControl.refreshList();
-            Dispose();
-
+            Dispose(); 
         }
     }
 }

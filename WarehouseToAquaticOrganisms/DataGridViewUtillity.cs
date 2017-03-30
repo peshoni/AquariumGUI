@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace WarehouseToAquaticOrganisms
 {
-   public class Utillity
+   public class DataGridViewUtillity
     {
-        private Utillity() { }
+        private DataGridViewUtillity() { }
 
 
         public static DataGridViewButtonColumn createDatagridViewButtonColumn( string buttonHeader, string buttonText, string buttonName )
@@ -64,6 +64,17 @@ namespace WarehouseToAquaticOrganisms
             textBoxColumn.DataPropertyName = DataPropertyName;
             textBoxColumn.ReadOnly = ReadOnly; 
             return textBoxColumn;
+        }
+
+        public static DataGridViewCheckBoxColumn createDataGridViewCheckBoxColumn( string name, string headerText, string propertyName, bool readOnly ) {
+            DataGridViewCheckBoxColumn column = new DataGridViewCheckBoxColumn();
+            column.Name = name;
+            column.HeaderText = headerText;
+            column.DataPropertyName = propertyName;  
+            column.ReadOnly =  readOnly ;         
+           
+
+            return column;
         }
     }
 }
