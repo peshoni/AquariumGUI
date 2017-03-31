@@ -51,7 +51,6 @@ namespace WarehouseToAquaticOrganisms
             this.buttonBG = new System.Windows.Forms.Button();
             this.panelMain = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.aquariumDatabaseDataSet1 = new WarehouseToAquaticOrganisms.AquariumDatabaseDataSet();
             this.buttonEN = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
@@ -189,11 +188,9 @@ namespace WarehouseToAquaticOrganisms
             // 
             this.progressBar1.BackColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.progressBar1, "progressBar1");
+            this.progressBar1.Maximum = 1000;
             this.progressBar1.Name = "progressBar1";
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            
             // 
             // aquariumDatabaseDataSet1
             // 
@@ -239,8 +236,7 @@ namespace WarehouseToAquaticOrganisms
         private System.Windows.Forms.ToolStripMenuItem createSupplyToolStripMenuItem;
         private System.Windows.Forms.Button buttonBG;
        
-        private System.Windows.Forms.Panel panelMain;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Panel panelMain; 
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ToolStripMenuItem pROVIDERSToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem providersToolStripMenuItem;

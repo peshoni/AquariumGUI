@@ -8,9 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WarehouseToAquaticOrganisms.DBClasses;
-using System.Data.SqlClient; 
+using System.Data.SqlClient;
 using WarehouseToAquaticOrganisms.Classes;
 using Observer;
+using System.Threading;
+using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace WarehouseToAquaticOrganisms
 {
@@ -86,13 +89,13 @@ namespace WarehouseToAquaticOrganisms
              DataGridViewUtillity.createDatagridViewTextBoxColumn("Date", "dateTimeColumn", "DateTime", true),
              DataGridViewUtillity.createDatagridViewTextBoxColumn("Phone number", "phoneColumn", "Phone", true)
             }; 
-            list = _deliveryManager.getList().OrderByDescending(e=> e.DocID).ToList(); 
+
+            list = _deliveryManager.getList(DateTime.Today,null).OrderByDescending(e=> e.DocID).ToList(); 
             bindingList = new BindingList<Delivery>(list);
             dataGridViewMaster.DataSource = bindingList; 
             dataGridViewMaster.AutoGenerateColumns = false;
             dataGridViewMaster.Columns.Clear();
-            dataGridViewMaster.Columns.AddRange(array);
-          
+            dataGridViewMaster.Columns.AddRange(array); 
         }
      /// <summary>
      /// Creates column for product info. 
@@ -147,13 +150,25 @@ namespace WarehouseToAquaticOrganisms
         private void buttonSaveDelivery_Click( object sender, EventArgs e )
         {
             _deliveryManager.makeDelivery(_company, deliveryList.ToList());
-           // _warehouse.MakeDelivery(_company, deliveryList.ToList());
-            dataGridViewMaster.DataSource = null;
-            list = _deliveryManager.getList().OrderByDescending(element => element.DocID).ToList();
-            dataGridViewMaster.DataSource = list;
+            RefreshDataGridWithMasterValues(DateTime.Now,null); 
             deliveryList.Clear();
             buttonSaveDelivery.Enabled = false;
         }
+
+        private void dateTimePickerSearch_ValueChanged( object sender, EventArgs e )
+        {
+          RefreshDataGridWithMasterValues(dateTimePickerSearch.Value,null);//   Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+          
+          //  MessageBox.Show(dateTimePickerSearch.Value.ToShortDateString() + "plus one day " + dateTimePickerSearch.Value.AddDays(1).ToShortDateString());
+
+        }
+        private void RefreshDataGridWithMasterValues(DateTime dateTime, string nameClause)
+        {
+            dataGridViewMaster.DataSource = null;
+            list = _deliveryManager.getList(dateTime, nameClause).OrderByDescending(element => element.DocID).ToList();
+            dataGridViewMaster.DataSource = list;
+        }
+
         /// <summary>
         /// If one rows added, unlock save button.
         /// </summary>
@@ -178,6 +193,16 @@ namespace WarehouseToAquaticOrganisms
             {
                 buttonSaveDelivery.Enabled = false;
             }
+        }
+
+        private void groupBox1_Enter( object sender, EventArgs e )
+        {
+
+        }
+
+        private void textBoxSearchName_TextChanged( object sender, EventArgs e )
+        { 
+            RefreshDataGridWithMasterValues(DateTime.Now, textBoxSearchName.Text); 
         }
     }
 }

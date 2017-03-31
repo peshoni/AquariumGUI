@@ -107,7 +107,7 @@ namespace WarehouseToAquaticOrganisms.DBClasses
                         Person person = new Person();
                         person.ID = reader.GetInt32(0);
                         person.Name = reader.GetString(1);
-                        person.Egn = reader.GetInt32(2);
+                        person.Egn = reader.GetInt64(2);
                         person.Address = reader.GetString(3);
                         person.PhoneNumber = reader.GetString(4);
                         list.Add(person);

@@ -105,7 +105,11 @@ namespace WarehouseToAquaticOrganisms
            // tryEnableSaveButton();
         }
  
-
+        /// <summary>
+        /// Save new or update user info.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSave_Click( object sender, EventArgs e )
         { 
             switch (isNewObject)
@@ -121,8 +125,9 @@ namespace WarehouseToAquaticOrganisms
                     break;
                 case false:
                     _person.Name = textBoxName.Text;
-                    int result;
-                    int.TryParse(textBoxEGN.Text, out result);
+                    long result;
+                    string egn = textBoxEGN.Text;
+                    long.TryParse(egn, out result);
                     _person.Egn = result;
                     _person.Address = textBoxAddress.Text;
                     _person.PhoneNumber = textBoxPhoneNumber.Text; 

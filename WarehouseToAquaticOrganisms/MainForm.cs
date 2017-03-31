@@ -20,7 +20,8 @@ namespace WarehouseToAquaticOrganisms
     public partial class MainForm : Form
 
     {
-      //  private MakeDeliveryControl _supplyControl;
+        private System.Windows.Forms.Timer progresTimer;
+        //  private MakeDeliveryControl _supplyControl;
         private SalesMasterDetailControl _salesControl;
         private ShowCompaniesControl _companyesControl;
         private ShowPersonsControl _persondControl;
@@ -34,13 +35,38 @@ namespace WarehouseToAquaticOrganisms
         private SaleManager _saleManager;
 
         private DeliveryMasterDetailControl _masterDetailControl;
+        private Control currentControl;
          
+
         public MainForm()
         {
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo("bg");
-            InitializeComponent();
+           Thread.CurrentThread.CurrentUICulture = new CultureInfo("bg");
+
+            InitializeComponent();  
             CreateDBManagers(); 
-            CreateControls(); 
+            CreateControls();
+
+            progresTimer = new System.Windows.Forms.Timer();
+            progresTimer.Tick += new EventHandler(this.incrementProgresBar);
+            progresTimer.Interval = (50);
+            
+          progresTimer.Enabled = true;
+          //  progresTimer.Start();
+            progressBar1.Maximum = 500;
+
+        }
+
+        private void incrementProgresBar( object sender, EventArgs e )
+        {
+            if (progressBar1.Value <= 500)
+            {
+                progressBar1.Increment(10);
+            }
+            else {
+                progresTimer.Stop();
+            }
+           
+
         }
 
         private void CreateDBManagers()
@@ -79,21 +105,26 @@ namespace WarehouseToAquaticOrganisms
             switch (item.Name)
             {       // menu Companies: shows all companies in grid.
                 case "companyesToolStripMenuItem":
-                    disposeAllExceptThisControl(_companyesControl); 
+                    disposeAllExceptThisControl(_companyesControl);
+                    currentControl = _companyesControl;
                     break; 
                     // Menu Providers: shows all providers in grid.
                 case "providersToolStripMenuItem":
                     disposeAllExceptThisControl(_providersControl);
+                    currentControl = _providersControl;
                     break;
                     //Menu Persons -  shows all persons in grid
                 case "pERSONToolStripMenuItem":
                     disposeAllExceptThisControl(_persondControl);
+                    currentControl = _persondControl;
                     break;
                 case "makeSaleToolStripMenuItem":
                     disposeAllExceptThisControl(_salesControl);
+                    currentControl = _salesControl;
                     break;
                 case "createSupplyToolStripMenuItem":
                     disposeAllExceptThisControl(_masterDetailControl);
+                    currentControl = _masterDetailControl;
                     break;
                 case "insertNewPersonToolStripMenuItem":
                     FormPerson form = new FormPerson(_personManager, _persondControl);
@@ -130,6 +161,7 @@ namespace WarehouseToAquaticOrganisms
 
         private void changeToBG_click( object sender, EventArgs e )
         {
+           
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("bg");
             buttonBG.Enabled = false;
             buttonEN.Enabled = true;
@@ -138,18 +170,14 @@ namespace WarehouseToAquaticOrganisms
         }
 
         private void changeToEN_click( object sender, EventArgs e )
-        {
+        { 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
             buttonBG.Enabled = true;
             buttonEN.Enabled = false;
             this.Controls.Clear();
-            this.InitializeComponent(); 
+            this.InitializeComponent();
         }
-       
-        private void backgroundWorker1_DoWork( object sender, DoWorkEventArgs e )
-        {
-            MessageBox.Show("Hi.");
-        }
+        
 
         private void closeOrNo( object sender, FormClosingEventArgs e )
         {
@@ -171,5 +199,6 @@ namespace WarehouseToAquaticOrganisms
             //    }
             //}
         }
+ 
     }
 }

@@ -30,21 +30,19 @@ namespace WarehouseToAquaticOrganisms
         public ShowPersonsControl(PersonManager manager)
         {
             InitializeComponent();
-            this._personManager = manager;
-            //splitContainerShowPersons.Panel2
+            this._personManager = manager; 
             dataGridView1.DataSource = _personManager;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.Columns.Clear();
             nameColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Name","columnName","Name",false);
             egnColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Egn","columnEGN", "EGN", false);
             addressColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Address","columnAddress", "Address", false);
-            phoneColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Phone", "columnPhone","Phone", false);
+            phoneColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Phone", "columnPhone","PhoneNumber", false);
             idColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("ID","ColumnID", "ID", false);
 
             buttonColumnUpdate = DataGridViewUtillity.createDatagridViewButtonColumn("Update", "update", "buttonUpdate");
             buttonColumnDelete = DataGridViewUtillity.createDatagridViewButtonColumn("Delete", "delete", "buttonDelete");
-            dataGridView1.Columns.AddRange(idColumn,nameColumn, egnColumn, addressColumn, phoneColumn, buttonColumnUpdate, buttonColumnDelete);
-            //dataGridView1.DataBindings;
+            dataGridView1.Columns.AddRange(idColumn,nameColumn, egnColumn, addressColumn, phoneColumn, buttonColumnUpdate, buttonColumnDelete); 
         }
         private void DataGridForm_Load( object sender, EventArgs e )
         {
@@ -58,23 +56,22 @@ namespace WarehouseToAquaticOrganisms
             if (row >= 0)
             {
                 int ID = (int)dataGridView1.Rows [row].Cells ["ColumnID"].Value; ;
-                Person handle = _personManager.Find(element => element.ID == ID);
+                Person person = _personManager.Find(element => element.ID == ID);
                 if (e.ColumnIndex == buttonColumnUpdate.Index)
                 {                   
-                    FormPerson form = new FormPerson(handle, _personManager, this);
+                    FormPerson form = new FormPerson(person, _personManager, this);
                     form.ShowDialog(this); 
                                 
                 }
                 if (e.ColumnIndex==buttonColumnDelete.Index)
-                {
-                    ////////////////////////////////////////////////////////////////////////////////////////
-                    String str = WarehouseToAquaticOrganisms.Properties.Resources.questionEN;
+                { 
+                  string str = WarehouseToAquaticOrganisms.Properties.Resources.questionEN;
                   DialogResult result = MessageBox.Show(str, " Delete ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     switch (result)
                     {
                         case DialogResult.Yes:
                             {
-                                _personManager.Remove(handle);
+                                _personManager.Remove(person);
                                 break;
                             }
                         default:

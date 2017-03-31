@@ -5,15 +5,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Observer;
+using WarehouseToAquaticOrganisms;
+using WarehouseToAquaticOrganisms.Classes;
 
 namespace WarehouseToAquaticOrganisms.DBClasses
 {
    public class SaleManager 
     {
+        const string company ="Company";
+        const string person = "Person";
         public SaleManager() {
 
         }
-        public List<Sale> getList()
+        public List<Sale> getListWithCompanySales()
         {
             List<Sale> list = new List<Sale>();
             using (SqlConnection con = DBManager.GetConnection())
@@ -53,7 +57,7 @@ where
         /// </summary>
         /// <param name="DocID">Id of the document.</param>
         /// <returns></returns>
-        public List<Sale> getListWithSaleDetails( int DocID )
+        public List<Sale> getListWithSaleCompanyDetails( int DocID )
         {
             List<Sale> list = new List<Sale>();
             using (SqlConnection con = DBManager.GetConnection())
@@ -87,6 +91,115 @@ doc.id = row.DocumentID and row.ProdutID = prod.ID and doc.id = {0}
                 }
             }
             return list;
+        }
+        /// <summary>
+        /// Sale operation
+        /// </summary>
+        /// <param name="partner"></param>
+        /// <param name="delivery"></param>
+        public void makeSale( Partner partner, List<Sale> sale )
+        {
+            saveSaleIntoDB( partner, sale);
+        }
+        private void saveSaleIntoDB( Partner patrner, List<Sale> sale )
+        {
+            if (sale != null)
+            {
+                using (SqlConnection con = DBManager.GetConnection())
+                {
+                    con.Open();
+                    
+                    using (var transaction = con.BeginTransaction("SaleTransaction"))
+                    {
+                        Sale del = new Sale();
+
+                        //del.
+                        int DocID = saveDocumentandGetID(patrner, del);
+                        // Start a local transaction.                    
+                        //// For each...
+                        sale.ForEach(element =>
+                        {
+                            string comm = @" 
+        INSERT INTO RowOfDocuments(
+            DocumentID 
+            ,Quantity
+            ,DeliveryPrice
+            ,ProdutID
+            ,SalePrice
+            )
+
+        VALUES 
+           (@DocumentID
+            ,@Quantity
+            ,@DeliveryPrice
+            ,@ProductID
+            ,@SalePrice)";
+                            using (SqlCommand command = new SqlCommand(comm, con))
+                            {
+                                command.Transaction = transaction;
+                                command.Parameters.AddWithValue("@DocumentID", DocID);
+                                command.Parameters.AddWithValue("@Quantity", element.Quantity);
+                                command.Parameters.AddWithValue("@DeliveryPrice", element.DeliveryPrice);
+                                command.Parameters.AddWithValue("@ProductID", element.ProductId);
+                                command.Parameters.AddWithValue("@SalePrice", element.SalePrice);
+                                command.ExecuteNonQuery();
+                            }
+                        });
+                        transaction.Commit();
+                    }
+                }
+            }
+        }
+
+        private int saveDocumentandGetID( Partner partner, Sale sale )
+        {
+         //   string com = typeof(Company).Name.ToString();
+            string BuyerID =null;
+            switch (partner.GetType().Name)
+            {
+                case company:
+                    BuyerID = "CompanyID";
+                    break;
+
+                case person:
+                    BuyerID = "PersonID";
+                    break;
+                default:
+                    break;
+            }
+            int primaryKey = 0;
+            if (sale != null)
+            {
+                using (SqlConnection con = DBManager.GetConnection())
+                {
+                    con.Open();
+                    string sql =string.Format( @"
+        INSERT INTO Document(
+             isDelivery
+            ,{0}
+            ,isPaid
+            ,Date
+           
+)
+        OUTPUT INSERTED.ID
+
+        VALUES 
+           (@isDelivery
+           ,@BuyerID
+           ,@isPaid
+           ,@Date
+            )",BuyerID );
+                    using (SqlCommand command = new SqlCommand(sql, con))
+                    {
+                        command.Parameters.AddWithValue("@isDelivery", false);
+                        command.Parameters.AddWithValue("@BuyerID", partner.ID);
+                        command.Parameters.AddWithValue("@isPaid", false);
+                        command.Parameters.AddWithValue("@Date", System.DateTime.Now);
+                        primaryKey = Convert.ToInt32(command.ExecuteScalar());
+                    }
+                }
+            }
+            return primaryKey;
         }
     }
 }

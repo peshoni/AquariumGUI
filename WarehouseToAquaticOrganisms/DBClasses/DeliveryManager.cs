@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
+using System.Threading;
 using AquariumGUI;
 using Observer;
 using WarehouseToAquaticOrganisms.Classes;
@@ -29,24 +31,27 @@ namespace WarehouseToAquaticOrganisms.DBClasses
             using (SqlConnection con = DBManager.GetConnection())
             {
                 con.Open();
-                string sql =
-                    @"select 
-pro. name,
-SUM(row.Quantity),
-AVG(row.SalePrice) 
-from Document doc, RowOfDocuments row, Product pro
+                string sql = @"
+select 
+        pro.ID,
+        pro.Name,
+        SUM(row.Quantity) available,
+        AVG(row.SalePrice) average 
+from 
+        Document doc, RowOfDocuments row, Product pro
 where 
- doc.ID = row.DocumentID and row.ProdutID = pro.ID
-GROUP BY pro.Name;";
+        doc.ID = row.DocumentID and row.ProdutID = pro.ID
+GROUP BY pro.ID,pro.Name; ";
                 using (SqlCommand command = new SqlCommand(sql, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         Delivery product = new Delivery();
-                        product.ProductName = reader.GetString(0);
-                        product.Quantity  = reader.GetInt32(1);
-                        var de = reader.GetDecimal(2);
+                        product.ProductID = reader.GetInt32(0);
+                        product.ProductName = reader.GetString(1);
+                        product.Quantity  = reader.GetInt32(2);
+                        var de = reader.GetDecimal(3);
                         product.DeliveryPrice = (decimal)de; 
                         list.Add(product);
                     }
@@ -125,33 +130,49 @@ doc.id = row.DocumentID and row.ProdutID = prod.ID and doc.id = {0}
         /// Gets list with all deliveries.
         /// </summary>
         /// <returns> List with <see cref="Delivery"/></returns>
-        public List<Delivery> getList()
-        { 
+        public List<Delivery> getList(DateTime dateTime, string nameKey)
+        {
+            CultureInfo current = Thread.CurrentThread.CurrentCulture;
+            string whereTimeClause = "";
+            string nameClause  = "";
+            if (nameKey!=null)
+            {
+                nameClause = String.Format("where Provider.Name LIKE '{0}%'", nameKey); 
+            } else     
+            // If is today make standard query..
+            if (!dateTime.Equals(DateTime.Today))
+            { 
+                Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+                DateTime tomorow = dateTime.AddDays(1);
+               // whereTimeClause = "Where [Document].Date Between '"+ dateTime.ToShortDateString() +"' and '"+ tomorow.ToShortDateString()+"'";
+                whereTimeClause= string.Format("Where [Document].Date Between '{0}' and '{1}'", dateTime.ToShortDateString(), tomorow.ToShortDateString());
+                Thread.CurrentThread.CurrentUICulture = current;
+            }
+           
             List<Delivery> list = new List<Delivery>();
             using (SqlConnection con = DBManager.GetConnection())
             {
                 con.Open();
-                string sql = @"
+                string sql =string.Format(@"
 SELECT       
-[Document].ID,
-[Document].isDelivery, 
-[Document].ProviderID, 
-Provider.Name, 
-Provider.Phone, 
-Provider.Account_person, 
-Provider.Bulstat,
-[Document].Date,
-[Document].isPaid
+    [Document].ID,
+    [Document].isDelivery, 
+    [Document].ProviderID, 
+    Provider.Name, 
+    Provider.Phone, 
+    Provider.Account_person, 
+    Provider.Bulstat,
+    [Document].Date,
+    [Document].isPaid
 FROM            [Document] INNER JOIN
-                         Provider ON [Document].ProviderID = Provider.ID    ";
+                         Provider ON [Document].ProviderID = Provider.ID  {0}{1}",whereTimeClause,nameClause);
 
                 using (SqlCommand command = new SqlCommand(sql, con))
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
+                using (SqlDataReader reader = command.ExecuteReader()) 
+                { 
                     while (reader.Read())
                     {
-                        Delivery test = new Delivery();
-                        
+                        Delivery test = new Delivery(); 
                         test.DocID = reader.GetInt32(0);
                         test.ProviderName = reader.GetString(3); 
                         test.Phone = reader.GetString(4);
@@ -165,6 +186,11 @@ FROM            [Document] INNER JOIN
             }
             return list;
         }
+        /// <summary>
+        /// Makes delivery from given provider.
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <param name="delivery"></param>
         public void makeDelivery( Company provider, List<Delivery> delivery ) {
             addProduct(provider, delivery);
         }

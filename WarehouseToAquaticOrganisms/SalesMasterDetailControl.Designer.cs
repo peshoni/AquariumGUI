@@ -250,7 +250,7 @@ namespace WarehouseToAquaticOrganisms
             this.buttonSave.TabIndex = 5;
             this.buttonSave.Text = "button1";
             this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.button1_Click);
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // groupBox1
             // 
@@ -316,6 +316,7 @@ namespace WarehouseToAquaticOrganisms
             this.treeView1.Name = "treeView1";
             treeNode1.Name = "Node0";
             treeNode1.Text = "Goldfish";
+            treeNode1.ToolTipText = "asdasd";
             treeNode2.Name = "Node1";
             treeNode2.Text = "Swordfish";
             treeNode3.Name = "Node2";

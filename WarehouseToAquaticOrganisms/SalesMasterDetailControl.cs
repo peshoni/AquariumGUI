@@ -16,6 +16,7 @@ namespace WarehouseToAquaticOrganisms
     public partial class SalesMasterDetailControl : UserControl
     {
         private enum TypeOfPartner {Type = 0, Person = 1, Company = 2 }
+       // private DataGridViewTextBoxColumn _productId;
         private DataGridViewTextBoxColumn _productName;
         private DataGridViewTextBoxColumn _quantity;
         private DataGridViewTextBoxColumn _averagePrice;
@@ -38,12 +39,12 @@ namespace WarehouseToAquaticOrganisms
         private BindingList<Sale> statisticList;
 
 
-        private DataGridViewTextBoxColumn textColumnNumberOfRow;
+        private DataGridViewTextBoxColumn textColumnProductId;
         private DataGridViewTextBoxColumn textColumnArticle;
         private DataGridViewTextBoxColumn textColumnPieces; 
         private DataGridViewTextBoxColumn textColumnPrice;
         //  private DataGridViewTextBoxColumn textColumnVAT;
-        private DataGridViewComboBoxColumn comboWithArticles;
+     //   private DataGridViewComboBoxColumn comboWithArticles;
 
         /// <summary>
         /// company Master columns
@@ -59,6 +60,8 @@ namespace WarehouseToAquaticOrganisms
         private DataGridViewTextBoxColumn detailDocId;
         private DataGridViewTextBoxColumn detailQuantity;
         private DataGridViewTextBoxColumn detailSalePrice;
+
+        private Partner partner;
 
         public SalesMasterDetailControl(PersonManager personManager, CompanyManager companyManager,DeliveryManager deliveryManager,SaleManager salesManager)
         {
@@ -91,14 +94,21 @@ namespace WarehouseToAquaticOrganisms
              
              //   clearGrid(dataGridViewDetail);
             dataGridViewMaster.Columns.AddRange(new DataGridViewColumn [] { masterDocID,masterCompanyNameColumn, masterCompanyBulstatColumn , masterIsPaidColumn });
-            statisticList = new BindingList<Sale>(_saleManager.getList());
-        
-            dataGridViewMaster.DataSource = statisticList;
-            dataGridViewMaster.Refresh();
+
+            loadMasterInfo();
+           
 
         }
+
+        private void loadMasterInfo()
+        {
+            statisticList = new BindingList<Sale>(_saleManager.getListWithCompanySales()); 
+            dataGridViewMaster.DataSource = statisticList;
+            dataGridViewMaster.Refresh();
+        }
+
         /// <summary>
-        /// 
+        /// Creates detail grid
         /// </summary>
         private void cerateDetailGrid()
         {           
@@ -115,14 +125,15 @@ namespace WarehouseToAquaticOrganisms
 
         private void createSaleGrid()
         {
-           // textColumnNumberOfRow= Utillity.createDatagridViewTextBoxColumn("Product", "ProductID", "ProductName", true);
+            // textColumnNumberOfRow= Utillity.createDatagridViewTextBoxColumn("Product", "ProductID", "ProductName", true);
+            textColumnProductId = DataGridViewUtillity.createDatagridViewTextBoxColumn("ID", "ProductID", "ProductId", true);
             textColumnArticle = DataGridViewUtillity.createDatagridViewTextBoxColumn("Product", "ProductID", "ProductName", true);
             textColumnPieces = DataGridViewUtillity.createDatagridViewTextBoxColumn("Quantity", "Quantity", "Quantity", false);
             textColumnPrice = DataGridViewUtillity.createDatagridViewTextBoxColumn("Sale Price", "SalePrice", "SalePrice", true);
             this.textColumnPrice.DefaultCellStyle = getPriceStyle();
             dataGridViewSaleList.AllowUserToAddRows = false;
             clearGrid(dataGridViewSaleList);
-            dataGridViewSaleList.Columns.AddRange(new DataGridViewColumn [] { textColumnArticle, textColumnPieces  , textColumnPrice });
+            dataGridViewSaleList.Columns.AddRange(new DataGridViewColumn [] { textColumnProductId, textColumnArticle, textColumnPieces  , textColumnPrice });
 
             saleList = new BindingList<Sale>();
             dataGridViewSaleList.DataSource = saleList;
@@ -149,7 +160,8 @@ namespace WarehouseToAquaticOrganisms
 
         private void createAvailableGridContent()
         {
-            _productName = DataGridViewUtillity.createDatagridViewTextBoxColumn("Product", "ProductID", "ProductName", true);
+          
+            _productName = DataGridViewUtillity.createDatagridViewTextBoxColumn("Product", "ProductName", "ProductName", true);
             _quantity = DataGridViewUtillity.createDatagridViewTextBoxColumn("Quantity", "quantity", "Quantity", false);
             _averagePrice= DataGridViewUtillity.createDatagridViewTextBoxColumn("Delivery price", "Price", "DeliveryPrice", false);          
             this._averagePrice.DefaultCellStyle = getPriceStyle();  
@@ -185,7 +197,7 @@ namespace WarehouseToAquaticOrganisms
             List<Delivery> availableProductsList = _deliveryManager.GetAvailableProductsproperties();
             Delivery choosenObject = availableProductsList.ElementAt(row);
             Sale newRowOfSaleList = new Sale();
-
+            newRowOfSaleList.ProductId = choosenObject.ProductID;
             newRowOfSaleList.ProductName = choosenObject.ProductName;  
             newRowOfSaleList.DeliveryPrice = choosenObject.DeliveryPrice;
             newRowOfSaleList.SalePrice = choosenObject.DeliveryPrice * ((percentProfit / 100) + 1); 
@@ -196,18 +208,31 @@ namespace WarehouseToAquaticOrganisms
         private void loadComboBoxes()
         {
             personCombo = new ComboBox();
-            personCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            personCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;//.DropDownList;
             personCombo.Location = hide;
-            personCombo.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            personCombo.SelectedIndexChanged += new System.EventHandler(this.personCombo_SelectedIndexChanged);
             this.splitContainer3.Panel1.Controls.Add(personCombo);
             
 
             companyCombo = new ComboBox();
-            companyCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            companyCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;// List;
             companyCombo.Location = hide;
-            companyCombo.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            companyCombo.SelectedIndexChanged += new System.EventHandler(this.companyCombo_SelectedIndexChanged);
             this.splitContainer3.Panel1.Controls.Add (companyCombo);
-        } 
+        }
+
+        private void personCombo_SelectedIndexChanged( object sender, EventArgs e )
+        { 
+            partner = _personManager.ElementAt(personCombo.SelectedIndex);
+            propertyGridSelectedClient.SelectedObject = partner; 
+        }
+
+        private void companyCombo_SelectedIndexChanged( object sender, EventArgs e )
+        { 
+            partner = _companyManager.ElementAt(companyCombo.SelectedIndex);
+            propertyGridSelectedClient.SelectedObject = partner; 
+        }
+
         public  void RefreshLists()
         {
             personCombo.DataSource = _personManager; 
@@ -217,12 +242,8 @@ namespace WarehouseToAquaticOrganisms
             companyCombo.DisplayMember = "Name";
         }
         private void comboBox1_SelectedIndexChanged( object sender, EventArgs e )
-        {
-           // ((ComboBox)sender).
-
-           // propertyGridSelectedClient
-            TypeOfPartner type = (TypeOfPartner)comboBox1.SelectedItem;
-           
+        { 
+            TypeOfPartner type = (TypeOfPartner)comboBox1.SelectedItem; 
             switch (type)
             {
                 case TypeOfPartner.Person:
@@ -241,14 +262,17 @@ namespace WarehouseToAquaticOrganisms
             enableSaleProperies(true);
             this.Update(); 
         } 
-        private void button1_Click( object sender, EventArgs e )
+        /// <summary>
+        /// Save created sale list.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonSave_Click( object sender, EventArgs e )
         {
-
-
-
-            //var val = dataGridView1.Rows.Count;// [0].Cells [3].Value.ToString();
-
-            //textBox1.Text = val.ToString();
+            saleList.ToList().ForEach(element => element.Quantity *=-1);
+            _saleManager.makeSale(partner, saleList.ToList());
+            saleList.Clear();
+            loadMasterInfo();
         }
 
         private void dataGridView1_CellClick( object sender, DataGridViewCellEventArgs e )
@@ -266,17 +290,19 @@ namespace WarehouseToAquaticOrganisms
                
             //}
         }
-
+        /// <summary>
+        /// Calculates sum of sale if grid state is changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView1_CellEndEdit( object sender, DataGridViewCellEventArgs e )
         { 
             int row = e.RowIndex;
             if (row >= 0)
             { 
-                // int ID = (int)dataGridView1.Rows [row].Cells ["iDDataGridViewTextBoxColumn"].Value; ;
-                if (e.ColumnIndex == _quantity.Index)//columnPieces.Index)
+                if (e.ColumnIndex == textColumnPieces.Index) 
                 {
-                    calculate();
-                   
+                    calculate(); 
                 } 
             }
         }
@@ -322,9 +348,14 @@ namespace WarehouseToAquaticOrganisms
         }
         private void MasterDetailControl_Load( object sender, EventArgs e )
         {
+
+            dataGridViewAvailable.DataSource = null;
+            dataGridViewAvailable.DataSource = _deliveryManager.GetAvailableProductsproperties();
+ 
             dataGridViewMaster.DataSource = null;
             dataGridViewMaster.DataSource = statisticList;
-           
+            
+
         }
         /// <summary>
         /// Shows details of given document.
@@ -336,7 +367,8 @@ namespace WarehouseToAquaticOrganisms
             int index = ((DataGridView)sender).CurrentCell.RowIndex;
             DataGridViewCell cell = (DataGridViewCell)((DataGridView)sender) [dataGridViewMaster.Columns ["DocumentId"].Index, index];
             int DocID = int.Parse(cell.Value.ToString());
-            dataGridViewDetail.DataSource = new BindingList<Sale>(_saleManager.getListWithSaleDetails(DocID));
-        }  
+            dataGridViewDetail.DataSource = new BindingList<Sale>(_saleManager.getListWithSaleCompanyDetails(DocID));
+        }
+ 
     }
 }

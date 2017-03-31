@@ -8,7 +8,7 @@ namespace WarehouseToAquaticOrganisms.Classes
 {
     public class Person:Partner
     {
-        private int _egn;
+        private long _egn;
 
         public Person() { 
         }
@@ -16,7 +16,7 @@ namespace WarehouseToAquaticOrganisms.Classes
     /// Getters and setters.
     /// </summary>
         #region Getters
-        public int Egn
+        public long Egn
         {
             get
             {
