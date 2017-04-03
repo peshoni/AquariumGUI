@@ -27,8 +27,6 @@ namespace WarehouseToAquaticOrganisms
             DataGridViewComboBoxColumn comboColumn = new DataGridViewComboBoxColumn();
             comboColumn.Width = dividerWidth;
             comboColumn.HeaderText = header;
-
-
             return comboColumn;
         }
 
@@ -37,7 +35,6 @@ namespace WarehouseToAquaticOrganisms
             DataGridViewComboBoxColumn comboColumn = new DataGridViewComboBoxColumn();
             comboColumn.HeaderText = header;
             comboColumn.DataSource = datasource;
-
             comboColumn.DataPropertyName = dataPropertyName;
             comboColumn.DisplayMember = displayMember;
             comboColumn.ValueMember = valueMember;
@@ -59,8 +56,7 @@ namespace WarehouseToAquaticOrganisms
             DataGridViewTextBoxColumn textBoxColumn = new DataGridViewTextBoxColumn(); 
             textBoxColumn.Name = Name;
             textBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            textBoxColumn.HeaderText = Header; 
-            
+            textBoxColumn.HeaderText = Header;
             textBoxColumn.DataPropertyName = DataPropertyName;
             textBoxColumn.ReadOnly = ReadOnly; 
             return textBoxColumn;
@@ -71,10 +67,32 @@ namespace WarehouseToAquaticOrganisms
             column.Name = name;
             column.HeaderText = headerText;
             column.DataPropertyName = propertyName;  
-            column.ReadOnly =  readOnly ;         
-           
-
+            column.ReadOnly =  readOnly ;  
             return column;
+        }
+        /// <summary>
+        /// Setter method for Currency style of DataGridViewTextBox column.
+        /// </summary>
+        /// <returns><see cref="DataGridViewCellStyle"/></returns>
+        public static DataGridViewCellStyle getPriceStyle()
+        {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = "0,00";
+            return dataGridViewCellStyle1;
+        }
+        /// <summary>
+        /// Turns AutoGenerateColumns in false state and clears the grid.
+        /// </summary>
+        /// <param name="dataGridView"></param>
+        public static void clearGrid( DataGridView dataGridView )
+        {
+            if (dataGridView != null)
+            {
+                dataGridView.AutoGenerateColumns = false;
+                dataGridView.Columns.Clear();
+            }
         }
     }
 }

@@ -48,12 +48,10 @@ namespace WarehouseToAquaticOrganisms
 
             progresTimer = new System.Windows.Forms.Timer();
             progresTimer.Tick += new EventHandler(this.incrementProgresBar);
-            progresTimer.Interval = (50);
-            
-          progresTimer.Enabled = true;
-          //  progresTimer.Start();
-            progressBar1.Maximum = 500;
-
+            progresTimer.Interval = (50); 
+          //progresTimer.Enabled = true;
+          //progresTimer.Start();
+            progressBar1.Maximum = 500; 
         }
 
         private void incrementProgresBar( object sender, EventArgs e )
@@ -64,9 +62,7 @@ namespace WarehouseToAquaticOrganisms
             }
             else {
                 progresTimer.Stop();
-            }
-           
-
+            } 
         }
 
         private void CreateDBManagers()
@@ -118,14 +114,13 @@ namespace WarehouseToAquaticOrganisms
                     disposeAllExceptThisControl(_persondControl);
                     currentControl = _persondControl;
                     break;
-                case "makeSaleToolStripMenuItem":
-                    disposeAllExceptThisControl(_salesControl);
-                    currentControl = _salesControl;
-                    break;
-                case "createSupplyToolStripMenuItem":
-                    disposeAllExceptThisControl(_masterDetailControl);
-                    currentControl = _masterDetailControl;
-                    break;
+                //case "makeSaleToolStripMenuItem":
+                  
+                //    break;
+                //case "createSupplyToolStripMenuItem":
+                //    disposeAllExceptThisControl(_masterDetailControl);
+                //    currentControl = _masterDetailControl;
+                //    break;
                 case "insertNewPersonToolStripMenuItem":
                     FormPerson form = new FormPerson(_personManager, _persondControl);
                     form.ShowDialog(this);
@@ -141,8 +136,27 @@ namespace WarehouseToAquaticOrganisms
                 default:
                     break;
             } 
-        } 
+        }
 
+        private void button_Click( object sender, EventArgs e )
+        {
+            Button button = ((Button)sender);
+            switch ((int)button.Tag)
+            {      
+                case 0: /* Delivery page */
+                    disposeAllExceptThisControl(_masterDetailControl);
+                    currentControl = _masterDetailControl;
+                    break;
+                  
+                case 1: /* Sales page */
+                    disposeAllExceptThisControl(_salesControl);
+                    currentControl = _salesControl;
+                    break;
+
+                default:
+                 break;
+            }
+        }
         /// <summary>
         /// Hide all controls except current one which will use.
         /// </summary>
@@ -160,12 +174,11 @@ namespace WarehouseToAquaticOrganisms
         }
 
         private void changeToBG_click( object sender, EventArgs e )
-        {
-           
+        { 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("bg");
             buttonBG.Enabled = false;
             buttonEN.Enabled = true;
-            this.Controls.Clear();
+          //  this.Controls.Clear();
             this.InitializeComponent();
         }
 
@@ -174,7 +187,7 @@ namespace WarehouseToAquaticOrganisms
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
             buttonBG.Enabled = true;
             buttonEN.Enabled = false;
-            this.Controls.Clear();
+          //  this.Controls.Clear();
             this.InitializeComponent();
         }
         
@@ -199,6 +212,6 @@ namespace WarehouseToAquaticOrganisms
             //    }
             //}
         }
- 
+
     }
 }

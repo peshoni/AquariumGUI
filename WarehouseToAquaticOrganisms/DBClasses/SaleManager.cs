@@ -32,9 +32,7 @@ select
 from 
     Document doc, Company com
 where 
-   doc.CompanyID IS NOT NULL and doc.CompanyID = com.ID
-
- "; 
+   doc.CompanyID IS NOT NULL and doc.CompanyID = com.ID"; 
                 using (SqlCommand command = new SqlCommand(sql, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -46,6 +44,39 @@ where
                         sale.CompanyBulstat = reader.GetString(2);
                         sale.IsPaid = reader.GetBoolean(3);
 
+                        list.Add(sale);
+                    }
+                }
+            }
+            return list;
+        }
+
+        public List<Sale> getListWithPersonSales()
+        {
+            List<Sale> list = new List<Sale>();
+            using (SqlConnection con = DBManager.GetConnection())
+            {
+                con.Open();
+                string sql = @"
+select 
+    doc.ID,
+    pers.Name,
+    pers.EGN,
+    doc.isPaid
+from 
+    Document doc,Person pers
+where 
+   doc.PersonID IS NOT NULL and doc.PersonID = pers.ID";
+                using (SqlCommand command = new SqlCommand(sql, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Sale sale = new Sale();
+                        sale.DocID = reader.GetInt32(0);
+                        sale.PersonName = reader.GetString(1);
+                        sale.Egn = reader.GetInt64(2);
+                        sale.IsPaid = reader.GetBoolean(3);
                         list.Add(sale);
                     }
                 }
@@ -72,7 +103,6 @@ row.SalePrice
 from Document doc, RowOfDocuments row,Product prod
 where 
 doc.id = row.DocumentID and row.ProdutID = prod.ID and doc.id = {0} 
-
 ", DocID);
 
 

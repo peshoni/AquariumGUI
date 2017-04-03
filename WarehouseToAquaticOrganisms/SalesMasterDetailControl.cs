@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
+using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using WarehouseToAquaticOrganisms.Classes;
-using WarehouseToAquaticOrganisms.DBClasses; 
-using System.Globalization;
+using WarehouseToAquaticOrganisms.DBClasses;
 
 namespace WarehouseToAquaticOrganisms
 {
@@ -36,7 +38,9 @@ namespace WarehouseToAquaticOrganisms
        // private decimal total;
         private System.Drawing.Point hide=new System.Drawing.Point(-100, -100);
         private BindingList<Sale> saleList;
-        private BindingList<Sale> statisticList;
+        private BindingList<Sale> statisticCompanyList;
+        private BindingList<Sale> statisticPersonList;
+
 
 
         private DataGridViewTextBoxColumn textColumnProductId;
@@ -46,14 +50,8 @@ namespace WarehouseToAquaticOrganisms
         //  private DataGridViewTextBoxColumn textColumnVAT;
      //   private DataGridViewComboBoxColumn comboWithArticles;
 
-        /// <summary>
-        /// company Master columns
-        /// </summary>
-        private DataGridViewTextBoxColumn masterCompanyNameColumn;
-        private DataGridViewTextBoxColumn masterCompanyBulstatColumn;
-        private DataGridViewCheckBoxColumn masterIsPaidColumn; 
-        private DataGridViewTextBoxColumn masterDocID;
-        /// <summary>
+       
+        ///// <summary>
         ///  company detail column
         /// </summary>
         private DataGridViewTextBoxColumn detailProductName;
@@ -78,66 +76,76 @@ namespace WarehouseToAquaticOrganisms
             createAvailableGridContent();
             createSaleGrid();
 
-            createMasterGrid();
+            createMasterGridCompanies();
+            createMasterGridPersons();
             cerateDetailGrid();
         }
-
-
-        private void createMasterGrid()
+        /// <summary>
+        /// Creates Pesrons master grid.
+        /// </summary>
+        private void createMasterGridPersons()
+        {  
+            DataGridViewUtillity.clearGrid(dataGridViewMasterPersons);
+            dataGridViewMasterPersons.Columns.AddRange(new DataGridViewColumn [] {
+            DataGridViewUtillity.createDatagridViewTextBoxColumn("ID", "DocumentId", "DocId", false),
+            DataGridViewUtillity.createDatagridViewTextBoxColumn("Person", "PersonName", "PersonName", true),
+            DataGridViewUtillity.createDatagridViewTextBoxColumn("EGN", "EGN", "Egn", true),
+            DataGridViewUtillity.createDataGridViewCheckBoxColumn("Is paid", "Is paid", "IsPaid", true)});
+            loadPersonMasterInfo();
+        } 
+        /// <summary>
+        /// Creates Company master grid.
+        /// </summary>
+        private void createMasterGridCompanies()
         {
-           clearGrid(dataGridViewMaster);
-            masterCompanyNameColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Company", "CompanyName", "CompanyName", true);
-            masterCompanyBulstatColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Bulstat", "CompanyBulstat", "CompanyBulstat", true);
-            masterIsPaidColumn = DataGridViewUtillity.createDataGridViewCheckBoxColumn("Is paid", "Is paid", "IsPaid", false);
-            masterIsPaidColumn.ReadOnly = true;
-            masterDocID=DataGridViewUtillity.createDatagridViewTextBoxColumn("ID", "DocumentId", "DocId", false);
-             
-             //   clearGrid(dataGridViewDetail);
-            dataGridViewMaster.Columns.AddRange(new DataGridViewColumn [] { masterDocID,masterCompanyNameColumn, masterCompanyBulstatColumn , masterIsPaidColumn });
-
-            loadMasterInfo();
-           
-
-        }
-
-        private void loadMasterInfo()
+            DataGridViewUtillity.clearGrid(dataGridViewMasterCompanies); 
+            dataGridViewMasterCompanies.Columns.AddRange(new DataGridViewColumn [] {
+            DataGridViewUtillity.createDatagridViewTextBoxColumn("ID", "DocumentId", "DocId", false),
+            DataGridViewUtillity.createDatagridViewTextBoxColumn("Company", "CompanyName", "CompanyName", true),
+            DataGridViewUtillity.createDatagridViewTextBoxColumn("Bulstat", "CompanyBulstat", "CompanyBulstat", true),
+            DataGridViewUtillity.createDataGridViewCheckBoxColumn("Is paid", "Is paid", "IsPaid", true),           
+            DataGridViewUtillity.createDataGridViewCheckBoxColumn("Invoice", "Invoice", "isTheInvoiceIssued", false)}); 
+            loadCompanyMasterInfo(); 
+        } 
+        private void loadCompanyMasterInfo()
         {
-            statisticList = new BindingList<Sale>(_saleManager.getListWithCompanySales()); 
-            dataGridViewMaster.DataSource = statisticList;
-            dataGridViewMaster.Refresh();
+            statisticCompanyList = new BindingList<Sale>(_saleManager.getListWithCompanySales()); 
+            dataGridViewMasterCompanies.DataSource = statisticCompanyList;
+            dataGridViewMasterCompanies.Refresh();
         }
-
+        private void loadPersonMasterInfo()
+        {
+            statisticPersonList = new BindingList<Sale>(_saleManager.getListWithPersonSales());
+            dataGridViewMasterPersons.DataSource = statisticPersonList;
+            dataGridViewMasterPersons.Refresh();
+        }
         /// <summary>
         /// Creates detail grid
         /// </summary>
         private void cerateDetailGrid()
-        {           
-            clearGrid(dataGridViewDetail);
+        {      
+            DataGridViewUtillity.clearGrid(dataGridViewDetail);
             detailDocId = DataGridViewUtillity.createDatagridViewTextBoxColumn("ID", "DocId", "DocId", true);
             detailProductName = DataGridViewUtillity.createDatagridViewTextBoxColumn("Product", "ProductName", "ProductName", true); 
             detailQuantity= DataGridViewUtillity.createDatagridViewTextBoxColumn("Quantity", "Quantity", "Quantity", true);
             detailSalePrice= DataGridViewUtillity.createDatagridViewTextBoxColumn("Price", "SalePrice", "SalePrice", true);
             dataGridViewDetail.Columns.AddRange(new DataGridViewColumn [] {detailDocId,detailProductName,detailQuantity,detailSalePrice});  
-        }
-
-  
-       
-
+        } 
         private void createSaleGrid()
         {
-            // textColumnNumberOfRow= Utillity.createDatagridViewTextBoxColumn("Product", "ProductID", "ProductName", true);
             textColumnProductId = DataGridViewUtillity.createDatagridViewTextBoxColumn("ID", "ProductID", "ProductId", true);
+            textColumnProductId.Width = 50;
             textColumnArticle = DataGridViewUtillity.createDatagridViewTextBoxColumn("Product", "ProductID", "ProductName", true);
             textColumnPieces = DataGridViewUtillity.createDatagridViewTextBoxColumn("Quantity", "Quantity", "Quantity", false);
+            textColumnPieces.Width = 50;
             textColumnPrice = DataGridViewUtillity.createDatagridViewTextBoxColumn("Sale Price", "SalePrice", "SalePrice", true);
-            this.textColumnPrice.DefaultCellStyle = getPriceStyle();
+            this.textColumnPrice.DefaultCellStyle = DataGridViewUtillity.getPriceStyle();
             dataGridViewSaleList.AllowUserToAddRows = false;
-            clearGrid(dataGridViewSaleList);
+            DataGridViewUtillity.clearGrid(dataGridViewSaleList); 
             dataGridViewSaleList.Columns.AddRange(new DataGridViewColumn [] { textColumnProductId, textColumnArticle, textColumnPieces  , textColumnPrice });
 
             saleList = new BindingList<Sale>();
             dataGridViewSaleList.DataSource = saleList;
-           // createMasterGrid();
             enableSaleProperies(false);
         }
 /// <summary>
@@ -148,49 +156,31 @@ namespace WarehouseToAquaticOrganisms
         {
             if (enabled)
             {
-            dataGridViewSaleList.Show();
-            tableLayoutPanel1.Show();
-            buttonSave.Show();
+            dataGridViewSaleList.Enabled = true; 
+            tableLayoutPanel1.Enabled = true; 
+            buttonSave.Enabled = true; 
             } else { 
-            dataGridViewSaleList.Hide();
-            tableLayoutPanel1.Hide();
-            buttonSave.Hide();
+            dataGridViewSaleList.Enabled=false;
+            tableLayoutPanel1.Enabled = false; 
+            buttonSave.Enabled = false; 
             }
         }
 
         private void createAvailableGridContent()
-        {
-          
+        { 
             _productName = DataGridViewUtillity.createDatagridViewTextBoxColumn("Product", "ProductName", "ProductName", true);
             _quantity = DataGridViewUtillity.createDatagridViewTextBoxColumn("Quantity", "quantity", "Quantity", false);
             _averagePrice= DataGridViewUtillity.createDatagridViewTextBoxColumn("Delivery price", "Price", "DeliveryPrice", false);          
-            this._averagePrice.DefaultCellStyle = getPriceStyle();  
+            this._averagePrice.DefaultCellStyle = DataGridViewUtillity.getPriceStyle();
+            DataGridViewUtillity.clearGrid(dataGridViewAvailable); 
 
-            clearGrid(dataGridViewAvailable);
 
-            dataGridViewAvailable.Columns.AddRange(new DataGridViewColumn[] { _productName, _quantity, _averagePrice });
+            dataGridViewAvailable.Columns.AddRange(new DataGridViewColumn[] { _productName, _quantity, _averagePrice }); 
+            dataGridViewAvailable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             dataGridViewAvailable.DataSource = _deliveryManager.GetAvailableProductsproperties();
-            dataGridViewAvailable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick); 
         }
-        /// <summary>
-        /// Setter method for Currency style of DataGridViewTextBox column.
-        /// </summary>
-        /// <returns><see cref="DataGridViewCellStyle"/></returns>
-        private DataGridViewCellStyle getPriceStyle(){
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = "0,00";
-            return dataGridViewCellStyle1;
-        } 
-        private void clearGrid( DataGridView dataGridView )
-        {
-            if (dataGridView != null)
-            {
-                dataGridView.AutoGenerateColumns = false;
-                dataGridView.Columns.Clear();
-            }
-        } 
+    
+     
         private void dataGridView2_CellDoubleClick( object sender, DataGridViewCellEventArgs e )
         {
             int row = e.RowIndex; 
@@ -211,27 +201,16 @@ namespace WarehouseToAquaticOrganisms
             personCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;//.DropDownList;
             personCombo.Location = hide;
             personCombo.SelectedIndexChanged += new System.EventHandler(this.personCombo_SelectedIndexChanged);
-            this.splitContainer3.Panel1.Controls.Add(personCombo);
-            
+            this.splitContainerSaleAndMaster.Panel1.Controls.Add(personCombo); 
 
             companyCombo = new ComboBox();
             companyCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;// List;
             companyCombo.Location = hide;
             companyCombo.SelectedIndexChanged += new System.EventHandler(this.companyCombo_SelectedIndexChanged);
-            this.splitContainer3.Panel1.Controls.Add (companyCombo);
+            this.splitContainerSaleAndMaster.Panel1.Controls.Add (companyCombo);
         }
 
-        private void personCombo_SelectedIndexChanged( object sender, EventArgs e )
-        { 
-            partner = _personManager.ElementAt(personCombo.SelectedIndex);
-            propertyGridSelectedClient.SelectedObject = partner; 
-        }
-
-        private void companyCombo_SelectedIndexChanged( object sender, EventArgs e )
-        { 
-            partner = _companyManager.ElementAt(companyCombo.SelectedIndex);
-            propertyGridSelectedClient.SelectedObject = partner; 
-        }
+      
 
         public  void RefreshLists()
         {
@@ -250,18 +229,48 @@ namespace WarehouseToAquaticOrganisms
                     RefreshLists(); 
                     personCombo.Location = new System.Drawing.Point(comboBox1.Location.X, comboBox1.Location.Y + 30);
                     companyCombo.Location = hide; 
+                    tabControl1.SelectedTab = tabControl1.TabPages [1];
                     break;
                 case TypeOfPartner.Company:
                     RefreshLists();
                     companyCombo.Location = new System.Drawing.Point(comboBox1.Location.X, comboBox1.Location.Y + 30);
                     personCombo.Location = hide; 
+                    tabControl1.SelectedTab = tabControl1.TabPages [0];
                     break;
                 default:
                     break; 
             }
+            labelName.Text = "";
+            labelBullstat.Text ="";
+            labelAddress.Text = "";
             enableSaleProperies(true);
             this.Update(); 
-        } 
+        }
+        /// <summary>
+        /// Gets object <see cref="Person"/> from <see cref="PersonManager"/> list. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void personCombo_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            Person partner = _personManager.ElementAt(personCombo.SelectedIndex);
+            labelName.Text = partner.Name;
+            labelBullstat.Text = partner.Egn.ToString();
+            labelAddress.Text = partner.Address;
+          //  propertyGridSelectedClient.SelectedObject = partner;
+        }
+
+        private void companyCombo_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            Company partner = _companyManager.ElementAt(companyCombo.SelectedIndex);
+            labelName.Text = partner.Name;
+            labelBullstat.Text = partner.Bulstat;
+            labelAddress.Text = partner.Address;
+
+
+
+            // propertyGridSelectedClient.SelectedObject = partner;
+        }
         /// <summary>
         /// Save created sale list.
         /// </summary>
@@ -272,7 +281,9 @@ namespace WarehouseToAquaticOrganisms
             saleList.ToList().ForEach(element => element.Quantity *=-1);
             _saleManager.makeSale(partner, saleList.ToList());
             saleList.Clear();
-            loadMasterInfo();
+            Thread.Sleep(500);
+            loadCompanyMasterInfo();
+            loadPersonMasterInfo(); 
         }
 
         private void dataGridView1_CellClick( object sender, DataGridViewCellEventArgs e )
@@ -334,7 +345,7 @@ namespace WarehouseToAquaticOrganisms
         /// Calculates sum of all rows and adds VAT.
         /// </summary>
         private void calculate()
-        {
+        { 
             decimal suma = 0.0m;
             decimal total;
             saleList.ToList().ForEach(
@@ -352,23 +363,119 @@ namespace WarehouseToAquaticOrganisms
             dataGridViewAvailable.DataSource = null;
             dataGridViewAvailable.DataSource = _deliveryManager.GetAvailableProductsproperties();
  
-            dataGridViewMaster.DataSource = null;
-            dataGridViewMaster.DataSource = statisticList;
-            
+            dataGridViewMasterCompanies.DataSource = null;
+            dataGridViewMasterCompanies.DataSource = statisticCompanyList;
+
+            dataGridViewMasterPersons.DataSource = null;
+            dataGridViewMasterPersons.DataSource = statisticPersonList;
+
+
+
 
         }
         /// <summary>
-        /// Shows details of given document.
+        /// Shows details by document ID.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void dataGridViewMaster_SelectionChanged( object sender, EventArgs e )
         {
             int index = ((DataGridView)sender).CurrentCell.RowIndex;
-            DataGridViewCell cell = (DataGridViewCell)((DataGridView)sender) [dataGridViewMaster.Columns ["DocumentId"].Index, index];
+            DataGridViewCell cell = (DataGridViewCell)((DataGridView)sender) [dataGridViewMasterCompanies.Columns ["DocumentId"].Index, index];
             int DocID = int.Parse(cell.Value.ToString());
+          //  string name = ((DataGridView)sender).Name;
             dataGridViewDetail.DataSource = new BindingList<Sale>(_saleManager.getListWithSaleCompanyDetails(DocID));
         }
  
+ 
+
+        private void groupBox2_MouseHover( object sender, EventArgs e )
+        {
+            if (!dataGridViewSaleList.Enabled)
+            {
+                MessageBox.Show("Please, choose contragent");
+            }
+        }
+
+        private void treeView1_AfterSelect( object sender, TreeViewEventArgs e )
+        {
+            
+            MessageBox.Show(e.Node.Text);
+        }
+
+        private void tabControl1_TabIndexChanged( object sender, EventArgs e )
+        { 
+            dataGridViewDetail.Refresh();
+        }
+
+        private void buttonPDF_Click( object sender, EventArgs e )
+        { 
+            captureForm(this.groupBox2);
+        }
+
+        private void captureForm( GroupBox groupBox2 )
+        { 
+            try
+            {
+                System.Drawing.Rectangle bounds = groupBox2.Bounds; 
+                using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height))
+                { 
+                    groupBox2.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0, 0,  bitmap.Width  , bitmap.Height));
+                    bitmap.SetResolution(600f, 600f);
+                    Bitmap resized = new Bitmap(bitmap, new Size((int)((float)bitmap.Width / 1.5f),(int)((float) bitmap.Height / 1.5f)));
+                    resized.Save("D:\\GroupBoxImage.png", System.Drawing.Imaging.ImageFormat.Png);
+                    exportarPDF(resized);
+                }  
+            }
+
+
+           
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            } 
+        }
+        public void exportarPDF( Bitmap img )
+        {
+            // System.Drawing.Image image = System.Drawing.Image.FromFile("C://snippetsource.jpg"); Aca graba con un archivo fisico
+            System.Drawing.Image image = img;  //Here I passed a bitmap
+            Document doc = new Document(PageSize.A4 );
+            PdfAWriter.GetInstance(doc, new FileStream("D://image.pdf", FileMode.Create));
+            doc.Open();
+            iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(image,
+                    System.Drawing.Imaging.ImageFormat.Jpeg);
+            doc.Add(pdfImage);
+            doc.Close();
+        }
+        //private static Bitmap resizeImage( Bitmap bitmapToREsize, Size size )
+        //{
+        //    int sourceWidth = bitmapToREsize.Width;
+        //    int sourceHeight = bitmapToREsize.Height;
+
+        //    float nPercent = 0;
+        //    float nPercentW = 0;
+        //    float nPercentH = 0;
+
+        //    nPercentW = ((float)size.Width / (float)sourceWidth);
+        //    nPercentH = ((float)size.Height / (float)sourceHeight);
+
+        //    if (nPercentH < nPercentW)
+        //        nPercent = nPercentH;
+        //    else
+        //        nPercent = nPercentW;
+
+        //    int destWidth = (int)(sourceWidth * nPercent);
+        //    int destHeight = (int)(sourceHeight * nPercent);
+
+        //    Bitmap b = new Bitmap(destWidth, destHeight);
+        //    Graphics g = Graphics.FromImage(b);
+        //    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+        //    g.DrawImage(bitmapToREsize, 0, 0, destWidth, destHeight);
+        //    g.Dispose();
+
+        //    return b;
+        //}
     }
 }

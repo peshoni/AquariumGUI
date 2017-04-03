@@ -39,11 +39,10 @@ namespace WarehouseToAquaticOrganisms
             this._proviederCompanyManager = companyManager;
             this._deliveryManager = deliveryManager;
 
-            createMasterColumns();
+            createMasterGrid();
+            createDetailGrid();
             
-            _dataGridViewDetail.AutoGenerateColumns = false;
-            _dataGridViewDetail.Columns.Clear();
-            _dataGridViewDetail.Columns.AddRange(createDetailsColumns());
+          
 
             comboBoxChooseProvider.DataSource = _proviederCompanyManager;
             comboBoxChooseProvider.DisplayMember = "Name";
@@ -55,8 +54,18 @@ namespace WarehouseToAquaticOrganisms
             _dataGridViewDelivery.AutoGenerateColumns = false;
             _dataGridViewDelivery.Columns.Clear(); 
             _dataGridViewDelivery.AllowUserToAddRows = true;
-            _dataGridViewDelivery.Columns.AddRange(createDeliveryColumns()); 
-            
+            _dataGridViewDelivery.Columns.AddRange(createDeliveryColumns());
+            //this.BackColor = Color.AliceBlue;
+            //this.splitContainer3.BackColor = Color.AliceBlue;// System.Drawing.SystemColors.AppWorkspace;
+            //this.dataGridViewMaster.BackgroundColor = Color.AliceBlue;
+         //   this.dataGridViewMaster.ForeColor = Color.AliceBlue;
+
+        }
+
+        private void createDetailGrid()
+        {
+            DataGridViewUtillity.clearGrid(_dataGridViewDetail); 
+            _dataGridViewDetail.Columns.AddRange(createDetailsColumns());
         }
 
         /// <summary>
@@ -66,8 +75,7 @@ namespace WarehouseToAquaticOrganisms
         private DataGridViewColumn [] createDeliveryColumns()
         {
             var combods = _deliveryManager.getProducts();           
-            combods.Add(new Delivery() { ProductName = "Select product" });
-
+            combods.Add(new Delivery() { ProductName = "Select product" }); 
             DataGridViewColumn [] array = {
             DataGridViewUtillity.createDataGridViewComboboxColumn("Product", combods, "ProductID", "ProductName", "ProductID"),
             DataGridViewUtillity.createDatagridViewTextBoxColumn("Quantity", "quantity", "Quantity", false),
@@ -78,7 +86,7 @@ namespace WarehouseToAquaticOrganisms
         /// <summary>
         /// Master columns
         /// </summary>
-        private void createMasterColumns()
+        private void createMasterGrid()
         {
             DataGridViewColumn [] array = {
              DataGridViewUtillity.createDatagridViewTextBoxColumn("Delivery number", "Document", "DocID", true),
@@ -92,9 +100,8 @@ namespace WarehouseToAquaticOrganisms
 
             list = _deliveryManager.getList(DateTime.Today,null).OrderByDescending(e=> e.DocID).ToList(); 
             bindingList = new BindingList<Delivery>(list);
-            dataGridViewMaster.DataSource = bindingList; 
-            dataGridViewMaster.AutoGenerateColumns = false;
-            dataGridViewMaster.Columns.Clear();
+            dataGridViewMaster.DataSource = bindingList;
+            DataGridViewUtillity.clearGrid(dataGridViewMaster);  
             dataGridViewMaster.Columns.AddRange(array); 
         }
      /// <summary>

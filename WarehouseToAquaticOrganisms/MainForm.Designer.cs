@@ -53,9 +53,28 @@ namespace WarehouseToAquaticOrganisms
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.aquariumDatabaseDataSet1 = new WarehouseToAquaticOrganisms.AquariumDatabaseDataSet();
             this.buttonEN = new System.Windows.Forms.Button();
+            this.buttonDelivery = new System.Windows.Forms.Button();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonSales = new System.Windows.Forms.Button();
+            this.buttonProviders = new System.Windows.Forms.Button();
+            this.buttonClientPersons = new System.Windows.Forms.Button();
+            this.buttonClientsCompanies = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.aquariumDatabaseDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -190,7 +209,6 @@ namespace WarehouseToAquaticOrganisms
             resources.ApplyResources(this.progressBar1, "progressBar1");
             this.progressBar1.Maximum = 1000;
             this.progressBar1.Name = "progressBar1";
-            
             // 
             // aquariumDatabaseDataSet1
             // 
@@ -199,19 +217,97 @@ namespace WarehouseToAquaticOrganisms
             // 
             // buttonEN
             // 
-            this.buttonEN.Image = global::WarehouseToAquaticOrganisms.Properties.Resources.gb;
             resources.ApplyResources(this.buttonEN, "buttonEN");
+            this.buttonEN.Image = global::WarehouseToAquaticOrganisms.Properties.Resources.gb;
             this.buttonEN.Name = "buttonEN";
             this.buttonEN.UseVisualStyleBackColor = true;
             this.buttonEN.Click += new System.EventHandler(this.changeToEN_click);
+            // 
+            // buttonDelivery
+            // 
+            resources.ApplyResources(this.buttonDelivery, "buttonDelivery");
+            this.buttonDelivery.Name = "buttonDelivery";
+            this.buttonDelivery.Tag = 0;
+            this.buttonDelivery.UseVisualStyleBackColor = true;
+            this.buttonDelivery.Click += new System.EventHandler(this.button_Click);
+            // 
+            // splitContainer1
+            // 
+            resources.ApplyResources(this.splitContainer1, "splitContainer1");
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.panelMain);
+            // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.splitContainer2, 2, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // splitContainer2
+            // 
+            resources.ApplyResources(this.splitContainer2, "splitContainer2");
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.buttonEN);
+            resources.ApplyResources(this.splitContainer2.Panel1, "splitContainer2.Panel1");
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.buttonBG);
+            resources.ApplyResources(this.splitContainer2.Panel2, "splitContainer2.Panel2");
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.buttonDelivery);
+            this.flowLayoutPanel1.Controls.Add(this.buttonSales);
+            this.flowLayoutPanel1.Controls.Add(this.buttonProviders);
+            this.flowLayoutPanel1.Controls.Add(this.buttonClientPersons);
+            this.flowLayoutPanel1.Controls.Add(this.buttonClientsCompanies);
+            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // buttonSales
+            // 
+            resources.ApplyResources(this.buttonSales, "buttonSales");
+            this.buttonSales.Name = "buttonSales";
+            this.buttonSales.Tag = 1;
+            this.buttonSales.UseVisualStyleBackColor = true;
+            this.buttonSales.Click += new System.EventHandler(this.button_Click);
+            // 
+            // buttonProviders
+            // 
+            resources.ApplyResources(this.buttonProviders, "buttonProviders");
+            this.buttonProviders.Name = "buttonProviders";
+            this.buttonProviders.UseVisualStyleBackColor = true;
+            // 
+            // buttonClientPersons
+            // 
+            resources.ApplyResources(this.buttonClientPersons, "buttonClientPersons");
+            this.buttonClientPersons.Name = "buttonClientPersons";
+            this.buttonClientPersons.UseVisualStyleBackColor = true;
+            // 
+            // buttonClientsCompanies
+            // 
+            resources.ApplyResources(this.buttonClientsCompanies, "buttonClientsCompanies");
+            this.buttonClientsCompanies.Name = "buttonClientsCompanies";
+            this.buttonClientsCompanies.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panelMain);
-            this.Controls.Add(this.buttonEN);
-            this.Controls.Add(this.buttonBG);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
@@ -222,6 +318,17 @@ namespace WarehouseToAquaticOrganisms
             this.menuStrip1.PerformLayout();
             this.panelMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.aquariumDatabaseDataSet1)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,6 +357,15 @@ namespace WarehouseToAquaticOrganisms
         private ToolStripLabel pageStatus;
         private AquariumDatabaseDataSet aquariumDatabaseDataSet1;
         private Button buttonEN;
+        private Button buttonDelivery;
+        private SplitContainer splitContainer1;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Button buttonSales;
+        private Button buttonProviders;
+        private Button buttonClientPersons;
+        private Button buttonClientsCompanies;
+        private SplitContainer splitContainer2;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }
 
