@@ -58,10 +58,12 @@ namespace WarehouseToAquaticOrganisms
             // splitContainerShowPersons
             // 
             resources.ApplyResources(this.splitContainerShowPersons, "splitContainerShowPersons");
+            this.splitContainerShowPersons.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerShowPersons.Name = "splitContainerShowPersons";
             // 
             // splitContainerShowPersons.Panel1
             // 
+            this.splitContainerShowPersons.Panel1.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainerShowPersons.Panel1.Controls.Add(this.buttonAddPerson);
             this.splitContainerShowPersons.Panel1.Controls.Add(this.label1);
             // 

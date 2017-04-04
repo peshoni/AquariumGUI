@@ -21,21 +21,17 @@ namespace WarehouseToAquaticOrganisms
 
     {
         private System.Windows.Forms.Timer progresTimer;
-        //  private MakeDeliveryControl _supplyControl;
+        private DeliveryMasterDetailControl _masterDetailControl;
         private SalesMasterDetailControl _salesControl;
         private ShowCompaniesControl _companyesControl;
         private ShowPersonsControl _persondControl;
         private ShowProvidersControl _providersControl;
-         
 
+        private DeliveryManager _deliveryManager;
+        private SaleManager _saleManager;
         private PersonManager _personManager ;
         private CompanyManager _clientCompanyManager;
         private CompanyManager _proviederCompanyManager;
-        private DeliveryManager _deliveryManager;
-        private SaleManager _saleManager;
-
-        private DeliveryMasterDetailControl _masterDetailControl;
-        private Control currentControl;
          
 
         public MainForm()
@@ -48,21 +44,26 @@ namespace WarehouseToAquaticOrganisms
 
             progresTimer = new System.Windows.Forms.Timer();
             progresTimer.Tick += new EventHandler(this.incrementProgresBar);
-            progresTimer.Interval = (50); 
-          //progresTimer.Enabled = true;
-          //progresTimer.Start();
+            progresTimer.Interval = (1);
+          //  progresTimer.Enabled = true;
+          //  progresTimer.Start();
             progressBar1.Maximum = 500; 
         }
 
         private void incrementProgresBar( object sender, EventArgs e )
         {
-            if (progressBar1.Value <= 500)
+
+            if (progressBar1.Value <  500)
             {
                 progressBar1.Increment(10);
             }
-            else {
+            if (progressBar1.Value>=500)
+            {
                 progresTimer.Stop();
-            } 
+                progressBar1.Enabled = false;
+                progressBar1.Hide();
+            }
+             
         }
 
         private void CreateDBManagers()
@@ -77,7 +78,7 @@ namespace WarehouseToAquaticOrganisms
         {
             _salesControl = new SalesMasterDetailControl(_personManager, _clientCompanyManager, _deliveryManager, _saleManager);
             _persondControl = new ShowPersonsControl(_personManager);
-            _companyesControl = new ShowCompaniesControl(_clientCompanyManager);
+            _companyesControl = new ShowCompaniesControl(_clientCompanyManager); 
             _providersControl = new ShowProvidersControl(_proviederCompanyManager);
             _masterDetailControl = new DeliveryMasterDetailControl(_proviederCompanyManager, _deliveryManager);
 
@@ -91,53 +92,7 @@ namespace WarehouseToAquaticOrganisms
         }
         private void sizeChanged( object sender, EventArgs e ) {
             this.panelMain.Size = this.Size; 
-        }
-
-      
-
-        private void menuClick( object sender, EventArgs e ) {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-           
-            switch (item.Name)
-            {       // menu Companies: shows all companies in grid.
-                case "companyesToolStripMenuItem":
-                    disposeAllExceptThisControl(_companyesControl);
-                    currentControl = _companyesControl;
-                    break; 
-                    // Menu Providers: shows all providers in grid.
-                case "providersToolStripMenuItem":
-                    disposeAllExceptThisControl(_providersControl);
-                    currentControl = _providersControl;
-                    break;
-                    //Menu Persons -  shows all persons in grid
-                case "pERSONToolStripMenuItem":
-                    disposeAllExceptThisControl(_persondControl);
-                    currentControl = _persondControl;
-                    break;
-                //case "makeSaleToolStripMenuItem":
-                  
-                //    break;
-                //case "createSupplyToolStripMenuItem":
-                //    disposeAllExceptThisControl(_masterDetailControl);
-                //    currentControl = _masterDetailControl;
-                //    break;
-                case "insertNewPersonToolStripMenuItem":
-                    FormPerson form = new FormPerson(_personManager, _persondControl);
-                    form.ShowDialog(this);
-                    break;
-                case "insertNewCompanyToolStripMenuItem":
-                    FormCompany formCom = new FormCompany(_clientCompanyManager, _companyesControl);
-                    formCom.ShowDialog(this);
-                    break;
-                case "addNewProviderToolStripMenuItem":
-                    FormCompany formForProviders = new FormCompany(_proviederCompanyManager, _providersControl);
-                    formForProviders.ShowDialog(this);
-                    break; 
-                default:
-                    break;
-            } 
-        }
-
+        } 
         private void button_Click( object sender, EventArgs e )
         {
             Button button = ((Button)sender);
@@ -145,12 +100,26 @@ namespace WarehouseToAquaticOrganisms
             {      
                 case 0: /* Delivery page */
                     disposeAllExceptThisControl(_masterDetailControl);
-                    currentControl = _masterDetailControl;
+                 //   currentControl = _masterDetailControl;
                     break;
                   
                 case 1: /* Sales page */
                     disposeAllExceptThisControl(_salesControl);
-                    currentControl = _salesControl;
+                   // currentControl = _salesControl;
+                    break;
+                case 2: /* Providers page */
+                    disposeAllExceptThisControl(_providersControl);
+                 //   currentControl = _providersControl;
+                    break; 
+
+                case 3: /*Clients persons page */
+                    disposeAllExceptThisControl(_persondControl);
+                 //   currentControl = _persondControl;
+                    break;
+
+                case 4: /*Clients companies page */
+                    disposeAllExceptThisControl(_companyesControl);
+                //    currentControl = _companyesControl;
                     break;
 
                 default:
@@ -212,6 +181,6 @@ namespace WarehouseToAquaticOrganisms
             //    }
             //}
         }
-
+ 
     }
 }

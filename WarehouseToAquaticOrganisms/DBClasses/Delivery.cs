@@ -21,6 +21,10 @@ namespace WarehouseToAquaticOrganisms.DBClasses
         private int productID;
 
 
+        private string category;
+        private int categoryId;
+
+
         private string productName;
         private int quantity;
         public Delivery() {
@@ -175,6 +179,32 @@ namespace WarehouseToAquaticOrganisms.DBClasses
             get
             {
                 return string.Empty;
+            }
+        }
+
+        public string Category
+        {
+            get
+            {
+                return category;
+            }
+
+            set
+            {
+                category = value;
+            }
+        }
+
+        public int CategoryId
+        {
+            get
+            {
+                return categoryId;
+            }
+
+            set
+            {
+                categoryId = value;
             }
         }
 

@@ -25,28 +25,32 @@ namespace WarehouseToAquaticOrganisms
         private DataGridViewTextBoxColumn phoneColumn;
 
 
-        private CompanyManager _companyManager;
+        private CompanyManager _companyManager; 
+
         public ShowCompaniesControl(CompanyManager manager)
         {
             InitializeComponent();
             this._companyManager = manager;
             dataGridViewCompanyes.DataSource = manager;
-            dataGridViewCompanyes.AutoGenerateColumns = false;
-            dataGridViewCompanyes.Columns.Clear();
+            createGridColumns(); 
+        }
+ 
 
+        private void createGridColumns()
+        {
+            DataGridViewUtillity.clearGrid(dataGridViewCompanyes);
             buttonColumnUpdate = DataGridViewUtillity.createDatagridViewButtonColumn("Update", "update", "buttonUpdate");
             buttonColumnDelete = DataGridViewUtillity.createDatagridViewButtonColumn("Delete", "delete", "buttonDelete");
 
             idColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("ID", "columnID", "ID", true);
             nameColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Name", "columnName", "Name", true);
             bulstatColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Bulstat", "columnBulstat", "Bulstat", true);
-            accountPersonColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Account person", "columnAccountPerson", "Account_person", true);
+            accountPersonColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Account person", "columnAccountPerson", "AcountablePerson", true);
             addressColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Address", "columnAddress", "Address", true);
-            phoneColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Phone", "columnPhone", "Phone", true);
-
-
+            phoneColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Phone", "columnPhone", "PhoneNumber", true);
             dataGridViewCompanyes.Columns.AddRange(idColumn, nameColumn, bulstatColumn, accountPersonColumn, phoneColumn, buttonColumnUpdate, buttonColumnDelete);
         }
+
         private void DataGridForm_Load( object sender, EventArgs e )
         {
             Refresh();
@@ -87,6 +91,13 @@ namespace WarehouseToAquaticOrganisms
         {
             dataGridViewCompanyes.DataSource = null;
             dataGridViewCompanyes.DataSource = _companyManager;
+        }
+
+        private void buttonSaveNewClient_Click( object sender, EventArgs e )
+        {
+            using (FormCompany formCom = new FormCompany(_companyManager, this)) {
+                formCom.ShowDialog(this);
+            } 
         }
     }
 }

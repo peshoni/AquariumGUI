@@ -63,6 +63,26 @@ namespace WarehouseToAquaticOrganisms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _008454_green_jelly_icon_arrows_arrow_more {
+            get {
+                object obj = ResourceManager.GetObject("_008454_green_jelly_icon_arrows_arrow_more", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _009570_simple_red_glossy_icon_arrows_arrow_more {
+            get {
+                object obj = ResourceManager.GetObject("_009570_simple_red_glossy_icon_arrows_arrow_more", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap aquaPic {
             get {
                 object obj = ResourceManager.GetObject("aquaPic", resourceCulture);
@@ -76,6 +96,16 @@ namespace WarehouseToAquaticOrganisms.Properties {
         internal static System.Drawing.Bitmap bg {
             get {
                 object obj = ResourceManager.GetObject("bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap company_customers_icon_12 {
+            get {
+                object obj = ResourceManager.GetObject("company_customers_icon_12", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -100,11 +130,31 @@ namespace WarehouseToAquaticOrganisms.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap provider_icon_jpg {
+            get {
+                object obj = ResourceManager.GetObject("provider_icon_jpg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure?.
         /// </summary>
         internal static string questionEN {
             get {
                 return ResourceManager.GetString("questionEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_group_icon {
+            get {
+                object obj = ResourceManager.GetObject("user_group_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

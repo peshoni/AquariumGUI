@@ -32,19 +32,7 @@ namespace WarehouseToAquaticOrganisms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Goldfish");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Swordfish");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Fish", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Crab");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Shellfish", new System.Windows.Forms.TreeNode[] {
-            treeNode4});
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Seaweed");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Products", new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode5,
-            treeNode6});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Products");
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.labelClientName = new System.Windows.Forms.Label();
@@ -342,22 +330,9 @@ namespace WarehouseToAquaticOrganisms
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
             treeNode1.Name = "Node0";
-            treeNode1.Text = "Goldfish";
-            treeNode1.ToolTipText = "asdasd";
-            treeNode2.Name = "Node1";
-            treeNode2.Text = "Swordfish";
-            treeNode3.Name = "Node2";
-            treeNode3.Text = "Fish";
-            treeNode4.Name = "Node2";
-            treeNode4.Text = "Crab";
-            treeNode5.Name = "Node3";
-            treeNode5.Text = "Shellfish";
-            treeNode6.Name = "Node4";
-            treeNode6.Text = "Seaweed";
-            treeNode7.Name = "Node0";
-            treeNode7.Text = "Products";
+            treeNode1.Text = "Products";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode7});
+            treeNode1});
             this.treeView1.Size = new System.Drawing.Size(223, 850);
             this.treeView1.TabIndex = 11;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -638,8 +613,7 @@ namespace WarehouseToAquaticOrganisms
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(338, 624);
             this.tabControl1.TabIndex = 0;
-            this.tabControl1.Tag = " ";
-            this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
+            this.tabControl1.Tag = "";
             // 
             // tabPage1
             // 
@@ -649,6 +623,7 @@ namespace WarehouseToAquaticOrganisms
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(330, 598);
             this.tabPage1.TabIndex = 0;
+            this.tabPage1.Tag = "0";
             this.tabPage1.Text = "Companies";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
@@ -672,6 +647,7 @@ namespace WarehouseToAquaticOrganisms
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(330, 598);
             this.tabPage2.TabIndex = 1;
+            this.tabPage2.Tag = "1";
             this.tabPage2.Text = "Persons";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
@@ -763,7 +739,7 @@ namespace WarehouseToAquaticOrganisms
 
         }
 
-       
+
 
 
 

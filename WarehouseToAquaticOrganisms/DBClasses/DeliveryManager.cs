@@ -14,6 +14,36 @@ namespace WarehouseToAquaticOrganisms.DBClasses
         public List<Delivery> getProducts() {
             return getListWithProducts();
         }
+
+        public List<Delivery> GetListWithCategories()
+        {
+            return getCategories();
+        }
+
+        private List<Delivery> getCategories()
+        { 
+                 List<Delivery> list = new List<Delivery>();
+            using (SqlConnection con = DBManager.GetConnection())
+            {
+                con.Open(); 
+                string sql = @"SELECT*
+  FROM  Category;";
+
+                using (SqlCommand command = new SqlCommand(sql, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Delivery product = new Delivery();
+                        product.CategoryId = reader.GetInt32(0);
+                        product.Category = reader.GetString(1); 
+                        list.Add(product);
+                    }
+                }
+            }
+            return list; 
+        }
+
         /// <summary>
         /// Getts list with available articles.
         /// </summary>
@@ -31,27 +61,44 @@ namespace WarehouseToAquaticOrganisms.DBClasses
             using (SqlConnection con = DBManager.GetConnection())
             {
                 con.Open();
+                //                string sql = @"
+                //select 
+                //        pro.ID,
+                //        pro.Name,
+                //        SUM(row.Quantity) available,
+                //        AVG(row.SalePrice) average 
+                //from 
+                //        Document doc, RowOfDocuments row, Product pro
+                //where 
+                //        doc.ID = row.DocumentID and row.ProdutID = pro.ID
+                //GROUP BY pro.ID,pro.Name; ";
+
+
                 string sql = @"
-select 
+                select cat.Id,
+		cat.Name,
         pro.ID,
         pro.Name,
         SUM(row.Quantity) available,
-        AVG(row.SalePrice) average 
-from 
-        Document doc, RowOfDocuments row, Product pro
-where 
-        doc.ID = row.DocumentID and row.ProdutID = pro.ID
-GROUP BY pro.ID,pro.Name; ";
+        AVG(row.SalePrice) average
+from
+        Document doc, RowOfDocuments row, Product pro, Category cat
+where
+        doc.ID = row.DocumentID and row.ProdutID = pro.ID and pro.CategoryID = cat.Id
+GROUP BY cat.Id,cat.Name,pro.ID,pro.Name;";
+
                 using (SqlCommand command = new SqlCommand(sql, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         Delivery product = new Delivery();
-                        product.ProductID = reader.GetInt32(0);
-                        product.ProductName = reader.GetString(1);
-                        product.Quantity  = reader.GetInt32(2);
-                        var de = reader.GetDecimal(3);
+                        product.CategoryId = reader.GetInt32(0);
+                        product.Category = reader.GetString(1); 
+                        product.ProductID = reader.GetInt32(2);
+                        product.ProductName = reader.GetString(3);
+                        product.Quantity  = reader.GetInt32(4);
+                        var de = reader.GetDecimal(5);
                         product.DeliveryPrice = (decimal)de; 
                         list.Add(product);
                     }

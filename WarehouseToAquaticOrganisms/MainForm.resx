@@ -117,221 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 5</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1196, 24</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="menuToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="menuToolStripMenuItem.Text" xml:space="preserve">
-    <value>Menu</value>
-  </data>
-  <data name="salesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 22</value>
-  </data>
-  <data name="salesToolStripMenuItem.Text" xml:space="preserve">
-    <value>sales</value>
-  </data>
-  <data name="makeSaleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 22</value>
-  </data>
-  <data name="makeSaleToolStripMenuItem.Text" xml:space="preserve">
-    <value>Make sale</value>
-  </data>
-  <data name="supplyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 22</value>
-  </data>
-  <data name="supplyToolStripMenuItem.Text" xml:space="preserve">
-    <value>supply</value>
-  </data>
-  <data name="createSupplyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
-  </data>
-  <data name="createSupplyToolStripMenuItem.Text" xml:space="preserve">
-    <value>create supply</value>
-  </data>
-  <data name="partnersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 22</value>
-  </data>
-  <data name="partnersToolStripMenuItem.Text" xml:space="preserve">
-    <value>partners</value>
-  </data>
-  <data name="pROVIDERSToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 22</value>
-  </data>
-  <data name="pROVIDERSToolStripMenuItem1.Text" xml:space="preserve">
-    <value>providers</value>
-  </data>
-  <data name="providersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
-  </data>
-  <data name="providersToolStripMenuItem.Text" xml:space="preserve">
-    <value>providers</value>
-  </data>
-  <data name="addNewProviderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
-  </data>
-  <data name="addNewProviderToolStripMenuItem.Text" xml:space="preserve">
-    <value>add new provider</value>
-  </data>
-  <data name="cLIENTSToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 22</value>
-  </data>
-  <data name="cLIENTSToolStripMenuItem.Text" xml:space="preserve">
-    <value>clients</value>
-  </data>
-  <data name="pERSONToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
-  </data>
-  <data name="pERSONToolStripMenuItem.Text" xml:space="preserve">
-    <value>person</value>
-  </data>
-  <data name="cOMPANYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
-  </data>
-  <data name="cOMPANYToolStripMenuItem.Text" xml:space="preserve">
-    <value>company</value>
-  </data>
-  <data name="companyesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
-  </data>
-  <data name="companyesToolStripMenuItem.Text" xml:space="preserve">
-    <value>all companies</value>
-  </data>
-  <data name="insertNewCompanyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
-  </data>
-  <data name="insertNewCompanyToolStripMenuItem.Text" xml:space="preserve">
-    <value>add new company</value>
-  </data>
-  <data name="pageStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 17</value>
-  </data>
-  <data name="pageStatus.Text" xml:space="preserve">
-    <value>:-)</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonBG.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="splitContainer2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
   </data>
-  <data name="buttonBG.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="splitContainer2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1153, 5</value>
   </data>
-  <data name="buttonBG.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="splitContainer2.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
   </data>
-  <data name="buttonBG.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 25</value>
-  </data>
-  <data name="buttonBG.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="buttonBG.Text" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="&gt;&gt;buttonBG.Name" xml:space="preserve">
-    <value>buttonBG</value>
-  </data>
-  <data name="&gt;&gt;buttonBG.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonBG.Parent" xml:space="preserve">
-    <value>splitContainer2.Panel2</value>
-  </data>
-  <data name="&gt;&gt;buttonBG.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.Name" xml:space="preserve">
-    <value>progressBar1</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.Parent" xml:space="preserve">
-    <value>panelMain</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="panelMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="panelMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panelMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1196, 498</value>
-  </data>
-  <data name="panelMain.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;panelMain.Name" xml:space="preserve">
-    <value>panelMain</value>
-  </data>
-  <data name="&gt;&gt;panelMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelMain.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="&gt;&gt;panelMain.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="progressBar1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 15</value>
-  </data>
-  <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>346, 23</value>
-  </data>
-  <data name="progressBar1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.Name" xml:space="preserve">
-    <value>progressBar1</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.Parent" xml:space="preserve">
-    <value>panelMain</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="aquariumDatabaseDataSet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>296, 17</value>
-  </metadata>
   <data name="buttonEN.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonEN.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="buttonEN.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAPCAYAAADzun+cAAAABGdBTUEAALGPC/xhBQAAAL9JREFUSEvl
+        lEEOgjAURHsIjuCOM7pX17DxOHoAbiHHqEzTT8Yyflpj4sKXTALfPzMJVMLU9ZEJh6Or8/UW58sY4YMe
+        p2GZ3eUuC5gHhHJgKDPUWgxk/u4ChUC1xcDN42UIeIa9YuD5V20GWUAFvCsGal9lJ+XfmyiLPyGd6l/o
+        D4vzI2/iK+9YnrhFjJUA71QbvK+yk8oBowJq/seG8q+yC8YztHy5DJmX7jJyoVBtsYl5yd8MhJnVWmxi
+        pq6PTzI+gB9ANzThAAAAAElFTkSuQmCC
+</value>
   </data>
   <data name="buttonEN.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -360,171 +171,6 @@
   <data name="&gt;&gt;buttonEN.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="buttonDelivery.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="buttonDelivery.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 55</value>
-  </data>
-  <data name="buttonDelivery.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="buttonDelivery.Text" xml:space="preserve">
-    <value>Delivery</value>
-  </data>
-  <data name="&gt;&gt;buttonDelivery.Name" xml:space="preserve">
-    <value>buttonDelivery</value>
-  </data>
-  <data name="&gt;&gt;buttonDelivery.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonDelivery.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonDelivery.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="splitContainer1.IsSplitterFixed" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 29</value>
-  </data>
-  <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
-    <value>Horizontal</value>
-  </data>
-  <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="buttonSales.Location" type="System.Drawing.Point, System.Drawing">
-    <value>109, 3</value>
-  </data>
-  <data name="buttonSales.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 55</value>
-  </data>
-  <data name="buttonSales.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="buttonSales.Text" xml:space="preserve">
-    <value>Sales</value>
-  </data>
-  <data name="&gt;&gt;buttonSales.Name" xml:space="preserve">
-    <value>buttonSales</value>
-  </data>
-  <data name="&gt;&gt;buttonSales.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonSales.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonSales.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="buttonProviders.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 3</value>
-  </data>
-  <data name="buttonProviders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 55</value>
-  </data>
-  <data name="buttonProviders.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="buttonProviders.Text" xml:space="preserve">
-    <value>Providers</value>
-  </data>
-  <data name="&gt;&gt;buttonProviders.Name" xml:space="preserve">
-    <value>buttonProviders</value>
-  </data>
-  <data name="&gt;&gt;buttonProviders.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonProviders.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonProviders.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="buttonClientPersons.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 3</value>
-  </data>
-  <data name="buttonClientPersons.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 55</value>
-  </data>
-  <data name="buttonClientPersons.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="buttonClientPersons.Text" xml:space="preserve">
-    <value>Persons</value>
-  </data>
-  <data name="&gt;&gt;buttonClientPersons.Name" xml:space="preserve">
-    <value>buttonClientPersons</value>
-  </data>
-  <data name="&gt;&gt;buttonClientPersons.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonClientPersons.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonClientPersons.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="buttonClientsCompanies.Location" type="System.Drawing.Point, System.Drawing">
-    <value>427, 3</value>
-  </data>
-  <data name="buttonClientsCompanies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 55</value>
-  </data>
-  <data name="buttonClientsCompanies.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="buttonClientsCompanies.Text" xml:space="preserve">
-    <value>Companies</value>
-  </data>
-  <data name="&gt;&gt;buttonClientsCompanies.Name" xml:space="preserve">
-    <value>buttonClientsCompanies</value>
-  </data>
-  <data name="&gt;&gt;buttonClientsCompanies.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonClientsCompanies.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonClientsCompanies.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>122, 3</value>
-  </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>533, 63</value>
-  </data>
-  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainer2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1078, 3</value>
-  </data>
-  <data name="splitContainer2.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
-    <value>Horizontal</value>
-  </data>
   <data name="splitContainer2.Panel1.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
   </data>
@@ -538,6 +184,54 @@
     <value>splitContainer2</value>
   </data>
   <data name="&gt;&gt;splitContainer2.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonBG.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonBG.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonBG.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAARCAIAAABFBIsgAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAg9JREFUOE+FkFtP6kAUhWc6cxSlSjCGaNAH9AFPxJf6V/H24iWAR9Hz76YtvY2u
+        ubQdSo07K2Wvj3bt2UOyLPtyKk3TMAzzPLdeVxzHgFJK63VFUdSA6EHwsrHE/JjCGCEE0q3XlSQJYFEU
+        1utCBGAjFwRlvRuNj/HHarWyXlfrMLwD2Nhsc5iN3pyJMsOqBU2ZYY1rNMPczRBoo1Vq24I4i/W6Wjcz
+        N7a5mYpWqb9dHMrkNiCuBaT1Ggm9pXzKyR0hD7XY1ONTRu4deE9AoOAzCP6X+gyu/10Hbw6BPjRcBkhh
+        jVzvh1zMu1xeTj4mVsvJ1eIKqgn0ruBkoXpCb2gd8dC+hHdjh43fx5UuZuO/s4vxW03Qg4Abq05Up+jT
+        eevDMKYaNnodWb2Mzp/PR/PSap09nym4sNaJKLeuCaRzzWbD+dDqZXj6eIpnTebDk6cTBWc1IV/ESjBP
+        cCZLC6EHCZlnyWAAFYOBODpKdV8pATw+ztehTcH3v+T2+5Ds98XhYXRwYKxRpmHiEAhWfRZ5VHBeOLlQ
+        cwnfl74v9vdFr4cG1qgA7PXivb2KQLmGJFOn43hWoVDkqdx6WKcjOx3R7UJoYI0MDHd3KwIVgH53tbOD
+        q2AppVUolFC1xNowzsOtLbG9XXCOvpLQUDoEPQg4ehJ75W1q5fqKG0skuLE/XOIEjiLGGhA9zhRypiyl
+        328KQpc2duj8AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="buttonBG.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonBG.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="buttonBG.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 25</value>
+  </data>
+  <data name="buttonBG.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonBG.Text" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="&gt;&gt;buttonBG.Name" xml:space="preserve">
+    <value>buttonBG</value>
+  </data>
+  <data name="&gt;&gt;buttonBG.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonBG.Parent" xml:space="preserve">
+    <value>splitContainer2.Panel2</value>
+  </data>
+  <data name="&gt;&gt;buttonBG.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="splitContainer2.Panel2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
@@ -576,8 +270,122 @@
   <data name="&gt;&gt;splitContainer2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="panelMain.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="progressBar1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="progressBar1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="progressBar1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>436, 56</value>
+  </data>
+  <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>346, 23</value>
+  </data>
+  <data name="progressBar1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;progressBar1.Name" xml:space="preserve">
+    <value>progressBar1</value>
+  </data>
+  <data name="&gt;&gt;progressBar1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;progressBar1.Parent" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="&gt;&gt;progressBar1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panelMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panelMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1196, 522</value>
+  </data>
+  <data name="panelMain.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;panelMain.Name" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="&gt;&gt;panelMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelMain.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;panelMain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="aquariumDatabaseDataSet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>296, 17</value>
+  </metadata>
+  <data name="buttonDelivery.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonDelivery.Location" type="System.Drawing.Point, System.Drawing">
+    <value>109, 3</value>
+  </data>
+  <data name="buttonDelivery.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 55</value>
+  </data>
+  <data name="buttonDelivery.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="buttonDelivery.Text" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+  <data name="buttonDelivery.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="&gt;&gt;buttonDelivery.Name" xml:space="preserve">
+    <value>buttonDelivery</value>
+  </data>
+  <data name="&gt;&gt;buttonDelivery.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonDelivery.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonDelivery.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
+  </data>
+  <data name="splitContainer1.IsSplitterFixed" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="tableLayoutPanel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -631,7 +439,7 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1196, 571</value>
+    <value>1196, 595</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>69</value>
@@ -650,6 +458,271 @@
   </data>
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="flowLayoutPanel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="&gt;&gt;buttonProviders.Name" xml:space="preserve">
+    <value>buttonProviders</value>
+  </data>
+  <data name="&gt;&gt;buttonProviders.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonProviders.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonProviders.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;buttonSales.Name" xml:space="preserve">
+    <value>buttonSales</value>
+  </data>
+  <data name="&gt;&gt;buttonSales.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSales.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonSales.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;buttonClientPersons.Name" xml:space="preserve">
+    <value>buttonClientPersons</value>
+  </data>
+  <data name="&gt;&gt;buttonClientPersons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonClientPersons.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonClientPersons.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;buttonClientsCompanies.Name" xml:space="preserve">
+    <value>buttonClientsCompanies</value>
+  </data>
+  <data name="&gt;&gt;buttonClientsCompanies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonClientsCompanies.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonClientsCompanies.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>329, 3</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 63</value>
+  </data>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonProviders.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="buttonProviders.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonProviders.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="buttonProviders.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 55</value>
+  </data>
+  <data name="buttonProviders.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="buttonProviders.Text" xml:space="preserve">
+    <value>Providers</value>
+  </data>
+  <data name="buttonProviders.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
+  <data name="&gt;&gt;buttonProviders.Name" xml:space="preserve">
+    <value>buttonProviders</value>
+  </data>
+  <data name="&gt;&gt;buttonProviders.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonProviders.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonProviders.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonSales.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="buttonSales.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonSales.Location" type="System.Drawing.Point, System.Drawing">
+    <value>215, 3</value>
+  </data>
+  <data name="buttonSales.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 55</value>
+  </data>
+  <data name="buttonSales.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="buttonSales.Text" xml:space="preserve">
+    <value>Sales</value>
+  </data>
+  <data name="buttonSales.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="&gt;&gt;buttonSales.Name" xml:space="preserve">
+    <value>buttonSales</value>
+  </data>
+  <data name="&gt;&gt;buttonSales.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSales.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonSales.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonClientPersons.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="buttonClientPersons.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonClientPersons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>321, 3</value>
+  </data>
+  <data name="buttonClientPersons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 55</value>
+  </data>
+  <data name="buttonClientPersons.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="buttonClientPersons.Text" xml:space="preserve">
+    <value>Persons</value>
+  </data>
+  <data name="buttonClientPersons.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomLeft</value>
+  </data>
+  <data name="&gt;&gt;buttonClientPersons.Name" xml:space="preserve">
+    <value>buttonClientPersons</value>
+  </data>
+  <data name="&gt;&gt;buttonClientPersons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonClientPersons.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonClientPersons.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonClientsCompanies.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="buttonClientsCompanies.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonClientsCompanies.Location" type="System.Drawing.Point, System.Drawing">
+    <value>427, 3</value>
+  </data>
+  <data name="buttonClientsCompanies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 55</value>
+  </data>
+  <data name="buttonClientsCompanies.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="buttonClientsCompanies.Text" xml:space="preserve">
+    <value>Companies</value>
+  </data>
+  <data name="buttonClientsCompanies.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomLeft</value>
+  </data>
+  <data name="&gt;&gt;buttonClientsCompanies.Name" xml:space="preserve">
+    <value>buttonClientsCompanies</value>
+  </data>
+  <data name="&gt;&gt;buttonClientsCompanies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonClientsCompanies.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonClientsCompanies.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -671,96 +744,6 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Warehouse</value>
-  </data>
-  <data name="&gt;&gt;menuToolStripMenuItem.Name" xml:space="preserve">
-    <value>menuToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;menuToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;salesToolStripMenuItem.Name" xml:space="preserve">
-    <value>salesToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;salesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;makeSaleToolStripMenuItem.Name" xml:space="preserve">
-    <value>makeSaleToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;makeSaleToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;supplyToolStripMenuItem.Name" xml:space="preserve">
-    <value>supplyToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;supplyToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;createSupplyToolStripMenuItem.Name" xml:space="preserve">
-    <value>createSupplyToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;createSupplyToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;partnersToolStripMenuItem.Name" xml:space="preserve">
-    <value>partnersToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;partnersToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pROVIDERSToolStripMenuItem1.Name" xml:space="preserve">
-    <value>pROVIDERSToolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;pROVIDERSToolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;providersToolStripMenuItem.Name" xml:space="preserve">
-    <value>providersToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;providersToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addNewProviderToolStripMenuItem.Name" xml:space="preserve">
-    <value>addNewProviderToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;addNewProviderToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cLIENTSToolStripMenuItem.Name" xml:space="preserve">
-    <value>cLIENTSToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;cLIENTSToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pERSONToolStripMenuItem.Name" xml:space="preserve">
-    <value>pERSONToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;pERSONToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cOMPANYToolStripMenuItem.Name" xml:space="preserve">
-    <value>cOMPANYToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;cOMPANYToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;companyesToolStripMenuItem.Name" xml:space="preserve">
-    <value>companyesToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;companyesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;insertNewCompanyToolStripMenuItem.Name" xml:space="preserve">
-    <value>insertNewCompanyToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;insertNewCompanyToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pageStatus.Name" xml:space="preserve">
-    <value>pageStatus</value>
-  </data>
-  <data name="&gt;&gt;pageStatus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;aquariumDatabaseDataSet1.Name" xml:space="preserve">
     <value>aquariumDatabaseDataSet1</value>

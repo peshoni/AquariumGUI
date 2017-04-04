@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -79,7 +78,10 @@ namespace WarehouseToAquaticOrganisms
             createMasterGridCompanies();
             createMasterGridPersons();
             cerateDetailGrid();
+            loadTree();
+            treeView1.ExpandAll();
         }
+
         /// <summary>
         /// Creates Pesrons master grid.
         /// </summary>
@@ -166,14 +168,65 @@ namespace WarehouseToAquaticOrganisms
             }
         }
 
+        private void loadTree()
+        {
+            List<Delivery> categoryList = _deliveryManager.GetListWithCategories();
+            List<Delivery> someList = _deliveryManager.GetAvailableProductsproperties();
+            ///////////////////////////////
+            //////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////
+
+            categoryList.ForEach(element => {
+                treeView1.Nodes.Add(new TreeNode(element.Category));
+            });
+
+
+            someList.ForEach(element=> {
+                TreeNode parent = findCategory(element.CategoryId);
+            });
+           
+            //TreeNode fishNode = new TreeNode("1");
+            //TreeNode shellNode = new TreeNode("2");
+            //TreeNode seaNode = new TreeNode("3");
+            //treeView1.Nodes.AddRange(new TreeNode[]  { fishNode, shellNode, seaNode });
+            
+            //someList.ForEach(element=> {
+
+                
+                
+
+            //   // element.CategoryId
+            //    switch (element.CategoryId)
+            //    {   case 1:
+            //            fishNode.Nodes.Add(new TreeNode(element.ProductName));
+            //            break;
+            //        case 2:
+            //            shellNode.Nodes.Add(new TreeNode(element.ProductName));
+            //            break;
+            //        case 3:
+            //            seaNode.Nodes.Add(new TreeNode(element.ProductName));
+            //            break;
+            //        default:
+            //            break;
+            //    }
+                
+            //});
+           //this.treeView1.Nodes.AddRange
+        }
+
+        private TreeNode findCategory( int categoryId )
+        {
+            TreeNode parent = new TreeNode();
+            return parent;
+        }
+
         private void createAvailableGridContent()
-        { 
+        {
+            DataGridViewUtillity.clearGrid(dataGridViewAvailable);
             _productName = DataGridViewUtillity.createDatagridViewTextBoxColumn("Product", "ProductName", "ProductName", true);
             _quantity = DataGridViewUtillity.createDatagridViewTextBoxColumn("Quantity", "quantity", "Quantity", false);
             _averagePrice= DataGridViewUtillity.createDatagridViewTextBoxColumn("Delivery price", "Price", "DeliveryPrice", false);          
-            this._averagePrice.DefaultCellStyle = DataGridViewUtillity.getPriceStyle();
-            DataGridViewUtillity.clearGrid(dataGridViewAvailable); 
-
+            this._averagePrice.DefaultCellStyle = DataGridViewUtillity.getPriceStyle(); 
 
             dataGridViewAvailable.Columns.AddRange(new DataGridViewColumn[] { _productName, _quantity, _averagePrice }); 
             dataGridViewAvailable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
@@ -198,13 +251,13 @@ namespace WarehouseToAquaticOrganisms
         private void loadComboBoxes()
         {
             personCombo = new ComboBox();
-            personCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;//.DropDownList;
+            personCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown; 
             personCombo.Location = hide;
             personCombo.SelectedIndexChanged += new System.EventHandler(this.personCombo_SelectedIndexChanged);
             this.splitContainerSaleAndMaster.Panel1.Controls.Add(personCombo); 
 
             companyCombo = new ComboBox();
-            companyCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;// List;
+            companyCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown; 
             companyCombo.Location = hide;
             companyCombo.SelectedIndexChanged += new System.EventHandler(this.companyCombo_SelectedIndexChanged);
             this.splitContainerSaleAndMaster.Panel1.Controls.Add (companyCombo);
@@ -265,10 +318,7 @@ namespace WarehouseToAquaticOrganisms
             Company partner = _companyManager.ElementAt(companyCombo.SelectedIndex);
             labelName.Text = partner.Name;
             labelBullstat.Text = partner.Bulstat;
-            labelAddress.Text = partner.Address;
-
-
-
+            labelAddress.Text = partner.Address; 
             // propertyGridSelectedClient.SelectedObject = partner;
         }
         /// <summary>
@@ -367,11 +417,7 @@ namespace WarehouseToAquaticOrganisms
             dataGridViewMasterCompanies.DataSource = statisticCompanyList;
 
             dataGridViewMasterPersons.DataSource = null;
-            dataGridViewMasterPersons.DataSource = statisticPersonList;
-
-
-
-
+            dataGridViewMasterPersons.DataSource = statisticPersonList; 
         }
         /// <summary>
         /// Shows details by document ID.
@@ -380,102 +426,96 @@ namespace WarehouseToAquaticOrganisms
         /// <param name="e"></param>
         private void dataGridViewMaster_SelectionChanged( object sender, EventArgs e )
         {
+            
             int index = ((DataGridView)sender).CurrentCell.RowIndex;
             DataGridViewCell cell = (DataGridViewCell)((DataGridView)sender) [dataGridViewMasterCompanies.Columns ["DocumentId"].Index, index];
-            int DocID = int.Parse(cell.Value.ToString());
-          //  string name = ((DataGridView)sender).Name;
+            int DocID = int.Parse(cell.Value.ToString()); 
             dataGridViewDetail.DataSource = new BindingList<Sale>(_saleManager.getListWithSaleCompanyDetails(DocID));
-        }
- 
- 
+            
+        } 
+
 
         private void groupBox2_MouseHover( object sender, EventArgs e )
         {
             if (!dataGridViewSaleList.Enabled)
             {
-                MessageBox.Show("Please, choose contragent");
+                System.Windows.Forms.ToolTip ToolTip1 = new System.Windows.Forms.ToolTip();
+                
+                this.groupBox2.Focus();
+                ToolTip1.SetToolTip(this.groupBox2, "Please, choose contragent"); 
             }
         }
 
         private void treeView1_AfterSelect( object sender, TreeViewEventArgs e )
-        {
-            
-            MessageBox.Show(e.Node.Text);
-        }
-
-        private void tabControl1_TabIndexChanged( object sender, EventArgs e )
         { 
-            dataGridViewDetail.Refresh();
+          //  MessageBox.Show(e.Node.Text);
         }
-
+        #region PDF  writer
+        private void tabControl1_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            dataGridViewDetail.DataSource = null;
+            dataGridViewDetail.Refresh();
+            //TabControl a = (TabControl)sender;
+            //switch (a.SelectedTab.Tag.ToString())
+            //{
+            //    case "0":
+                   
+            //        this.dataGridViewMasterCompanies.SelectionChanged += dataGridViewMaster_SelectionChanged; 
+            //        break;
+            //    case "1":
+            //        dataGridViewMasterPersons.MultiSelect = false;
+            //        //this.dataGridViewMasterPersons.Rows [0].Selected = true;
+            //        this.dataGridViewMasterPersons.SelectionChanged += dataGridViewMaster_SelectionChanged;
+            //        //  this.dataGridViewMasterCompanies.ClearSelection();
+            //        break;
+            //    default:
+            //        break;
+            //}
+           
+        }
         private void buttonPDF_Click( object sender, EventArgs e )
         { 
             captureForm(this.groupBox2);
         }
 
         private void captureForm( GroupBox groupBox2 )
-        { 
+        {
             try
             {
-                System.Drawing.Rectangle bounds = groupBox2.Bounds; 
+                System.Drawing.Rectangle bounds = groupBox2.Bounds;
                 using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height))
-                { 
-                    groupBox2.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0, 0,  bitmap.Width  , bitmap.Height));
-                    bitmap.SetResolution(600f, 600f);
-                    Bitmap resized = new Bitmap(bitmap, new Size((int)((float)bitmap.Width / 1.5f),(int)((float) bitmap.Height / 1.5f)));
-                    resized.Save("D:\\GroupBoxImage.png", System.Drawing.Imaging.ImageFormat.Png);
-                    exportarPDF(resized);
+                {
+                    groupBox2.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height));
+                    
+                    using (Bitmap resized = new Bitmap( (int)((float)bitmap.Width / 1.5f), (int)((float)bitmap.Height / 1.5f)) )
+                    {
+                        using (Graphics g = Graphics.FromImage(resized))
+                        {
+                            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                            g.DrawImage(bitmap, 0, 0, resized.Width, resized.Height);
+                        }
+                        resized.Save("D:\\GroupBoxImage.bmp", System.Drawing.Imaging.ImageFormat.Bmp);
+                        exportPDF(resized);
+                    }
                 }  
-            }
-
-
-           
-
+            }  
             catch (Exception e)
             {
                 MessageBox.Show(e.Message.ToString());
             } 
         }
-        public void exportarPDF( Bitmap img )
-        {
-            // System.Drawing.Image image = System.Drawing.Image.FromFile("C://snippetsource.jpg"); Aca graba con un archivo fisico
-            System.Drawing.Image image = img;  //Here I passed a bitmap
+        public void exportPDF( Bitmap img )
+        { 
+          //  System.Drawing.Image image = img; 
             Document doc = new Document(PageSize.A4 );
             PdfAWriter.GetInstance(doc, new FileStream("D://image.pdf", FileMode.Create));
             doc.Open();
-            iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(image,
-                    System.Drawing.Imaging.ImageFormat.Jpeg);
+            iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(img,
+                    System.Drawing.Imaging.ImageFormat.Bmp);
             doc.Add(pdfImage);
             doc.Close();
         }
-        //private static Bitmap resizeImage( Bitmap bitmapToREsize, Size size )
-        //{
-        //    int sourceWidth = bitmapToREsize.Width;
-        //    int sourceHeight = bitmapToREsize.Height;
+        #endregion
 
-        //    float nPercent = 0;
-        //    float nPercentW = 0;
-        //    float nPercentH = 0;
-
-        //    nPercentW = ((float)size.Width / (float)sourceWidth);
-        //    nPercentH = ((float)size.Height / (float)sourceHeight);
-
-        //    if (nPercentH < nPercentW)
-        //        nPercent = nPercentH;
-        //    else
-        //        nPercent = nPercentW;
-
-        //    int destWidth = (int)(sourceWidth * nPercent);
-        //    int destHeight = (int)(sourceHeight * nPercent);
-
-        //    Bitmap b = new Bitmap(destWidth, destHeight);
-        //    Graphics g = Graphics.FromImage(b);
-        //    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-
-        //    g.DrawImage(bitmapToREsize, 0, 0, destWidth, destHeight);
-        //    g.Dispose();
-
-        //    return b;
-        //}
     }
 }

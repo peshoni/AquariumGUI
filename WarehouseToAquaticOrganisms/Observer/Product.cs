@@ -10,6 +10,7 @@ namespace Observer
     {
         private int _id;
         private string _name;
+        private int _categoryId;
 
         public Product()
         {
@@ -43,7 +44,20 @@ namespace Observer
             }
         }
 
-       
+        public int CategoryId
+        {
+            get
+            {
+                return _categoryId;
+            }
+
+            set
+            {
+                _categoryId = value;
+            }
+        }
+
+
         #endregion
     }
 }

@@ -32,14 +32,13 @@ namespace WarehouseToAquaticOrganisms
             InitializeComponent();
             this._personManager = manager; 
             dataGridView1.DataSource = _personManager;
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.Columns.Clear();
+
+            DataGridViewUtillity.clearGrid(dataGridView1); 
             nameColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Name","columnName","Name",false);
             egnColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Egn","columnEGN", "EGN", false);
             addressColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Address","columnAddress", "Address", false);
             phoneColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("Phone", "columnPhone","PhoneNumber", false);
-            idColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("ID","ColumnID", "ID", false);
-
+            idColumn = DataGridViewUtillity.createDatagridViewTextBoxColumn("ID","ColumnID", "ID", false); 
             buttonColumnUpdate = DataGridViewUtillity.createDatagridViewButtonColumn("Update", "update", "buttonUpdate");
             buttonColumnDelete = DataGridViewUtillity.createDatagridViewButtonColumn("Delete", "delete", "buttonDelete");
             dataGridView1.Columns.AddRange(idColumn,nameColumn, egnColumn, addressColumn, phoneColumn, buttonColumnUpdate, buttonColumnDelete); 

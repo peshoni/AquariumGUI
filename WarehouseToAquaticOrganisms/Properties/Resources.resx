@@ -124,13 +124,28 @@
   <data name="bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="company_customers_icon_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\company-customers-icon-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="gb" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="menu" xml:space="preserve">
     <value>Меню</value>
   </data>
+  <data name="provider_icon_jpg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\provider_icon_jpg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="questionEN" xml:space="preserve">
     <value>Are you sure?</value>
+  </data>
+  <data name="user_group_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user-group-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_009570_simple_red_glossy_icon_arrows_arrow_more" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\009570-simple-red-glossy-icon-arrows-arrow-more.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_008454_green_jelly_icon_arrows_arrow_more" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\008454-green-jelly-icon-arrows-arrow-more.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

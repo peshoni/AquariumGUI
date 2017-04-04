@@ -95,6 +95,11 @@
     <Compile Include="DBClasses\PersonManager.cs" />
     <Compile Include="Contragents\Person.cs" />
     <Compile Include="Contragents\Provider.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ShowCompanyesControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -174,14 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="SalesMasterDetailControl.resx">
       <DependentUpon>SalesMasterDetailControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,6 +248,21 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\company-customers-icon-12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-group-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\provider_icon_jpg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\008454-green-jelly-icon-arrows-arrow-more.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\009570-simple-red-glossy-icon-arrows-arrow-more.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

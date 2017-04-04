@@ -85,6 +85,12 @@ namespace WarehouseToAquaticOrganisms
         {
             dataGridViewProviders.DataSource = null;
             dataGridViewProviders.DataSource = _companyManager;
-        } 
+        }
+
+        private void button1_Click( object sender, EventArgs e )
+        {
+            FormCompany formForProviders = new FormCompany(_companyManager, this);
+            formForProviders.ShowDialog(this);
+        }
     }
 }
