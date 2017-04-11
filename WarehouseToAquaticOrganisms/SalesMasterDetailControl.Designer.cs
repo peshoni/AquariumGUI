@@ -51,6 +51,7 @@ namespace WarehouseToAquaticOrganisms
             this.dataGridViewAvailable = new System.Windows.Forms.DataGridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainerFooter = new System.Windows.Forms.SplitContainer();
+            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.splitContainerSaleAndMaster = new System.Windows.Forms.SplitContainer();
             this.buttonPDF = new System.Windows.Forms.Button();
@@ -80,6 +81,8 @@ namespace WarehouseToAquaticOrganisms
             this.dataGridViewDetail = new System.Windows.Forms.DataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.companyTableAdapter1 = new WarehouseToAquaticOrganisms.AquariumDatabaseDataSetTableAdapters.CompanyTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSaleList)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -153,6 +156,7 @@ namespace WarehouseToAquaticOrganisms
             this.dataGridViewSaleList.TabIndex = 3;
             this.dataGridViewSaleList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridViewSaleList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
+            this.dataGridViewSaleList.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridViewSaleList_RowsRemoved);
             // 
             // tableLayoutPanel1
             // 
@@ -268,7 +272,7 @@ namespace WarehouseToAquaticOrganisms
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridViewAvailable);
-            this.groupBox1.Location = new System.Drawing.Point(0, 329);
+            this.groupBox1.Location = new System.Drawing.Point(20, 538);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(190, 309);
             this.groupBox1.TabIndex = 6;
@@ -314,6 +318,7 @@ namespace WarehouseToAquaticOrganisms
             // 
             // splitContainerFooter.Panel1
             // 
+            this.splitContainerFooter.Panel1.Controls.Add(this.propertyGrid1);
             this.splitContainerFooter.Panel1.Controls.Add(this.groupBox1);
             this.splitContainerFooter.Panel1.Controls.Add(this.treeView1);
             // 
@@ -324,18 +329,27 @@ namespace WarehouseToAquaticOrganisms
             this.splitContainerFooter.SplitterDistance = 223;
             this.splitContainerFooter.TabIndex = 8;
             // 
+            // propertyGrid1
+            // 
+            this.propertyGrid1.Location = new System.Drawing.Point(9, 287);
+            this.propertyGrid1.Name = "propertyGrid1";
+            this.propertyGrid1.Size = new System.Drawing.Size(201, 245);
+            this.propertyGrid1.TabIndex = 7;
+            // 
             // treeView1
             // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Location = new System.Drawing.Point(0, 131);
             this.treeView1.Name = "treeView1";
             treeNode1.Name = "Node0";
+            treeNode1.Tag = " ";
             treeNode1.Text = "Products";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1});
-            this.treeView1.Size = new System.Drawing.Size(223, 850);
+            this.treeView1.Size = new System.Drawing.Size(223, 719);
             this.treeView1.TabIndex = 11;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect_1);
+            this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
+            this.treeView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseDoubleClick);
             // 
             // splitContainerSaleAndMaster
             // 
@@ -690,6 +704,15 @@ namespace WarehouseToAquaticOrganisms
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // contextMenuStrip3
+            // 
+            this.contextMenuStrip3.Name = "contextMenuStrip3";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
+            // 
+            // companyTableAdapter1
+            // 
+            this.companyTableAdapter1.ClearBeforeFill = true;
+            // 
             // SalesMasterDetailControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -793,5 +816,8 @@ namespace WarehouseToAquaticOrganisms
         private Label label3;
         private GroupBox groupBox3;
         private Label label7;
+        private PropertyGrid propertyGrid1;
+        private ContextMenuStrip contextMenuStrip3;
+        private AquariumDatabaseDataSetTableAdapters.CompanyTableAdapter companyTableAdapter1;
     }
 }

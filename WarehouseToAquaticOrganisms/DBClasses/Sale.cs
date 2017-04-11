@@ -17,7 +17,10 @@ namespace WarehouseToAquaticOrganisms.DBClasses
         private int _quantity;
         private decimal _salePrice;
         private decimal _deliveryPrice;
-        private bool _isDelivery;
+        // private bool _isDelivery;
+        private decimal rowSum;
+        private decimal percentOfRow;
+
 
         private string _personName;
         private long _egn;
@@ -215,6 +218,32 @@ namespace WarehouseToAquaticOrganisms.DBClasses
             get
             {
                 return string.Empty;
+            }
+        }
+
+        public decimal PercentOfRow
+        {
+            get
+            {
+                return percentOfRow;
+            }
+
+            set
+            {
+                percentOfRow = value;
+            }
+        }
+
+        public decimal RowSum
+        {
+            get
+            {
+                return rowSum;
+            }
+
+            set
+            {
+                rowSum = value;
             }
         }
 

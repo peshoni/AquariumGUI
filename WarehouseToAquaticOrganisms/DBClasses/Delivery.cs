@@ -4,10 +4,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WarehouseToAquaticOrganisms.DBClasses
 {
-   public class Delivery : IDataErrorInfo
+   public class Delivery : TreeNode, IDataErrorInfo
     {
         private int docID;
         private string providerName;
@@ -27,6 +28,7 @@ namespace WarehouseToAquaticOrganisms.DBClasses
 
         private string productName;
         private int quantity;
+       
         public Delivery() {
         }
 
@@ -212,8 +214,9 @@ namespace WarehouseToAquaticOrganisms.DBClasses
         {
             get
             {
+               
 
-                if ("Quantity" == columnName && Quantity == 0)
+                if ("Quantity" == columnName && Quantity == 0 )
                     return "Please fill Quantity";
 
 

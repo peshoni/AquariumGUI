@@ -7,10 +7,13 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using DataGridViewPercentTextBoxColumn;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using WarehouseToAquaticOrganisms.Classes;
 using WarehouseToAquaticOrganisms.DBClasses;
+using CustomTextBox1;
+using FishGUI;
 
 namespace WarehouseToAquaticOrganisms
 {
@@ -39,6 +42,7 @@ namespace WarehouseToAquaticOrganisms
         private BindingList<Sale> saleList;
         private BindingList<Sale> statisticCompanyList;
         private BindingList<Sale> statisticPersonList;
+        private List<Delivery> chooseList;
 
 
 
@@ -46,10 +50,12 @@ namespace WarehouseToAquaticOrganisms
         private DataGridViewTextBoxColumn textColumnArticle;
         private DataGridViewTextBoxColumn textColumnPieces; 
         private DataGridViewTextBoxColumn textColumnPrice;
+        private DataGridViewTextBoxColumn textRowSum;
+        private DataGridTextPercentColumn percentColumn;
         //  private DataGridViewTextBoxColumn textColumnVAT;
-     //   private DataGridViewComboBoxColumn comboWithArticles;
+        //   private DataGridViewComboBoxColumn comboWithArticles;
 
-       
+
         ///// <summary>
         ///  company detail column
         /// </summary>
@@ -57,8 +63,10 @@ namespace WarehouseToAquaticOrganisms
         private DataGridViewTextBoxColumn detailDocId;
         private DataGridViewTextBoxColumn detailQuantity;
         private DataGridViewTextBoxColumn detailSalePrice;
+       
 
-        private Partner partner;
+
+       private Partner partner;
 
         public SalesMasterDetailControl(PersonManager personManager, CompanyManager companyManager,DeliveryManager deliveryManager,SaleManager salesManager)
         {
@@ -74,12 +82,27 @@ namespace WarehouseToAquaticOrganisms
 
             createAvailableGridContent();
             createSaleGrid();
-
+            chooseList = new List<Delivery>();
             createMasterGridCompanies();
             createMasterGridPersons();
             cerateDetailGrid();
+
             loadTree();
-            treeView1.ExpandAll();
+            treeView1.ExpandAll(); 
+
+            CustomTextBoxcs control = new CustomTextBoxcs(); 
+            control.LabelText = "asdad";
+
+            control.HoverColor = Color.Bisque;
+            control.Width = 300;
+             
+            this.splitContainerFooter.Panel1.Controls.Add(control);
+
+
+
+          //  control.
+           // this.control
+
         }
 
         /// <summary>
@@ -136,18 +159,29 @@ namespace WarehouseToAquaticOrganisms
         private void createSaleGrid()
         {
             textColumnProductId = DataGridViewUtillity.createDatagridViewTextBoxColumn("ID", "ProductID", "ProductId", true);
-            textColumnProductId.Width = 50;
+           // textColumnProductId.Width = 50;
             textColumnArticle = DataGridViewUtillity.createDatagridViewTextBoxColumn("Product", "ProductID", "ProductName", true);
             textColumnPieces = DataGridViewUtillity.createDatagridViewTextBoxColumn("Quantity", "Quantity", "Quantity", false);
-            textColumnPieces.Width = 50;
+          //  textColumnPieces.Width = 50;
             textColumnPrice = DataGridViewUtillity.createDatagridViewTextBoxColumn("Sale Price", "SalePrice", "SalePrice", true);
-            this.textColumnPrice.DefaultCellStyle = DataGridViewUtillity.getPriceStyle();
+
+            textRowSum = DataGridViewUtillity.createDatagridViewTextBoxColumn("Sum", "RowSum", "RowSum",true);
+            textRowSum.DefaultCellStyle = DataGridViewUtillity.getPriceStyle();
+
+            textColumnPrice.DefaultCellStyle = DataGridViewUtillity.getPriceStyle();
             dataGridViewSaleList.AllowUserToAddRows = false;
-            DataGridViewUtillity.clearGrid(dataGridViewSaleList); 
-            dataGridViewSaleList.Columns.AddRange(new DataGridViewColumn [] { textColumnProductId, textColumnArticle, textColumnPieces  , textColumnPrice });
+            DataGridViewUtillity.clearGrid(dataGridViewSaleList);
+
+
+            percentColumn = new DataGridTextPercentColumn(  "%", "PercentOfRow",100);
+          
+
+
+            dataGridViewSaleList.Columns.AddRange(new DataGridViewColumn [] 
+            { textColumnProductId, textColumnArticle, textColumnPieces, textColumnPrice, textRowSum ,percentColumn });
 
             saleList = new BindingList<Sale>();
-            dataGridViewSaleList.DataSource = saleList;
+          //  dataGridViewSaleList.DataSource = saleList;
             enableSaleProperies(false);
         }
 /// <summary>
@@ -167,59 +201,58 @@ namespace WarehouseToAquaticOrganisms
             buttonSave.Enabled = false; 
             }
         }
-
+        #region TreeView
         private void loadTree()
         {
             List<Delivery> categoryList = _deliveryManager.GetListWithCategories();
-            List<Delivery> someList = _deliveryManager.GetAvailableProductsproperties();
+            chooseList = _deliveryManager.GetAvailableProductsproperties();
             ///////////////////////////////
             //////////////////////////////////////////////////
             //////////////////////////////////////////////////////////
 
             categoryList.ForEach(element => {
                 treeView1.Nodes.Add(new TreeNode(element.Category));
-            });
+            }); 
 
-
-            someList.ForEach(element=> {
+            chooseList.ForEach(element=> {
                 TreeNode parent = findCategory(element.CategoryId);
-            });
-           
-            //TreeNode fishNode = new TreeNode("1");
-            //TreeNode shellNode = new TreeNode("2");
-            //TreeNode seaNode = new TreeNode("3");
-            //treeView1.Nodes.AddRange(new TreeNode[]  { fishNode, shellNode, seaNode });
-            
-            //someList.ForEach(element=> {
-
-                
-                
-
-            //   // element.CategoryId
-            //    switch (element.CategoryId)
-            //    {   case 1:
-            //            fishNode.Nodes.Add(new TreeNode(element.ProductName));
-            //            break;
-            //        case 2:
-            //            shellNode.Nodes.Add(new TreeNode(element.ProductName));
-            //            break;
-            //        case 3:
-            //            seaNode.Nodes.Add(new TreeNode(element.ProductName));
-            //            break;
-            //        default:
-            //            break;
-            //    }
-                
-            //});
-           //this.treeView1.Nodes.AddRange
+              
+                parent.Nodes.Add(element.ProductName);
+            }); 
         }
 
         private TreeNode findCategory( int categoryId )
         {
-            TreeNode parent = new TreeNode();
+            TreeNode parent = treeView1.Nodes[categoryId];
             return parent;
         }
 
+        private void treeView1_AfterSelect_1( object sender, TreeViewEventArgs e )
+        {
+            Delivery del = chooseList.FirstOrDefault(element => element.ProductName.Equals(e.Node.Text));
+            this.propertyGrid1.SelectedObject = del;
+
+
+
+            Sale newRowOfSaleList = new Sale();
+            newRowOfSaleList.ProductId = del.ProductID;
+            newRowOfSaleList.ProductName = del.ProductName;
+            newRowOfSaleList.DeliveryPrice = del.DeliveryPrice;
+            newRowOfSaleList.SalePrice = del.DeliveryPrice * ((percentProfit / 100) + 1);
+
+            refreshSaleList();
+            saleList.Add(newRowOfSaleList);
+        }
+     
+           private void treeView1_DoubleClick( object sender, EventArgs e )
+        {
+
+        }
+        private void treeView1_MouseDoubleClick( object sender, MouseEventArgs e )
+        {
+
+        }
+        #endregion
         private void createAvailableGridContent()
         {
             DataGridViewUtillity.clearGrid(dataGridViewAvailable);
@@ -363,7 +396,8 @@ namespace WarehouseToAquaticOrganisms
             { 
                 if (e.ColumnIndex == textColumnPieces.Index) 
                 {
-                    calculate(); 
+                    calculate();
+                    refreshSaleList();
                 } 
             }
         }
@@ -395,13 +429,22 @@ namespace WarehouseToAquaticOrganisms
         /// Calculates sum of all rows and adds VAT.
         /// </summary>
         private void calculate()
-        { 
+        {
+          //  int rows = 1;
             decimal suma = 0.0m;
+            decimal rowSum;
             decimal total;
+            
             saleList.ToList().ForEach(
                 element => {
-                    suma += (element.Quantity * element.SalePrice);
-                });
+                    rowSum = (element.Quantity * element.SalePrice);
+                    suma += rowSum;
+                    element.RowSum =  rowSum ;
+                }); 
+            saleList.ToList().ForEach(element => {
+                rowSum = (element.Quantity * element.SalePrice);
+                element.PercentOfRow =Math.Round(((rowSum / suma) * 100),2);
+            }); 
             total = suma * 1.2m;
             textBox1.Text = Math.Round(suma, 2).ToString();
             textBox2.Text = Math.Round((total - suma), 2).ToString();
@@ -445,11 +488,7 @@ namespace WarehouseToAquaticOrganisms
                 ToolTip1.SetToolTip(this.groupBox2, "Please, choose contragent"); 
             }
         }
-
-        private void treeView1_AfterSelect( object sender, TreeViewEventArgs e )
-        { 
-          //  MessageBox.Show(e.Node.Text);
-        }
+     
         #region PDF  writer
         private void tabControl1_SelectedIndexChanged( object sender, EventArgs e )
         {
@@ -515,7 +554,15 @@ namespace WarehouseToAquaticOrganisms
             doc.Add(pdfImage);
             doc.Close();
         }
+
+
+
+
         #endregion
 
+        private void dataGridViewSaleList_RowsRemoved( object sender, DataGridViewRowsRemovedEventArgs e )
+        {
+            calculate();
+        }
     }
 }
